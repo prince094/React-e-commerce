@@ -15,7 +15,7 @@ I have made the Header and Footer part of the our project, now it is necessary t
 
 ## To clone and start the project
 
-1. git clone link
+1. git clone https://github.com/Jakhongir66/team-collaboration.git
 2. some changes on your part in project
 3. git commit -m "feature(Product): styled Product"
 
