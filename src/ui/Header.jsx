@@ -103,7 +103,7 @@ function Header() {
           </div>
         </div>
       </div>
-      <div className="h-max bg-white">
+      <div className="h-max bg-white shadow-sm">
         <div className="mx-auto w-full max-w-7xl px-2 lg:px-8">
           <div className="flex">
             {catalog.map((item) => (
