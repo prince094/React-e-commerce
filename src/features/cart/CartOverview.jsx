@@ -1,9 +1,5 @@
 function CartOverview() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div></div>;
 }
 
-export default CartOverview
+export default CartOverview;
