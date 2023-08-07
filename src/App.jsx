@@ -1,7 +1,8 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from './ui/Home';
 import Error from './ui/Error';
 import Cart from './features/cart/Cart';
+import Home from './pages/HomePage';
+import Product from './pages/ProductPage';
 
 import AppLayout from './ui/AppLayout';
 import Tire from './features/menu/Tire';
@@ -77,6 +78,8 @@ const router = createBrowserRouter([
       {
         path: '/fav',
         element: <Fav />,
+        path: '/product',
+        element: <Product />,
       },
     ],
   },
