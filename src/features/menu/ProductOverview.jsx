@@ -79,7 +79,13 @@ function ProductOverview() {
 
       <h1>{name}</h1>
       <img src={src} alt={alt} />
-      <span>cost {price}</span>
+      <div className="flex justify-between 	">
+        <span>cost {price}</span>
+
+        <button className="text-green-30 rounded-md bg-green-600 p-2">
+          Add to cart
+        </button>
+      </div>
     </div>
   );
 }
