@@ -1,10 +1,5 @@
 function CreateUser() {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div>User data</div>;
 }
 
-export default CreateUser
-
+export default CreateUser;
