@@ -14,16 +14,7 @@ import Industrial from './pages/Industrial';
 import Agricultural from './pages/Agricultural';
 import Tires from './pages/Tires';
 import Fav from './pages/Fav';
-
-const catalog = [
-  { name: 'Tires', path: '/tires', current: true },
-  { name: 'Brands', path: '/brands', current: false },
-  { name: 'Cars', path: '/cars', current: false },
-  { name: 'Light trucks', path: '/trucktires', current: false },
-  { name: 'Cargo', path: '/cargo', current: false },
-  { name: 'Agricultural', path: '/agricultural', current: false },
-  { name: 'Industrial', path: '/industrial', current: false },
-];
+import ProductOverview from './features/menu/ProductOverview';
 
 const router = createBrowserRouter([
   {
@@ -77,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: '/fav',
         element: <Fav />,
+      },
+      {
+        path: '/pro/:id',
+        element: <ProductOverview />,
       },
     ],
   },
