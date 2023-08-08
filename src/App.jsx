@@ -3,7 +3,7 @@ import Error from './ui/Error';
 import Cart from './features/cart/Cart';
 import Home from './pages/HomePage';
 import Product from './pages/ProductPage';
-
+import Tyres from './ui/Tyres';
 import AppLayout from './ui/AppLayout';
 import Tire from './features/menu/Tire';
 import CreateUser from './features/user/CreateUser';
@@ -74,6 +74,10 @@ const router = createBrowserRouter([
         path: '/product',
         element: <Product />,
       },
+      {
+        path: '/tyres',
+        element: <Tyres />,
+}
       {
         path: '/pro/:id',
         element: <ProductOverview />,
