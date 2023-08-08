@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Link } from 'react-router-dom';
 
 const products = [
   {
@@ -99,11 +100,13 @@ function HomePage() {
               key={product.id}
               className="group relative border-[0.5px] border-slate-300 bg-white"
             >
-              <div className="absolute left-1/2 top-[80px]  hidden h-[130px] w-[140px] -translate-x-1/2 flex-col items-center justify-center rounded-lg border-4  border-double border-blue-50 bg-gray-900 bg-opacity-50 shadow-lg group-hover:flex ">
-                <EyeIcon className="h-8 w-8  text-white" />
+              <Link to={`pro/${product.id}`}>
+                <div className="absolute left-1/2 top-[80px]  hidden h-[130px] w-[140px] -translate-x-1/2 flex-col items-center justify-center rounded-lg border-4  border-double border-blue-50 bg-gray-900 bg-opacity-50 shadow-lg group-hover:flex ">
+                  <EyeIcon className="h-8 w-8  text-white" />
 
-                <span className="text-white">Quick view</span>
-              </div>
+                  <span className="text-white">Quick view</span>
+                </div>
+              </Link>
               <p className="absolute left-2 top-2 flex h-[45px] w-[45px] items-center justify-center rounded bg-[#F5F8FC]">
                 <img
                   src="/public/img/sunny.svg"
@@ -138,10 +141,10 @@ function HomePage() {
                 <div className="mt-2 flex justify-between">
                   <div>
                     <h3 className="text-[15px] font-bold text-gray-700">
-                      <a href={product.href}>
+                      {/* <a href={product.href}>
                         <span aria-hidden="true" className="absolute inset-0" />
                         {product.name}
-                      </a>
+                      </a> */}
                     </h3>
                     <p>
                       {' '}
