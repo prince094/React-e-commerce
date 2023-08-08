@@ -6,7 +6,7 @@ import {
   HeartIcon,
   CogIcon,
 } from '@heroicons/react/24/outline';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const catalog = [
   { name: 'Tires', path: '/tires', current: true },
@@ -80,11 +80,11 @@ function Header() {
                   </Link>
 
                   {/* Cart */}
-                  <Link
-                    to="/cart"
-                    className="group relative flex h-full items-center border-r border-gray-700 px-3"
-                  >
-                    <div className="flow-root hover:bg-gray-400 hover:bg-opacity-20">
+                  <div className="flow-root hover:bg-gray-400 hover:bg-opacity-20">
+                    <Link
+                      to="/cart"
+                      className="group relative flex h-full items-center border-r border-gray-700 px-3"
+                    >
                       <ShoppingBagIcon
                         className="h-7 w-7 flex-shrink-0 text-white"
                         aria-hidden="true"
@@ -100,8 +100,8 @@ function Header() {
                           20 205 998 sum
                         </span>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
