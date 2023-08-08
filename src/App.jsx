@@ -3,9 +3,7 @@ import Error from './ui/Error';
 import Cart from './features/cart/Cart';
 import Home from './pages/HomePage';
 import Product from './pages/ProductPage';
-import Tyres from './ui/Tyres';
 import AppLayout from './ui/AppLayout';
-import Tire from './features/menu/Tire';
 import CreateUser from './features/user/CreateUser';
 import Brands from './pages/Brands';
 import Car from './pages/Car';
@@ -13,9 +11,10 @@ import Cargo from './pages/Cargo';
 import Truck from './pages/Truck';
 import Industrial from './pages/Industrial';
 import Agricultural from './pages/Agricultural';
-import Tires from './pages/Tires';
 import Fav from './pages/Fav';
 import ProductOverview from './features/menu/ProductOverview';
+import TyresPage from './pages/TyresPage';
+import Tyre from './pages/Tyre';
 
 const router = createBrowserRouter([
   {
@@ -31,8 +30,8 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
-        path: '/tires',
-        element: <Tires />,
+        path: '/tyres',
+        element: <TyresPage />,
       },
       {
         path: '/industrial',
@@ -43,8 +42,8 @@ const router = createBrowserRouter([
         element: <Agricultural />,
       },
       {
-        path: '/tire',
-        element: <Tire />,
+        path: '/tyre',
+        element: <Tyre />,
       },
       {
         path: '/user',
@@ -74,10 +73,7 @@ const router = createBrowserRouter([
         path: '/product',
         element: <Product />,
       },
-      {
-        path: '/tyres',
-        element: <Tyres />,
-}
+
       {
         path: '/pro/:id',
         element: <ProductOverview />,

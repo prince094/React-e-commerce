@@ -1,7 +1,8 @@
 import { MapPinIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import React from 'react';
 import classNames from 'classnames';
-const TyrePage = () => {
+import tyresData from '../data/tyresData.json'
+const TyresPage = () => {
   const iconBoxClassnames = classNames(
     'h-[90px]',
     'w-[250px]',
@@ -204,8 +205,12 @@ const TyrePage = () => {
           <ChevronRightIcon className="h-[22px] w-[22px]" />
         </div>
       </div>
+      {/* tyres list */}
+      <div>
+        <p>Brand Selection</p>
+      </div>
     </div>
   );
 };
 
-export default TyrePage;
+export default TyresPage;
