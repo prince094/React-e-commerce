@@ -6,16 +6,16 @@ import {
   HeartIcon,
   CogIcon,
 } from '@heroicons/react/24/outline';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const catalog = [
   { name: 'Tires', path: '/tires', current: true },
-  { name: 'Brands', path: '#', current: false },
-  { name: 'Cars', path: '#', current: false },
-  { name: 'Light trucks', path: '#', current: false },
-  { name: 'Cargo', path: '#', current: false },
-  { name: 'Agricultural', path: '#', current: false },
-  { name: 'Industrial', path: '#', current: false },
+  { name: 'Brands', path: '/brands', current: false },
+  { name: 'Cars', path: '/cars', current: false },
+  { name: 'Light trucks', path: '/trucktires', current: false },
+  { name: 'Cargo', path: '/cargo', current: false },
+  { name: 'Agricultural', path: '/agricultural', current: false },
+  { name: 'Industrial', path: '/industrial', current: false },
 ];
 
 function classNames(...classes) {
@@ -36,14 +36,18 @@ function Header() {
                   alt="Your Company"
                 />
               </Link>
+
               <div className="flex space-x-4">
                 <div className="flex space-x-4 py-3">
-                  <button className="inline-flex items-center justify-center rounded-[5px] bg-gray-400 bg-opacity-20  px-4 py-2 text-center text-sm font-medium uppercase text-white hover:bg-opacity-30">
-                    <span className="mr-[10px]">
-                      <MapPinIcon className="h-6 w-6" aria-hidden="true" />
-                    </span>
-                    tire centers
-                  </button>
+                  <Link to="/tire">
+                    <button className="inline-flex items-center justify-center rounded-[5px] bg-gray-400 bg-opacity-20  px-4 py-2 text-center text-sm font-medium uppercase text-white hover:bg-opacity-30">
+                      <span className="mr-[10px]">
+                        <MapPinIcon className="h-6 w-6" aria-hidden="true" />
+                      </span>
+                      tire centers
+                    </button>
+                  </Link>
+
                   <button className=" inline-flex items-center justify-center rounded-[5px] bg-gray-400  bg-opacity-20 px-4 py-2 text-center text-sm font-medium uppercase text-white hover:bg-opacity-30">
                     <span className="mr-[10px]">
                       <CalculatorIcon className="h-6 w-6" aria-hidden="true" />
@@ -54,30 +58,31 @@ function Header() {
 
                 <div className="flex ">
                   {/* User */}
-                  <div className="border-l border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
-                    <a
-                      href="#"
-                      className="flex h-full items-center px-3  text-white"
-                    >
+                  <Link
+                    to="/user"
+                    className="flex h-full items-center px-3  text-white"
+                  >
+                    <div className="border-l border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
                       <span className="sr-only">User</span>
                       <UserIcon className="h-7 w-7  text-white " />
-                    </a>
-                  </div>
+                    </div>
+                  </Link>
                   {/* Heart */}
-                  <div className="border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
-                    <a
-                      href="#"
-                      className=" flex h-full items-center px-3 text-white"
-                    >
+
+                  <Link
+                    to="/fav"
+                    className=" flex h-full items-center px-3 text-white"
+                  >
+                    <div className="border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
                       <span className="sr-only">Search</span>
                       <HeartIcon className="h-7 w-7 text-white " />
-                    </a>
-                  </div>
+                    </div>
+                  </Link>
 
                   {/* Cart */}
                   <div className="flow-root hover:bg-gray-400 hover:bg-opacity-20">
-                    <a
-                      href="#"
+                    <Link
+                      to="/cart"
                       className="group relative flex h-full items-center border-r border-gray-700 px-3"
                     >
                       <ShoppingBagIcon
@@ -95,7 +100,7 @@ function Header() {
                           20 205 998 sum
                         </span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -107,9 +112,9 @@ function Header() {
         <div className="mx-auto w-full max-w-7xl px-2 lg:px-8">
           <div className="flex">
             {catalog.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={`${item.path}`}
                 className={classNames(
                   item.current
                     ? ' is-active text-stone-950 '
@@ -123,7 +128,7 @@ function Header() {
                   aria-hidden="true"
                 />
                 <span className="ml-2">{item.name}</span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
