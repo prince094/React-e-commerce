@@ -1,17 +1,19 @@
 import { MapPinIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import React from 'react';
 import classNames from 'classnames';
-import tyresData from '../data/tyresData.json'
+import tyresData from '../data/tyresData.json';
 const TyresPage = () => {
   const iconBoxClassnames = classNames(
     'h-[90px]',
     'w-[250px]',
-    'bg-gradient-to-br',
     'rounded-md',
     'flex',
     'mx-1',
     'items-center',
-    'justify-evenly'
+    'justify-evenly',
+    'bg-gradient-to-br',
+    'from-20%',
+    'to-80%'
   );
   const gradientColors = [
     { from: '#FF5C00', to: '#FCDB2D' },
@@ -189,8 +191,8 @@ const TyresPage = () => {
         ))}
       </div>
       {/* models card */}
-      <div className="my-5 flex h-[105px] w-full items-center justify-between rounded bg-[#E2E9F2] p-2">
-        <div className="flex w-[90%] flex-row flex-wrap ">
+      <div className="my-5 flex w-full items-center justify-between rounded bg-[#E2E9F2] p-2 xl:h-[105px]">
+        <div className="flex w-[90%] flex-row flex-wrap">
           {modelData.map((model, index) => (
             <div
               key={index}
@@ -208,6 +210,16 @@ const TyresPage = () => {
       {/* tyres list */}
       <div>
         <p>Brand Selection</p>
+      </div>
+      <div className="flex w-full flex-row">
+        <div className="w-[20%] border"></div>
+        <div className="flex w-[80%] flex-row flex-wrap rounded-md bg-white">
+          {tyresData.map((item) => (
+            <div key={item.id} className="h-[450px] w-[323px] border flex items-center justify-center">
+              <img src={item.img} alt="" className="w-[50%]" />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
