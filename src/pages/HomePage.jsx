@@ -109,14 +109,14 @@ function HomePage() {
               </Link>
               <p className="absolute left-2 top-2 flex h-[45px] w-[45px] items-center justify-center rounded bg-[#F5F8FC]">
                 <img
-                  src="/public/img/sunny.svg"
+                  src="/img/sunny.svg"
                   alt=""
                   className="h-[25px] w-[25px] object-cover object-center"
                 />
               </p>
               <p className="absolute left-2 top-14 flex h-[45px] w-[45px] items-center justify-center rounded bg-[#F5F8FC]">
                 <img
-                  src="/public/img/winter.svg"
+                  src="/img/winter.svg"
                   alt=""
                   className="h-[25px] w-[25px] object-cover object-center"
                 />
@@ -126,7 +126,7 @@ function HomePage() {
               </a>
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white px-7 pb-6 pt-12">
                 <img
-                  src="/public/img/01.png"
+                  src="/img/01.png"
                   alt={product.imageAlt}
                   className="mx-auto h-[80%] w-[80%] object-cover object-center"
                 />
@@ -149,7 +149,7 @@ function HomePage() {
                     <p>
                       {' '}
                       <img
-                        src="/public/img/brand-tire.png"
+                        src="/img/brand-tire.png"
                         className="my-3 h-auto w-[125px] object-cover object-center"
                       ></img>
                     </p>
