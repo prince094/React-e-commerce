@@ -9,7 +9,7 @@ import {
 import { Link } from 'react-router-dom';
 
 const catalog = [
-  { name: 'Tires', path: '/tires', current: true },
+  { name: 'Tyres', path: '/tyres', current: true },
   { name: 'Brands', path: '/brands', current: false },
   { name: 'Cars', path: '/cars', current: false },
   { name: 'Light trucks', path: '/trucktires', current: false },
