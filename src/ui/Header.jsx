@@ -58,31 +58,31 @@ function Header() {
 
                 <div className="flex ">
                   {/* User */}
-                  <Link
-                    to="/user"
-                    className="flex h-full items-center px-3  text-white"
-                  >
-                    <div className="border-l border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
+                  <div className="border-l border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
+                    <a
+                      href="#"
+                      className="flex h-full items-center px-3  text-white"
+                    >
                       <span className="sr-only">User</span>
                       <UserIcon className="h-7 w-7  text-white " />
-                    </div>
-                  </Link>
+                    </a>
+                  </div>
                   {/* Heart */}
 
-                  <Link
-                    to="/fav"
-                    className=" flex h-full items-center px-3 text-white"
-                  >
-                    <div className="border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
+                  <div className="border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
+                    <a
+                      href="#"
+                      className=" flex h-full items-center px-3 text-white"
+                    >
                       <span className="sr-only">Search</span>
                       <HeartIcon className="h-7 w-7 text-white " />
-                    </div>
-                  </Link>
+                    </a>
+                  </div>
 
                   {/* Cart */}
                   <div className="flow-root hover:bg-gray-400 hover:bg-opacity-20">
-                    <Link
-                      to="/cart"
+                    <a
+                      href="#"
                       className="group relative flex h-full items-center border-r border-gray-700 px-3"
                     >
                       <ShoppingBagIcon
@@ -100,7 +100,7 @@ function Header() {
                           20 205 998 sum
                         </span>
                       </div>
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
