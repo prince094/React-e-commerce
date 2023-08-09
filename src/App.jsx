@@ -3,7 +3,6 @@ import Error from './ui/Error';
 import Cart from './features/cart/Cart';
 import Home from './pages/HomePage';
 import Product from './pages/ProductPage';
-
 import AppLayout from './ui/AppLayout';
 import TyresPage from './pages/TyresPage';
 

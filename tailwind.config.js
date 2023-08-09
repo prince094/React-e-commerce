@@ -17,6 +17,7 @@ export default {
       height: {
         screen: '100dvh', // use h-screen, overwrited 100vh to 100dvh dynamic view height
       },
+      
     },
   },
   plugins: [],
