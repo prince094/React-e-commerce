@@ -215,7 +215,10 @@ const TyresPage = () => {
         <div className="w-[20%] border"></div>
         <div className="flex w-[80%] flex-row flex-wrap rounded-md bg-white">
           {tyresData.map((item) => (
-            <div key={item.id} className="h-[450px] w-[323px] border flex items-center justify-center">
+            <div
+              key={item.id}
+              className="flex h-[450px] w-[323px] items-center justify-center border"
+            >
               <img src={item.img} alt="" className="w-[50%]" />
             </div>
           ))}

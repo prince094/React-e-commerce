@@ -3,10 +3,6 @@ import Error from './ui/Error';
 import Cart from './features/cart/Cart';
 import Home from './pages/HomePage';
 import Product from './pages/ProductPage';
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
 import AppLayout from './ui/AppLayout';
 import CreateUser from './features/user/CreateUser';
 import Brands from './pages/Brands';
@@ -77,10 +73,6 @@ const router = createBrowserRouter([
         path: '/product',
         element: <Product />,
       },
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
       {
         path: '/pro/:id',
         element: <ProductOverview />,
