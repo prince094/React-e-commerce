@@ -146,7 +146,7 @@ function HomePage() {
                     <p>
                       {' '}
                       <img
-                        src="/img/brand-tire.png"
+                        src="/img/brand-tire.svg"
                         className="my-3 h-auto w-[125px] object-cover object-center"
                       ></img>
                     </p>
