@@ -6,6 +6,12 @@
   .input {
     @apply rounded-full border border-stone-200 px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring focus:ring-yellow-400 md:px-6 md:py-3;
   }
+  .slider {
+    @apply bg-red-500 h-2 w-4 mt-[-0.5rem] rounded-full appearance-none cursor-pointer;
+  }
+  /* .slider::-webkit-slider-thumb {
+    @apply border-2 border-white bg-red-500 h-6 w-6  rounded-full   appearance-none cursor-pointer ;
+  } */
 }
 
 /* body {
@@ -31,7 +37,15 @@
   background-size: 20% 50%;
   animation: loading 1s infinite linear;
 }
-
+.slider::-webkit-slider-thumb {
+  border: 3px solid white;
+  background-color: red; 
+  height: 1.5rem;
+  width: 1.5rem; 
+  border-radius: 50%;
+  -webkit-appearance: none; 
+  cursor: pointer; 
+}
 @keyframes loading {
   20% {
     background-position: 0% 0%, 50% 50%, 100% 50%;
