@@ -208,14 +208,14 @@ const TyresPage = () => {
           <div className="flex h-[54px] w-[54px] items-center justify-center bg-[#F5F8FC]">
             <img src={honour} alt="Brand Selection" />
           </div>
-          <p>Brand Selection</p>
+          <span>Brand Selection</span>
           <ChevronRightIcon className="w-[24px]" />
         </div>
         <div className="flex flex-row items-center">
           <div className="flex h-[54px] w-[54px] items-center justify-center bg-[#F5F8FC]">
             <img src={car} alt="Selection by car brand" />
           </div>
-          <p>Selection by car brand</p>
+          <span>Selection by car brand</span>
           <ChevronRightIcon className="w-[24px]" />
           <div className="absolute right-2 flex items-center">
             <hr className="h-[40px] w-[1px] bg-gray-300" />
@@ -231,7 +231,7 @@ const TyresPage = () => {
         <div className="w-[20%] ">
           <div className="mr-2 h-[236px] rounded  bg-[#F5F8FC] p-4">
             <div className="flex flex-row justify-between">
-              <p className="font-bold">Options</p>
+              <span className="font-bold">Options</span>
               <ChevronDownIcon className="w-[28px]" />
             </div>
             <div className="mb-2 mt-8 flex h-[64px] w-full flex-col rounded bg-white">
@@ -255,12 +255,86 @@ const TyresPage = () => {
               </div>
             </div>
           </div>
-          <div className="mr-2 h-[636px] rounded  rounded border border-red-600 bg-[#F5F8FC] bg-[#F5F8FC] p-4">
-            <p>seasonality</p>
-            <will className="text-2xl font-bold text-red-600">
-              do it tomorrow....
-            </will>
+          <div className="mr-2 h-[620px] rounded  rounded mt-4 py-6 bg-[#F5F8FC]">
+            <div className="mx-4 mb-2 flex flex-row justify-between">
+              <span className="font-bold">Seasonality</span>
+              <ChevronDownIcon className="w-7" />
+            </div>
+            <div className="w-88 mx-2 flex h-11 items-center rounded-md bg-white">
+              <img
+                src="/img/winter-snow.svg"
+                className="mx-2 inline w-6"
+                alt="winter-icon"
+              />
+              <span className="mx-2">Winter</span>
+              <span>(957)</span>
+            </div>
+            <div className="m-2 flex items-center">
+              <input type="checkbox" className="ml-4 w-5" />
+              <img
+                src="/img/winter.svg"
+                alt="not studded"
+                className="mx-2 inline w-4"
+              />
+              <span>Not studded</span>
+            </div>
+            <div className="m-2 flex items-center">
+              <input type="checkbox" className="ml-4 w-5" />
+              <img
+                src="/img/studded-icon.svg"
+                alt="studded"
+                className="mx-2 inline w-4"
+              />
+              <span>Studded</span>
+            </div>
+            <div className="w-88 mx-2 my-1 flex h-11 items-center rounded-md bg-white">
+              <img
+                src="/img/sunny.svg"
+                className="mx-2 inline w-6"
+                alt="winter-icon"
+              />
+              <span className="mx-2">Summer</span>
+              <span>(645)</span>
+            </div>
+            <div className="w-88 mx-2 flex h-11 items-center rounded-md bg-white">
+              <img
+                src="/img/sunny-winter.svg"
+                className="mx-2 inline w-6"
+                alt="winter-icon"
+              />
+              <span className="mx-2">All season</span>
+              <span>(129)</span>
+            </div>
+            <hr className="my-6 w-full" />
+            <div className="m-4 flex flex-row justify-between">
+              <span className="font-bold">Price</span>
+              <ChevronDownIcon className="w-7" />
+            </div>
+            <div className="m-auto flex h-[70px] w-[90%] bg-white">
+              <div className="m-2 w-[50%]">
+                <label className="font-bold">From</label>
+                <input
+                  type="text"
+                  placeholder="10 000"
+                  className="block w-full"
+                />
+              </div>
+              <hr className="my-auto h-12 border" />
+              <div className="m-2 w-[50%]">
+                <label className="font-bold">To</label>
+                <input
+                  type="text"
+                  placeholder="126 000"
+                  className="block w-full"
+                />
+              </div>
+            </div>
+            <input type='range' min="10000" max="4000000" step="1000" value="50000" className='slider w-[90%] ml-2 '/>
+            <hr className="my-6 w-full" />
+            <button className='block font-bold h-12 w-[90%] bg-red-600 text-white rounded mx-auto'>Pick up</button>
+            <button className='block mx-auto my-4'>Reset</button>
           </div>
+          
         </div>
         <div className="flex w-[80%] flex-row flex-wrap rounded-md bg-white">
           {tyresData.map((item) => (
@@ -340,9 +414,9 @@ const TyresPage = () => {
               </div>
               <h2 className="mx-6 text-sm font-bold">{item.title}</h2>
               <hr className="my-14 w-11/12" />
-              <p className="color-black absolute bottom-4 left-6 text-left text-2xl font-bold">
+              <span className="color-black absolute bottom-4 left-6 text-left text-2xl font-bold">
                 {item.parameter}
-              </p>
+              </span>
             </div>
           ))}
         </div>
