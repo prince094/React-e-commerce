@@ -81,8 +81,19 @@ function ProductPage() {
                 <span className="ml-[10px]">To favorites</span>
               </div>
             </div>
-            <div className="relative h-[600px] flex-[50%] border border-[#E2E9F2] bg-white">
-              hhh
+            <div className="relative h-[600px] flex-[50%] border border-[#E2E9F2] bg-[#F8FAFD] p-7">
+              <div className="flex justify-between">
+                <h2 className="text-[28px] font-extrabold">46 500 тенге</h2>
+                <p className="flex items-center">
+                  <b className="text-[#15A524]">В наличии:</b>{' '}
+                  <span className="ml-2 text-[#566879]">
+                    Осталось от 4 до 20 шт
+                  </span>
+                </p>
+                {/* <p>
+                  <b>Нет в наличии:</b>
+                </p> */}
+              </div>
             </div>
           </div>
         </div>
