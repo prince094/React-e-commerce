@@ -6,8 +6,9 @@ import {
 } from '@heroicons/react/24/outline';
 import React from 'react';
 import honour from '../../public/img/tyres/honour-line.png';
-import car from '../../public/img/tyres/Car_1.png';
+import car from '../../public/img/tyres/car_1.png';
 import tyresData from '../data/tyresData.json';
+import tyresPageNavigationData from '../data/tyresPageNavigationData.json';
 const TyresPage = () => {
   const gradientColors = [
     { from: '#FF5C00', to: '#FCDB2D' },
@@ -143,34 +144,49 @@ const TyresPage = () => {
   ];
 
   return (
-    <div>
-      <h4 className="my-6 text-xs">
+    <div className="sm:p-0 p-[20px]">
+      <h4 className="my-6 hidden text-xs sm:block">
         Home / Tires / Selection of tires by size
       </h4>
       {/* title part */}
-      <div className="flex flex-row justify-between">
+      <div className="sm:flex sm:flex-row sm:justify-between">
         <div>
-          <div className="flex flex-row items-end">
-            <h2 className="text-4xl font-bold text-black">
+          <div className="sm:flex sm:items-end">
+            <h2 className="text-2xl font-bold text-black sm:text-3xl">
               Tires 155/70R13 in Kazakhstan
             </h2>
-            <p className="ml-[23px]">3589 items</p>
+            <p className="sm:ml-[23px]">3589 items</p>
           </div>
-
-          <p>Selection by parameters</p>
+          <p className="hidden sm:block">Selection by parameters</p>
         </div>
         <div className="flex flex-row items-center">
           <div className="flex h-[70px] w-[70px] flex-row items-center justify-center bg-[#F5F8FC]">
             <MapPinIcon className="h-6 w-6 text-red-600" />
           </div>
-          <div>
-            <h5 className="text-sm">Show products by region:</h5>
-            <p className="text-md font-bold">Kazakhstan</p>
+          <div className="sm:normal flex w-full flex-row items-center justify-between ">
+            <div>
+              <h5 className="text-sm">Show products by region:</h5>
+              <div className="flex flex-row items-center ">
+                <p className="text-md font-bold">Kazakhstan</p>
+                <img
+                  src="/img/chevronRightIcon.svg"
+                  alt="arrow"
+                  className="hidden h-4 sm:block"
+                />
+              </div>
+            </div>
+            <div>
+              <img
+                src="/img/chevronRightIcon.svg"
+                alt="arrow"
+                className="h-8 sm:hidden"
+              />
+            </div>
           </div>
         </div>
       </div>
       {/* tyretypes by colored boxes */}
-      <div className="flex flex-row justify-between">
+      <div className="hidden flex-row justify-between  sm:hidden md:flex">
         {gradientColors.map((colors, index) => (
           <div
             key={index}
@@ -186,7 +202,7 @@ const TyresPage = () => {
         ))}
       </div>
       {/* models card */}
-      <div className="my-5 flex w-full items-center justify-between rounded bg-[#E2E9F2] p-2 xl:h-[105px]">
+      <div className="my-5 flex hidden w-full items-center justify-between rounded bg-[#E2E9F2] p-2 sm:flex xl:h-[105px]">
         <div className="flex w-[90%] flex-row flex-wrap">
           {modelData.map((model, index) => (
             <div
@@ -203,33 +219,37 @@ const TyresPage = () => {
         </div>
       </div>
       {/* middle navbar  */}
-      <div className="relative mb-4 flex flex-row bg-white">
-        <div className="flex w-[20%] flex-row items-center">
-          <div className="flex h-[54px] w-[54px] items-center justify-center bg-[#F5F8FC]">
+      <div className="relative mb-4 flex flex-row justify-between bg-white">
+        <div className="hidden flex-row items-center sm:flex">
+          <div className="flex h-[54px] w-[54px] items-center justify-center bg-[#F5F8FC] ">
             <img src={honour} alt="Brand Selection" />
           </div>
-          <span>Brand Selection</span>
+          <span className="hidden md:hidden lg:block">Brand Selection</span>
           <ChevronRightIcon className="w-[24px]" />
         </div>
-        <div className="flex flex-row items-center">
+
+        <div className="hidden flex-row items-center sm:flex">
           <div className="flex h-[54px] w-[54px] items-center justify-center bg-[#F5F8FC]">
             <img src={car} alt="Selection by car brand" />
           </div>
-          <span>Selection by car brand</span>
+          <span className="hidden md:hidden lg:block">
+            Selection by car brand
+          </span>
           <ChevronRightIcon className="w-[24px]" />
-          <div className="absolute right-2 flex items-center">
-            <hr className="h-[40px] w-[1px] bg-gray-300" />
-            <p className="ml-[32px]">Sort:</p>
-            <select className="ml-4 h-[50px] w-[308px] rounded border pl-4 font-bold">
-              <option>Popular first</option>
-            </select>
-          </div>
+        </div>
+
+        <div className="hidden items-center sm:flex">
+          <hr className="hidden h-[40px] w-[1px] bg-gray-300 sm:hidden md:block" />
+          <p className="ml-[32px] hidden sm:inline">Sort:</p>
+          <select className="ml-4 h-[50px] w-[308px] rounded border pl-4 font-bold">
+            <option>Popular first</option>
+          </select>
         </div>
       </div>
       {/* tyres list */}
-      <div className="flex w-full flex-row">
-        <div className="w-[20%] ">
-          <div className="mr-2 h-[236px] rounded  bg-[#F5F8FC] p-4">
+      <div className="w-full flex-row sm:flex ">
+        <div className="sm:w-[20%] ">
+          <div className="mr-2 hidden h-[236px]  rounded bg-[#F5F8FC] p-4 sm:block">
             <div className="flex flex-row justify-between">
               <span className="font-bold">Options</span>
               <ChevronDownIcon className="w-[28px]" />
@@ -255,7 +275,7 @@ const TyresPage = () => {
               </div>
             </div>
           </div>
-          <div className="mr-2 h-[620px] rounded  rounded mt-4 py-6 bg-[#F5F8FC]">
+          <div className="mr-2 mt-4 hidden  h-[620px] rounded rounded bg-[#F5F8FC] py-6 sm:block">
             <div className="mx-4 mb-2 flex flex-row justify-between">
               <span className="font-bold">Seasonality</span>
               <ChevronDownIcon className="w-7" />
@@ -329,75 +349,74 @@ const TyresPage = () => {
                 />
               </div>
             </div>
-            <input type='range' min="10000" max="4000000" step="1000" value="50000" className='slider w-[90%] ml-2 '/>
+            <input
+              type="range"
+              min="10000"
+              max="4000000"
+              step="1000"
+              value="50000"
+              className="slider ml-2 w-[90%] "
+            />
             <hr className="my-6 w-full" />
-            <button className='block font-bold h-12 w-[90%] bg-red-600 text-white rounded mx-auto'>Pick up</button>
-            <button className='block mx-auto my-4'>Reset</button>
+            <button className="mx-auto block h-12 w-[90%] rounded bg-red-600 font-bold text-white">
+              Pick up
+            </button>
+            <button className="mx-auto my-4 block">Reset</button>
           </div>
-          
+          <div
+            className="mr-2 mt-4  rounded rounded  bg-[#F5F8FC] sm:bg-white
+        
+          "
+          >
+            {tyresPageNavigationData.map((item) => (
+              <div
+                key={item.id}
+                className="m-2 flex h-[62px] items-center justify-between rounded rounded bg-white sm:my-2 sm:h-[140px] sm:bg-[#F5F8FC]"
+              >
+                <img
+                  src={item.img}
+                  alt="navigation-pictures"
+                  className="h-full object-contain object-center sm:w-[40%]"
+                />
+                <p className="ml-4 w-[40%] font-bold sm:text-xs">
+                  {item.title}
+                </p>
+                <div className="m-1 flex h-[90%] w-6 items-center bg-white">
+                  <img
+                    src="img/chevronRightIcon.svg"
+                    alt="icon"
+                    className="hidden h-7 w-7 sm:flex"
+                  ></img>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="flex w-[80%] flex-row flex-wrap rounded-md bg-white">
+
+        <div className="flex items-center justify-between sm:hidden my-6">
+          <select className=" mr-2 h-[50px] w-full rounded border pl-4 font-bold">
+            <option>Popular first</option>
+          </select>
+          <div className="flex h-[50px] w-[50px] items-center justify-center bg-[#F5F8FC]">
+            <img
+              src="/img/filter_outline.svg"
+              alt="filter"
+              className="w-[20px]"
+            ></img>
+          </div>
+        </div>
+
+        <div className="flex sm:w-[80%] w-full flex-row flex-wrap rounded-md bg-white">
           {tyresData.map((item) => (
             <div
               key={item.id}
-              className="relative flex h-[450px] w-[323px] flex-col  items-center border"
+              className="relative flex sm:h-[450px] sm:w-[323px] flex-col  items-center border"
             >
               <div className="absolute left-2 top-2 mb-1 flex h-[45px] w-[45px] items-center justify-center bg-[#F5F8FC]">
-                {
-                  <svg
-                    width="23"
-                    height="25"
-                    viewBox="0 0 23 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M-0.000488281 19.0442C0.196843 19.2597 0.5304 19.3009 0.787273 19.1338L1.70354 18.5375C1.90543 18.4061 1.98469 18.1587 1.91889 17.936L-0.000488281 19.0442ZM3.29486 17.1416C4.74707 19.5623 7.39698 21.1822 10.4253 21.1822C15.0143 21.1822 18.7344 17.4621 18.7344 12.8731C18.7344 11.4063 18.3544 10.0283 17.6873 8.83211L3.29486 17.1416ZM19.0636 8.03753C19.224 8.20507 19.478 8.2602 19.6921 8.15088L20.6658 7.65379C20.9369 7.51537 21.0668 7.20756 20.9816 6.93018L19.0636 8.03753ZM20.3064 12.8731C20.3064 13.1589 20.5245 13.4023 20.8099 13.417L21.9035 13.4734C22.2528 13.4914 22.5522 13.2228 22.5522 12.8731C22.5522 12.5234 22.2528 12.2548 21.9035 12.2728L20.8099 12.3292C20.5245 12.3439 20.3064 12.5873 20.3064 12.8731ZM4.76084 21.5948C4.9167 21.3553 5.23596 21.2884 5.48329 21.4315C5.73061 21.5746 5.83301 21.8854 5.70307 22.14L5.20598 23.1136C5.04648 23.426 4.66208 23.5509 4.35848 23.3752C4.05488 23.1995 3.97329 22.8051 4.1646 22.5111L4.76084 21.5948ZM9.88135 23.2578C9.89607 22.9723 10.1395 22.7543 10.4253 22.7543C10.7111 22.7543 10.9545 22.9723 10.9692 23.2578L11.0256 24.3513C11.0436 24.7006 10.775 25 10.4253 25C10.0756 25 9.80694 24.7006 9.82496 24.3513L9.88135 23.2578ZM15.1475 22.14C15.0175 21.8854 15.1199 21.5746 15.3673 21.4315C15.6146 21.2884 15.9339 21.3553 16.0897 21.5948L16.686 22.5111C16.8773 22.8051 16.7957 23.1995 16.4921 23.3752C16.1885 23.5509 15.8041 23.426 15.6446 23.1136L15.1475 22.14ZM19.147 18.5375C18.9075 18.3817 18.8406 18.0624 18.9837 17.8151C19.1268 17.5677 19.4376 17.4654 19.6921 17.5953L20.6658 18.0924C20.9782 18.2519 21.1031 18.6363 20.9274 18.9399C20.7517 19.2435 20.3573 19.3251 20.0633 19.1338L19.147 18.5375Z"
-                      fill="#FFD400"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M10.3945 0C9.91346 0 9.52353 0.396131 9.52353 0.884784V3.79975L8.20012 2.60465C7.84314 2.28229 7.29284 2.31158 6.97098 2.67009C6.64913 3.02859 6.6776 3.58054 7.03458 3.9029L9.52353 6.15053V10.3178L6.12678 8.3509L5.38207 4.83706C5.282 4.36488 4.81946 4.0634 4.34897 4.1637C3.87847 4.264 3.57819 4.72809 3.67826 5.20028L4.09689 7.17551L1.34072 5.57958C0.926827 5.33992 0.396335 5.48431 0.155833 5.90209C-0.0846689 6.31987 0.0558929 6.85284 0.469786 7.0925L3.019 8.5686L1.2982 9.12936C0.84043 9.27853 0.58983 9.7714 0.738468 10.2302C0.887107 10.689 1.3787 10.94 1.83647 10.7908L5.04889 9.74399L8.71763 11.8683L5.2351 13.8849L1.79965 12.7654C1.34188 12.6162 0.850293 12.8672 0.701655 13.326C0.553017 13.7848 0.803618 14.2776 1.26139 14.4268L3.20521 15.0603L0.431429 16.6664C0.0653747 16.8784 -0.0868813 17.3197 0.0491886 17.7079L20.5581 5.86712C20.2941 5.53591 19.8233 5.43771 19.4482 5.65489L16.8989 7.13104L17.2751 5.35587C17.3752 4.88368 17.0749 4.41959 16.6044 4.31929C16.1339 4.21899 15.6714 4.52046 15.5713 4.99265L14.869 8.30643L11.2654 10.3931V6.43085L13.9511 4.00559C14.308 3.68323 14.3365 3.13127 14.0147 2.77277C13.6928 2.41427 13.1425 2.38497 12.7855 2.70734L11.2654 4.08007V0.884783C11.2654 0.396131 10.8755 0 10.3945 0Z"
-                      fill="#64D2FF"
-                    />
-                  </svg>
-                }
+                <img src="/img/sunny-winter.svg" alt="" />
               </div>
               <div className="absolute left-2 top-[56px] flex h-[45px] w-[45px] items-center justify-center bg-[#F5F8FC]">
-                {
-                  <svg
-                    width="25"
-                    height="25"
-                    viewBox="0 0 25 25"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="2.77783"
-                      y="20.8333"
-                      width="19.4444"
-                      height="2.77778"
-                      fill="#6C757C"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12.4999 1.38892L8.33325 8.33336V11.133L15.7702 6.83934L12.4999 1.38892ZM16.6666 11.7346L8.33325 16.5458V19.4445H16.6666V11.7346Z"
-                      fill="#6C757C"
-                    />
-                    <rect
-                      x="20.4819"
-                      y="5.55566"
-                      width="2.19928"
-                      height="20.4431"
-                      transform="rotate(60 20.4819 5.55566)"
-                      fill="#1284B9"
-                    />
-                  </svg>
-                }
+                {<img src="/img/winter.svg" alt="" />}
               </div>
               <p className="absolute right-3 top-3 text-sm font-bold">
                 Reviews:({item.remaining})
