@@ -5,6 +5,7 @@ import Home from './pages/HomePage';
 import Product from './pages/ProductPage';
 import AppLayout from './ui/AppLayout';
 import TyresPage from './pages/TyresPage';
+import NewsPage from './pages/NewsPage';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/product',
         element: <Product />,
+      },
+      {
+        path: '/news',
+        element: <NewsPage />,
       },
     ],
   },
