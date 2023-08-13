@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import NewsCard from '../features/news/NewsCard';
 
 const products = [
   {
@@ -183,6 +184,7 @@ function HomePage() {
           </SwiperSlide>
         ))}
       </Swiper>
+      <NewsCard />
     </div>
   );
 }
