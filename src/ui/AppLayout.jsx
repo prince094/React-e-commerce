@@ -1,12 +1,6 @@
-import {
-  Outlet,
-  useLocation,
-  useNavigate,
-  useNavigation,
-  useRoutes,
-} from 'react-router-dom';
+import { Outlet, useLocation, useNavigation } from 'react-router-dom';
 import CartOverview from '../features/cart/CartOverview';
-import Header from './Header';
+import Header from './header/Header';
 import Loader from './Loader';
 import Footer from './Footer';
 
@@ -25,7 +19,7 @@ function AppLayout() {
 
       <Header />
 
-      <main className="mx-auto min-h-full w-full max-w-7xl px-2 lg:px-8">
+      <main className="mx-auto w-full max-w-7xl px-2 lg:px-8">
         <Outlet />
       </main>
       <CartOverview />
