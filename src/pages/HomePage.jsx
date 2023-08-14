@@ -72,21 +72,34 @@ const products = [
 
 function HomePage() {
   return (
-    <div className="mx-auto max-w-7xl px-6 py-20">
+    <div className="mx-auto max-w-7xl px-0 py-10 md:py-20">
       <div className="flex items-center justify-between">
-        <h2 className="text-[30px] font-bold tracking-tight text-gray-900">
+        <h2 className="text-[22px] font-bold tracking-tight text-gray-900 md:text-[30px]">
           Sales
         </h2>
-        <button className="rounded-[0.15rem] bg-[#E31E24] px-6 py-2 text-[16px] font-medium  leading-normal text-white">
+        <button className="rounded-[0.15rem] bg-[#E31E24] px-3 py-1 text-[14px] font-medium leading-normal text-white md:px-6  md:py-2 md:text-[16px]">
           All sales
         </button>
       </div>
 
       <Swiper
-        className="mt-3 grid grid-cols-4 "
+        className="sales-products mt-3 grid grid-cols-4"
         modules={[Navigation]}
         spaceBetween={0}
-        slidesPerView={4}
+        slidesPerView={1.3}
+        breakpoints={{
+          // when window width is >= 640px
+          640: {
+            slidesPerView: 2,
+          },
+          // // when window width is >= 768px
+          768: {
+            slidesPerView: 3,
+          },
+          1100: {
+            slidesPerView: 4,
+          },
+        }}
         navigation={
           {
             // nextEl: '.rightpage__arrows .swiper-arrow-next',
@@ -98,9 +111,9 @@ function HomePage() {
           <SwiperSlide key={product.id}>
             <div
               key={product.id}
-              className="group relative cursor-pointer border-[0.5px] border-slate-300 bg-white"
+              className="group relative max-w-[304px] cursor-pointer border-[0.5px] border-slate-300 bg-white"
             >
-              <div className="absolute left-1/2 top-[80px] hidden h-[130px] w-[140px] -translate-x-1/2  flex-col items-center justify-center rounded-lg border-4  border-double border-blue-50 bg-gray-900 bg-opacity-50 shadow-lg group-hover:flex ">
+              <div className=" absolute left-1/2 top-[80px] hidden h-[130px] w-[140px] -translate-x-1/2  flex-col items-center justify-center rounded-lg border-4  border-double border-blue-50 bg-gray-900 bg-opacity-50 shadow-lg lg:group-hover:flex ">
                 <EyeIcon className="h-8 w-8  text-white" />
 
                 <span className="text-white">Quick view</span>
