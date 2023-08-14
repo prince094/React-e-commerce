@@ -1,6 +1,6 @@
 function BreadCrumb() {
   return (
-    <nav className="mt-4 w-full rounded-md">
+    <nav className="mt-20 hidden w-full rounded-md text-sm lg:block">
       <ol className="list-reset flex">
         <li>
           <a

@@ -19,8 +19,8 @@ function classNames(...classes) {
 function HeaderBottom({ isMobile, isOpenMenu }) {
   return (
     <div
-      className={`absolute left-0 top-[48px] z-10 h-full w-full -translate-x-full bg-white px-2 opacity-5  shadow-sm transition-all md:top-[64px] md:h-max md:pt-0  lg:translate-x-0 lg:opacity-100 ${
-        isOpenMenu && 'translate-x-0 opacity-100'
+      className={`absolute left-0 top-[48px] z-20 h-full w-full -translate-x-full bg-white px-2   shadow-sm transition-all md:top-[64px] md:h-max md:pt-0  lg:translate-x-0 lg:opacity-100 ${
+        isOpenMenu ? 'translate-x-0 opacity-100' : 'opacity-5'
       }`}
     >
       <div className="mx-auto w-full max-w-7xl px-2 lg:px-8">

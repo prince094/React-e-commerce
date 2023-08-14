@@ -83,7 +83,7 @@ function HomePage() {
       </div>
 
       <Swiper
-        className="mt-3 grid grid-cols-4 "
+        className="sales-products mt-3 grid grid-cols-4"
         modules={[Navigation]}
         spaceBetween={0}
         slidesPerView={1.3}

@@ -80,8 +80,14 @@
   background: #e31e24;
   box-shadow: 0px 4px 10px 0px rgba(227, 30, 36, 0.2);
 }
-.swiper-button-next,
-.swiper-button-prev {
+
+.previously-arrows .swiper-button-next,
+.previously-arrows .swiper-button-prev {
+  top: unset;
+  z-index: 20;
+}
+.sales-products .swiper-button-next,
+.sales-products .swiper-button-prev {
   margin-top: -60px;
 }
 
