@@ -4,8 +4,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
-      sans: 'Roboto Mono, monospace',
-      // pizza : "Monsterrat, san-serif" // use font-pizza
+      // pizza: 'Roboto Mono, monospace',
+      // sans: 'Montserrat', // use font-pizza
+      sans: 'Poppins', // use font-pizza
     },
     extend: {
       colors: {
@@ -17,7 +18,6 @@ export default {
       height: {
         screen: '100dvh', // use h-screen, overwrited 100vh to 100dvh dynamic view height
       },
-      
     },
   },
   plugins: [],

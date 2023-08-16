@@ -109,7 +109,7 @@ function ProductPage() {
               <p className="flex h-full items-center justify-center overflow-hidden py-5">
                 <img
                   src="/public/img/01-big.png"
-                  className="ml-14 w-[95%] object-cover object-center sm:w-[70%] lg:ml-20 lg:h-[70%]"
+                  className="ml-14 w-[95%] object-cover object-center sm:w-[70%] lg:ml-20 "
                   alt=""
                 />
               </p>
