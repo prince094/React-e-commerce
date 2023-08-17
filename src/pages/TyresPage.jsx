@@ -144,7 +144,7 @@ const TyresPage = () => {
   ];
 
   return (
-    <div className="sm:p-0 p-[20px]">
+    <div className="p-[20px] sm:p-0">
       <h4 className="my-6 hidden text-xs sm:block">
         Home / Tires / Selection of tires by size
       </h4>
@@ -192,8 +192,8 @@ const TyresPage = () => {
             key={index}
             className={`mx-1 flex h-24 w-64
             items-center justify-evenly rounded-md  
-            bg-gradient-to-br from-[#FF5C00]
-            to-[#FCDB2D] from-${colors.from} to-${colors.to}
+            bg-gradient-to-br 
+            from-[${colors.from}] to-[${colors.to}]
             `}
           >
             <div>{tyreTypesIcons[index]}</div>
@@ -393,7 +393,7 @@ const TyresPage = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between sm:hidden my-6">
+        <div className="my-6 flex items-center justify-between sm:hidden">
           <select className=" mr-2 h-[50px] w-full rounded border pl-4 font-bold">
             <option>Popular first</option>
           </select>
@@ -406,11 +406,11 @@ const TyresPage = () => {
           </div>
         </div>
 
-        <div className="flex sm:w-[80%] w-full flex-row flex-wrap rounded-md bg-white">
+        <div className="flex w-full flex-row flex-wrap rounded-md bg-white sm:w-[80%]">
           {tyresData.map((item) => (
             <div
               key={item.id}
-              className="relative flex sm:h-[450px] sm:w-[323px] flex-col  items-center border"
+              className="relative flex flex-col items-center border  sm:h-[450px] sm:w-[323px]"
             >
               <div className="absolute left-2 top-2 mb-1 flex h-[45px] w-[45px] items-center justify-center bg-[#F5F8FC]">
                 <img src="/img/sunny-winter.svg" alt="" />
