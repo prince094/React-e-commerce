@@ -190,8 +190,14 @@ const TyresPage = () => {
         {gradientColors.map((colors, index) => (
           <div
             key={index}
-            className={`mx-1 flex h-24 w-64
+            className="mx-1 flex h-24 w-64
             items-center justify-evenly rounded-md  
+
+            "
+            style={{
+              backgroundImage: `linear-gradient(to bottom right, ${colors.from}, ${colors.to})`,
+            }}
+
             bg-gradient-to-br 
             from-[${colors.from}] to-[${colors.to}]
             `}
