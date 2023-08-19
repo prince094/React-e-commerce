@@ -90,6 +90,10 @@ const sort = [
     id: 1433,
     name: 'New',
   },
+  {
+    id: 41433,
+    name: 'New test',
+  },
 ];
 
 function CatalogPage() {
