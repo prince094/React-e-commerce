@@ -6,6 +6,7 @@ import AppLayout from './ui/AppLayout';
 import TyresPage from './pages/TyresPage';
 import NewsPage from './pages/NewsPage';
 import CartPage from './pages/CartPage';
+import CatalogPage from './pages/CatalogPage';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/news',
         element: <NewsPage />,
+      },
+      {
+        path: '/catalog',
+        element: <CatalogPage />,
       },
     ],
   },
