@@ -96,7 +96,7 @@ function HomePage() {
           768: {
             slidesPerView: 3,
           },
-          1100: {
+          1024: {
             slidesPerView: 4,
           },
         }}
