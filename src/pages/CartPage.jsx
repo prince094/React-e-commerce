@@ -1,5 +1,5 @@
 import BreadCrumb from '../ui/BreadCrumb';
-import { useScreenSize } from '../hooks/useScreenSize';
+import Screen from '../hooks/useScreenSize';
 import {
   HeartIcon,
   ShoppingCartIcon,
@@ -8,14 +8,17 @@ import {
 } from '@heroicons/react/24/outline';
 
 function CartPage() {
-  const isMobile = useScreenSize();
   return (
     <div className="py-5">
       <BreadCrumb />
       <h2 className="my-4 mb-2 text-[18px] font-bold leading-tight tracking-tight text-gray-800 sm:mb-0 sm:text-2xl md:max-w-[80%] md:text-3xl ">
         Cart
       </h2>
-      {isMobile ? [1, 2, 3].map((i) => <CartMobileContent />) : <CartContent />}
+      {Screen(768) ? (
+        [1, 2, 3].map((i) => <CartMobileContent />)
+      ) : (
+        <CartContent />
+      )}
 
       <div className="flex hidden flex-col justify-between rounded bg-[#F8FAFD] px-3 py-2 pb-3 md:flex-row md:items-center md:pb-0">
         <div className="order-1 mt-3 flex flex-col sm:flex-row md:order-none md:mt-0">

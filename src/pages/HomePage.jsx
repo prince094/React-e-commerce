@@ -1,11 +1,23 @@
-import { PlusSmallIcon, TrashIcon, EyeIcon } from '@heroicons/react/24/outline';
+import {
+  PlusSmallIcon,
+  TrashIcon,
+  HeartIcon,
+  ShareIcon,
+  EyeIcon,
+} from '@heroicons/react/24/outline';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import NewsCard from '../features/news/NewsCard';
+import { useEffect, useRef, useState } from 'react';
+import {
+  ChevronDoubleDownIcon,
+  ChevronRightIcon,
+  ShoppingCartIcon,
+  XMarkIcon,
+} from '@heroicons/react/20/solid';
 
 const products = [
   {
@@ -197,9 +209,231 @@ function HomePage() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <NewsCard />
+      <Modal />
     </div>
   );
 }
 
 export default HomePage;
+
+const Modal = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const trigger = useRef(null);
+  const modal = useRef(null);
+
+  // close on click outside
+  useEffect(() => {
+    const clickHandler = ({ target }) => {
+      if (!modal.current) return;
+      if (
+        !modalOpen ||
+        modal.current.contains(target) ||
+        trigger.current.contains(target)
+      )
+        return;
+      setModalOpen(false);
+    };
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
+  });
+
+  // close if the esc key is pressed
+  useEffect(() => {
+    const keyHandler = ({ keyCode }) => {
+      if (!modalOpen || keyCode !== 27) return;
+      setModalOpen(false);
+    };
+    document.addEventListener('keydown', keyHandler);
+    return () => document.removeEventListener('keydown', keyHandler);
+  });
+
+  return (
+    <>
+      <div className="container mx-auto py-20">
+        <button
+          ref={trigger}
+          onClick={() => setModalOpen(true)}
+          className={`bg-primary rounded-full px-6 py-3 text-base font-medium text-red-900`}
+        >
+          Open Modal
+        </button>
+
+        <div
+          className={`fixed left-0 top-0 z-30 hidden h-full min-h-screen w-full items-center justify-center bg-black bg-opacity-90 px-4 py-5  ${
+            modalOpen ? 'hidden lg:flex' : 'hidden'
+          }`}
+        >
+          <div
+            ref={modal}
+            onFocus={() => setModalOpen(true)}
+            onBlur={() => setModalOpen(false)}
+            className="flex w-full max-w-[1150px] overflow-hidden rounded-[15px] bg-white text-center"
+          >
+            <div className=" max-w-[70%]">
+              <div className=" bg-white">
+                <h2 className="px-[70px] pb-[30px] pt-[35px] text-left text-2xl font-bold leading-tight tracking-tight text-gray-800 ">
+                  Lorem, ipsum dolor ipsum dolor Ice-Freezer 225/60 R17 103T в
+                  Kazakhstan
+                </h2>
+                <div className="flex">
+                  {/* left-page */}
+                  <div className="relative flex-[50%] border border-[#E2E9F2]">
+                    <p className="flex h-full items-center justify-center overflow-hidden ">
+                      <img
+                        src="/public/img/01-big.png"
+                        className="ml-16 w-[65%] object-cover object-center "
+                        alt=""
+                      />
+                    </p>
+                    <div className="absolute left-2 top-2">
+                      <p className="is-active is-active:border-[#15A524] mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524] sm:mb-2 sm:h-20 sm:w-20">
+                        <img
+                          src="/public/img/01.png"
+                          className="h-full w-full object-cover object-center"
+                          alt=""
+                        />
+                      </p>
+                      <p className=" is-active:border-[#15A524] mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524] sm:mb-2 sm:h-20 sm:w-20">
+                        <img
+                          src="/public/img/shina-min1.png"
+                          className="h-full w-full object-cover object-center"
+                          alt=""
+                        />
+                      </p>
+                      <p className="is-active:border-[#15A524] mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524] sm:mb-2 sm:h-20 sm:w-20">
+                        <img
+                          src="/public/img/shina-min2.png"
+                          className="h-full w-full object-cover object-center"
+                          alt=""
+                        />
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* right-page */}
+                  <div className="flex flex-[50%] flex-col border border-x-0 border-[#E2E9F2]">
+                    <div className="p-4 sm:p-7">
+                      <h2 className="mb-4 text-[20px] font-bold">
+                        Characteristics:
+                      </h2>
+                      {[1, 2, 3, 4, 5].map((character) => {
+                        return (
+                          <div
+                            key={character}
+                            className="relative mb-3 flex justify-between before:absolute before:bottom-[6px] before:w-full before:border before:border-dashed before:border-[#566879] before:opacity-20 before:content-['']"
+                          >
+                            <p className="z-[2] bg-white pr-4 font-light">
+                              Profile width
+                            </p>
+                            <b className="z-[2] bg-white pl-4">225</b>
+                          </div>
+                        );
+                      })}
+                      <div className="mb-2  mt-6 flex cursor-pointer items-center justify-center  sm:mt-14">
+                        <button className="flex h-10 w-10 items-center justify-center rounded-[50%] bg-[#F1F3F4]">
+                          <ChevronDoubleDownIcon className="h-4 w-4 text-black" />
+                        </button>
+                        <p className=" ml-3 border-b-[2px] border-dashed">
+                          All characteristics
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex w-full justify-between">
+                <p className="ml-10 flex items-center text-sm text-[#566879]">
+                  Articul: 00000017910
+                </p>
+                <div className="flex">
+                  <div className="flex h-[58px] w-[58px] items-center justify-center border-x-[1px]  border-[#E2E9F2]">
+                    <img className="w-[40px]" src="/img/car.svg" alt="" />
+                  </div>
+                  <div className="flex h-[58px] w-[58px] items-center justify-center border-r-[1px]  border-[#E2E9F2]">
+                    <img
+                      className="w-5 sm:w-[unset]"
+                      src="/img/winter.svg"
+                      alt=""
+                    />
+                  </div>
+                  <div className="flex h-[58px] w-[58px] items-center justify-center">
+                    <img
+                      className="w-5 sm:w-[unset]"
+                      src="/img/shipovniy.svg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-full max-w-[30%] border-l border-[#E2E9F2] bg-[#F8FAFD]">
+              {/* top */}
+              <div className="flex h-[50px] w-full border-[#E2E9F2] ">
+                <div className="flex flex-[33.333%] cursor-pointer items-center justify-center  border-[#E2E9F2]  ">
+                  <ShareIcon className="h-6 w-6 text-[#566879]" />
+                </div>
+                <div className="flex flex-[33.333%] cursor-pointer items-center justify-center border-l-[1px] border-[#E2E9F2] ">
+                  <HeartIcon className="h-6 w-6 text-[#566879]" />
+                </div>
+                <div className="flex flex-[33.333%] cursor-pointer items-center justify-center border-l-[1px] border-[#E2E9F2]  bg-[#E31E24]">
+                  <XMarkIcon className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              {/* actions */}
+              <div className="relative  border-b border-t border-[#E2E9F2] p-6 ">
+                <div className="mb-8 flex items-center justify-between">
+                  <h2 className="text-[24px] font-extrabold sm:text-[28px]">
+                    $46,00
+                  </h2>
+                </div>
+                <div className="flex">
+                  <div className="flex h-[48px] w-[130px] items-center justify-between rounded bg-white p-1">
+                    <button className=" flex h-[43px] w-[36px] items-center justify-center rounded-l-[5px] bg-[#F1F3F4] font-semibold">
+                      <span>-</span>
+                    </button>
+                    <input
+                      type="text"
+                      className="h-[32px] w-[35px] rounded  bg-gray-100 bg-transparent px-2 pl-3 text-[18px] outline-none"
+                      value={'1'}
+                      onChange={(e) => e.target.value}
+                    />
+                    <button className=" flex h-[43px] w-[36px] items-center justify-center rounded-r-[5px] bg-[#F1F3F4] font-semibold">
+                      <span>+</span>
+                    </button>
+                  </div>
+                  <button className="ml-2 flex h-[48px] items-center justify-center rounded bg-[#15A524] px-5 py-2 text-xs font-medium  leading-normal text-white">
+                    <ShoppingCartIcon className="text-bold h-5 w-5 text-white" />
+                    <span className="ml-2 whitespace-nowrap text-base">
+                      Add to cart
+                    </span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="border-b border-[#E2E9F2]  px-6 py-4">
+                {true ? (
+                  <p className="mb-1 flex items-center whitespace-nowrap text-[15px]">
+                    <b className=" text-[#15A524]">In stock:</b>{' '}
+                    <span className="ml-2  text-[#566879]">
+                      Left from 4 to 20 pieces
+                    </span>
+                  </p>
+                ) : (
+                  <b className="text-[15px] text-[#E31E24]">Not available</b>
+                )}
+                <p className="flex items-center whitespace-nowrap text-[15px]">
+                  <b className=" text-[#15A524]">Category:</b>{' '}
+                  <span className="ml-2  text-[#566879]">Light trucks</span>
+                </p>
+              </div>
+              <p className="px-5 py-4">
+                <img width="150" src="/img/brand-tire.svg" alt="" />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
