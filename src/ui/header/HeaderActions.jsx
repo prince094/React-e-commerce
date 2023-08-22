@@ -26,7 +26,7 @@ function HeaderActions() {
             className="h-6 w-6 flex-shrink-0 text-white md:h-7 md:w-7"
             aria-hidden="true"
           />
-          <span className="absolute left-5 top-2 ml-2 inline-block whitespace-nowrap rounded-full bg-red-600 px-[0.50em] py-[0.35em] text-center align-baseline text-[0.60em] font-bold leading-none text-white md:top-4">
+          <span className="absolute left-5 top-2 ml-2 inline-block whitespace-nowrap rounded-full bg-red px-[0.50em] py-[0.35em] text-center align-baseline text-[0.60em] font-bold leading-none text-white md:top-4">
             7
           </span>
           <div className="hidden flex-col lg:flex">
