@@ -11,6 +11,8 @@ import SelectionByCarMark2 from './pages/SelectionByCarMark2';
 import SelectionByCarMark3 from './pages/SelectionByCarMark3';
 import SelectionByCarBrand from './pages/SelectionByCarBrand';
 import SelectionByCarBrand2 from './pages/SelectionByCarBrand2';
+import SelectionByCarBrand3 from './pages/SelectionByCarBrand3';
+import SelectionByCarSize from './pages/SelectionByCarSize';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +58,14 @@ const router = createBrowserRouter([
       {
         path: '/catalog-main/selection-brand2',
         element: <SelectionByCarBrand2 />,
+      },
+      {
+        path: '/catalog-main/selection-brand3',
+        element: <SelectionByCarBrand3 />,
+      },
+      {
+        path: '/catalog-main/selection-size',
+        element: <SelectionByCarSize />,
       },
     ],
   },

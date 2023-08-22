@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import HeaderTopItems from './HeaderTopItems';
 
 const catalog = [
-  { name: 'Catalog', path: '/tyres', current: true },
-  { name: 'Brands', path: '/brands', current: false },
-  { name: 'Cars', path: '/cars', current: false },
-  { name: 'Light trucks', path: '/trucktires', current: false },
-  { name: 'Cargo', path: '/cargo', current: false },
-  { name: 'Agricultural', path: '/agricultural', current: false },
-  { name: 'Industrial', path: '/industrial', current: false },
+  { id: 1, name: 'Catalog', path: '/tyres', current: true },
+  { id: 2, name: 'Brands', path: '/brands', current: false },
+  { id: 3, name: 'Cars', path: '/cars', current: false },
+  { id: 4, name: 'Light trucks', path: '/trucktires', current: false },
+  { id: 5, name: 'Cargo', path: '/cargo', current: false },
+  { id: 6, name: 'Agricultural', path: '/agricultural', current: false },
+  { id: 7, name: 'Industrial', path: '/industrial', current: false },
 ];
 
 function classNames(...classes) {
@@ -37,10 +37,11 @@ function HeaderBottom({ isMobile, isOpenMenu }) {
               )}
               aria-current={item.current ? 'page' : undefined}
             >
-              <CogIcon
+              {/* <CogIcon
                 className=" h-5 w-5 flex-shrink-0 text-[#566879] group-hover:text-stone-950 group-[.is-active]:text-stone-950 lg:text-stone-600"
                 aria-hidden="true"
-              />
+              /> */}
+              <img src={`/img/header/0${item.id}.svg`} alt="" />
               <span className="ml-2">{item.name}</span>
             </Link>
           ))}
