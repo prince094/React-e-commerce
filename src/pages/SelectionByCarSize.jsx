@@ -1,5 +1,6 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import BreadCrumb from '../ui/BreadCrumb';
+import Select from '../ui/Select';
 
 const catalog = [
   {
@@ -101,7 +102,7 @@ function SelectionByCarSize() {
         </div>
       </div>
       {/* main */}
-      <div className="category-selection mt-5 block w-full bg-white drop-shadow-[0px_20px_50px_rgba(2,36,86,0.1)]">
+      <div className="category-selection mt-5 block w-full rounded bg-white drop-shadow-[0px_20px_50px_rgba(2,36,86,0.1)]">
         <div className="category-selection-top flex">
           <div className="mt-5 min-w-[380px] text-center text-xl font-bold uppercase">
             <p>Tire selection by:</p>
@@ -127,9 +128,86 @@ function SelectionByCarSize() {
           </div>
         </div>
         {/* content */}
-        <div className="category-selection-content flex">
-          <div className="content-left rounded bg-lightgray"></div>
-          <div className="content-right"></div>
+        <div className="category-selection-content mb-10 flex p-4">
+          <div className="content-left rounded bg-lightgray px-4 pt-4">
+            <Content title={'Settings'}>
+              <div className="flex w-full items-end">
+                <div className="basis-1/3">
+                  <p className="mb-1 text-extragray">Width</p>
+                  <Select
+                    width={'190px'}
+                    height={'40px'}
+                    iconSize={'5'}
+                    dataSource={[
+                      { id: 1, name: '195' },
+                      { id: 2, name: '200' },
+                    ]}
+                  />
+                </div>
+                <p className="mx-3 h-[35px] text-[20px] text-[#191717] opacity-30">
+                  /
+                </p>
+                <div className="basis-1/3">
+                  <p className="mb-1 text-extragray">Profile</p>
+                  <Select
+                    width={'190px'}
+                    height={'40px'}
+                    iconSize={'5'}
+                    dataSource={[
+                      { id: 1, name: '195' },
+                      { id: 2, name: '200' },
+                    ]}
+                  />
+                </div>
+                <p className="mx-3 h-[35px] text-[20px] text-[#191717] opacity-30">
+                  R
+                </p>
+                <div className="basis-1/3">
+                  <p className="mb-1 text-extragray">Diametr</p>
+                  <Select
+                    width={'190px'}
+                    height={'40px'}
+                    iconSize={'5'}
+                    dataSource={[
+                      { id: 1, name: '195' },
+                      { id: 2, name: '200' },
+                    ]}
+                  />
+                </div>
+              </div>
+              <div className="image mx-auto mt-[10px] max-w-[488px]">
+                <img className="w-full" src="/img/header/frame.svg" alt="" />
+              </div>
+            </Content>
+          </div>
+          <div className="content-right w-full rounded bg-white px-4 py-3">
+            <ContentRight title={'Seasonality'}>
+              <div class="mb-[10px] flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
+                <div class="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                  <img class="w-[20px]" src="/img/winter-snow.svg" alt="" />
+                  <span class="ml-[10px] text-sm font-bold">Winter</span>
+                </div>
+                <div class="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                  <img class="w-[20px]" src="/img/sunny.svg" alt="" />
+                  <span class="ml-[10px] text-sm font-bold">Summer</span>
+                </div>
+                <div class=" flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                  <img class="w-[20px]" src="/img/sunny-winter.svg" alt="" />
+                  <span class="ml-[10px] text-sm font-bold">All seasons</span>
+                </div>
+              </div>
+              <div class="flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
+                <div class="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                  <img class="w-[20px]" src="/img/winter.svg" alt="" />
+                  <span class="ml-[10px] text-sm font-bold">Not shipovniy</span>
+                </div>
+                <div class="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                  <img class="w-[20px]" src="/img/shipovniy.svg" alt="" />
+                  <span class="ml-[10px] text-sm font-bold">Shipovniy</span>
+                </div>
+              </div>
+            </ContentRight>
+          </div>
         </div>
       </div>
     </>
@@ -137,3 +215,21 @@ function SelectionByCarSize() {
 }
 
 export default SelectionByCarSize;
+
+function Content({ title, children }) {
+  return (
+    <>
+      {title && <h2 className="mb-4 text-xl font-bold">{title}</h2>}
+      {children}
+    </>
+  );
+}
+
+function ContentRight({ title, children }) {
+  return (
+    <>
+      {title && <h2 className="mb-4 text-xl font-bold">{title}</h2>}
+      {children}
+    </>
+  );
+}
