@@ -1,4 +1,4 @@
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import BreadCrumb from '../ui/BreadCrumb';
 import Select from '../ui/Select';
 
@@ -54,6 +54,25 @@ const catalog = [
   },
 ];
 
+const modelData = [
+  '155/65R13',
+  '155/70R13',
+  '155/65R14',
+  '185/65R14',
+  '205/65R14',
+  '155/65R13',
+  '155/70R13',
+  '155/65R14',
+  '205/65R16',
+  '215/65R16',
+  '215/60R16',
+  '275/60R16',
+  '205/65R16',
+  '205/65R16',
+  '215/65R16',
+  '215/60R16',
+];
+
 function SelectionByCarSize() {
   return (
     <>
@@ -102,113 +121,383 @@ function SelectionByCarSize() {
         </div>
       </div>
       {/* main */}
-      <div className="category-selection mt-5 block w-full rounded bg-white drop-shadow-[0px_20px_50px_rgba(2,36,86,0.1)]">
+      <div className="category-selection mt-10 block w-full rounded bg-white drop-shadow-[0px_20px_50px_rgba(2,36,86,0.1)]">
         <div className="category-selection-top flex">
           <div className="mt-5 min-w-[380px] text-center text-xl font-bold uppercase">
             <p>Tire selection by:</p>
           </div>
           <div className="mr-4 flex w-full">
-            {['Car categories', 'Options', 'Brands', 'Car'].map((item) => (
+            {['Car categories', 'Options', 'Brands', 'Car1'].map((item) => (
               <div
                 key={item}
                 className={`
-                relative z-10 ml-[3px] flex h-[60px] w-1/4 skew-x-[25deg] items-center justify-center  p-2 transition  after:absolute after:bottom-0  after:left-0 after:-z-10 after:h-2 after:w-full after:bg-red after:opacity-0 after:content-[''] 
+                relative z-10 ml-[3px] flex h-[60px] w-1/4 skew-x-[20deg] items-center justify-center  p-2 transition-all after:absolute  after:bottom-0 after:left-0  after:-z-10 after:h-2 after:w-full after:-translate-y-[-8px] after:bg-red after:opacity-0 after:content-[''] 
                 ${
-                  item.includes('categories')
-                    ? '-translate-x-1 -translate-y-2 bg-[rgba(0,0,0,1)] duration-300  after:-bottom-2 after:opacity-100'
+                  item.includes('Options')
+                    ? 'h-[68px] -translate-x-[1px] -translate-y-2 bg-[rgba(0,0,0,1)] duration-300 after:-bottom-2 after:translate-y-0 after:opacity-100 [&>p]:-translate-y-1'
                     : 'bg-[rgba(0,0,0,.5)] hover:bg-[rgba(0,0,0,.6)]'
                 }
                 `}
               >
-                <p className="-skew-x-[25deg] text-xl font-medium text-white">
+                <p className="-skew-x-[20deg] text-xl font-medium text-white">
                   {item}
                 </p>
               </div>
             ))}
           </div>
         </div>
-        {/* content */}
-        <div className="category-selection-content mb-10 flex p-4">
-          <div className="content-left rounded bg-lightgray px-4 pt-4">
-            <Content title={'Settings'}>
-              <div className="flex w-full items-end">
-                <div className="basis-1/3">
-                  <p className="mb-1 text-extragray">Width</p>
-                  <Select
-                    width={'190px'}
-                    height={'40px'}
-                    iconSize={'5'}
-                    dataSource={[
-                      { id: 1, name: '195' },
-                      { id: 2, name: '200' },
-                    ]}
-                  />
+        {/* content 2, Options */}
+        {'' && (
+          <div className="category-selection-content mb-10 flex p-4 pt-3">
+            <div className="content-left rounded bg-lightgray px-4 pt-4">
+              <Content title={'Settings'}>
+                <div className="flex w-full items-end">
+                  <div className="basis-1/3">
+                    <p className="mb-1 text-extragray">Width</p>
+                    <Select
+                      width={'190px'}
+                      height={'40px'}
+                      iconSize={'5'}
+                      dataSource={[
+                        { id: 1, name: '195' },
+                        { id: 2, name: '200' },
+                      ]}
+                    />
+                  </div>
+                  <p className="mx-3 h-[35px] text-[20px] text-[#191717] opacity-30">
+                    /
+                  </p>
+                  <div className="basis-1/3">
+                    <p className="mb-1 text-extragray">Profile</p>
+                    <Select
+                      width={'190px'}
+                      height={'40px'}
+                      iconSize={'5'}
+                      dataSource={[
+                        { id: 1, name: '195' },
+                        { id: 2, name: '200' },
+                      ]}
+                    />
+                  </div>
+                  <p className="mx-3 h-[35px] text-[20px] text-[#191717] opacity-30">
+                    R
+                  </p>
+                  <div className="basis-1/3">
+                    <p className="mb-1 text-extragray">Diametr</p>
+                    <Select
+                      width={'190px'}
+                      height={'40px'}
+                      iconSize={'5'}
+                      dataSource={[
+                        { id: 1, name: '195' },
+                        { id: 2, name: '200' },
+                      ]}
+                    />
+                  </div>
                 </div>
-                <p className="mx-3 h-[35px] text-[20px] text-[#191717] opacity-30">
-                  /
+                <div className="image mx-auto mt-[10px] max-w-[488px]">
+                  <img className="w-full" src="/img/header/frame.svg" alt="" />
+                </div>
+              </Content>
+            </div>
+            <div className="content-right w-full overflow-hidden rounded bg-white px-4 pt-3">
+              <ContentRight title={'Seasonality'}>
+                <div className="mb-[10px] flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img
+                      className="w-[20px]"
+                      src="/img/winter-snow.svg"
+                      alt=""
+                    />
+                    <span className="ml-[10px] text-sm font-bold">Winter</span>
+                  </div>
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img className="w-[20px]" src="/img/sunny.svg" alt="" />
+                    <span className="ml-[10px] text-sm font-bold">Summer</span>
+                  </div>
+                  <div className=" flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img
+                      className="w-[20px]"
+                      src="/img/sunny-winter.svg"
+                      alt=""
+                    />
+                    <span className="ml-[10px] text-sm font-bold">
+                      All seasons
+                    </span>
+                  </div>
+                </div>
+                <div className="flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img className="w-[20px]" src="/img/winter.svg" alt="" />
+                    <span className="ml-[10px] text-sm font-bold">
+                      Not shipovniy
+                    </span>
+                  </div>
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img className="w-[20px]" src="/img/shipovniy.svg" alt="" />
+                    <span className="ml-[10px] text-sm font-bold">
+                      Shipovniy
+                    </span>
+                  </div>
+                </div>
+                {/* marks */}
+                <div className="my-5">
+                  <div className="scrollbar -m-0.5 mb-2 grid grid-flow-col grid-rows-2 overflow-x-auto">
+                    {modelData.map((model, index) => (
+                      <div
+                        key={index}
+                        className="m-0.5 flex h-[34px] items-center justify-center rounded border border-[#E2E9F2] bg-white px-3 text-sm text-[#566879] transition-all ease-out hover:bg-red hover:text-white"
+                      >
+                        {model}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* texts */}
+                <p className="mb-4 text-extragray">
+                  Found this query:
+                  <span className="ml-2 font-bold text-black">154 offers</span>
                 </p>
-                <div className="basis-1/3">
-                  <p className="mb-1 text-extragray">Profile</p>
-                  <Select
-                    width={'190px'}
-                    height={'40px'}
-                    iconSize={'5'}
-                    dataSource={[
-                      { id: 1, name: '195' },
-                      { id: 2, name: '200' },
-                    ]}
-                  />
+                <div className="flex">
+                  <button className="h-[50px] w-full rounded bg-red px-4 py-2 font-bold text-white">
+                    Pick up
+                  </button>
+                  <button className="ml-[10px] flex h-[50px] w-full items-center justify-center rounded bg-black px-4 py-2 font-bold text-white">
+                    <XMarkIcon className="text-gray-white mr-1 h-6 w-6" />
+                    <span>Reset</span>
+                  </button>
                 </div>
-                <p className="mx-3 h-[35px] text-[20px] text-[#191717] opacity-30">
-                  R
+              </ContentRight>
+            </div>
+          </div>
+        )}
+        {/* content 3, Brands */}
+        {'ds' && (
+          <div className="category-selection-content mb-10 flex p-4 pt-3">
+            <div className="content-left min-w-[57%] max-w-[57%] rounded bg-lightgray px-4 pt-4">
+              <Content title={'Brands'}>
+                <div className="scrollbar max-h-[307px] overflow-y-auto pb-1">
+                  <div className="grid  grid-cols-4 grid-rows-4 gap-[10px] ">
+                    {[
+                      1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18,
+                      19, 21, 22, 23, 34, 45, 56, 42, 43, 54, 65, 76, 87, 90,
+                    ].map((item) => (
+                      <p
+                        key={item}
+                        className="flex h-[60px] items-center justify-center rounded bg-white px-[10px] py-2 transition-all  hover:shadow-[0px_20px_50px_0px_rgba(2,36,86,0.05)]"
+                      >
+                        <img
+                          className="h-full w-full"
+                          src="/img/catalog/brand/odyking.svg"
+                          alt=""
+                        />
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </Content>
+            </div>
+            <div className="content-right w-full overflow-hidden rounded bg-white px-4 pt-3">
+              <Content title={'Settings'}>
+                <div className="flex w-full items-end">
+                  <div className="basis-1/3">
+                    <p className="mb-1 text-extragray">Width</p>
+                    <Select
+                      width={'100%'}
+                      height={'40px'}
+                      iconSize={'5'}
+                      dataSource={[
+                        { id: 1, name: '195' },
+                        { id: 2, name: '200' },
+                      ]}
+                    />
+                  </div>
+                  <p className="mx-3 h-[35px] text-[20px] text-[#191717] opacity-30">
+                    /
+                  </p>
+                  <div className="basis-1/3">
+                    <p className="mb-1 text-extragray">Profile</p>
+                    <Select
+                      width={'100%'}
+                      height={'40px'}
+                      iconSize={'5'}
+                      dataSource={[
+                        { id: 1, name: '195' },
+                        { id: 2, name: '200' },
+                      ]}
+                    />
+                  </div>
+                  <p className="mx-3 h-[35px] text-[20px] text-[#191717] opacity-30">
+                    R
+                  </p>
+                  <div className="basis-1/3">
+                    <p className="mb-1 text-extragray">Diametr</p>
+                    <Select
+                      width={'100%'}
+                      height={'40px'}
+                      iconSize={'5'}
+                      dataSource={[
+                        { id: 1, name: '195' },
+                        { id: 2, name: '200' },
+                      ]}
+                    />
+                  </div>
+                </div>
+              </Content>
+              <p className="mb-3"></p>
+              <ContentRight title={'Seasonality'}>
+                <div className="mb-[10px] flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img
+                      className="w-[20px]"
+                      src="/img/winter-snow.svg"
+                      alt=""
+                    />
+                    <span className="ml-[10px] text-sm font-bold">Winter</span>
+                  </div>
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img className="w-[20px]" src="/img/sunny.svg" alt="" />
+                    <span className="ml-[10px] text-sm font-bold">Summer</span>
+                  </div>
+                  <div className=" flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img
+                      className="w-[20px]"
+                      src="/img/sunny-winter.svg"
+                      alt=""
+                    />
+                    <span className="ml-[10px] text-sm font-bold">
+                      All seasons
+                    </span>
+                  </div>
+                </div>
+                <div className="mb-4 flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img className="w-[20px]" src="/img/winter.svg" alt="" />
+                    <span className="ml-[10px] text-sm font-bold">
+                      Not shipovniy
+                    </span>
+                  </div>
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img className="w-[20px]" src="/img/shipovniy.svg" alt="" />
+                    <span className="ml-[10px] text-sm font-bold">
+                      Shipovniy
+                    </span>
+                  </div>
+                </div>
+
+                {/* texts */}
+                <p className="mb-4 text-extragray">
+                  Found this query:
+                  <span className="ml-2 font-bold text-black">154 offers</span>
                 </p>
-                <div className="basis-1/3">
-                  <p className="mb-1 text-extragray">Diametr</p>
-                  <Select
-                    width={'190px'}
-                    height={'40px'}
-                    iconSize={'5'}
-                    dataSource={[
-                      { id: 1, name: '195' },
-                      { id: 2, name: '200' },
-                    ]}
-                  />
+                <div className="flex">
+                  <button className="h-[50px] w-full rounded bg-red px-4 py-2 font-bold text-white">
+                    Pick up
+                  </button>
+                  <button className="ml-[10px] flex h-[50px] w-full items-center justify-center rounded bg-black px-4 py-2 font-bold text-white">
+                    <XMarkIcon className="text-gray-white mr-1 h-6 w-6" />
+                    <span>Reset</span>
+                  </button>
                 </div>
-              </div>
-              <div className="image mx-auto mt-[10px] max-w-[488px]">
-                <img className="w-full" src="/img/header/frame.svg" alt="" />
-              </div>
-            </Content>
+              </ContentRight>
+            </div>
           </div>
-          <div className="content-right w-full rounded bg-white px-4 py-3">
-            <ContentRight title={'Seasonality'}>
-              <div class="mb-[10px] flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
-                <div class="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
-                  <img class="w-[20px]" src="/img/winter-snow.svg" alt="" />
-                  <span class="ml-[10px] text-sm font-bold">Winter</span>
+        )}
+
+        {/* content 4, Avtomobil */}
+        {'' && (
+          <div className="category-selection-content mb-10 flex p-4 pt-3">
+            <div className="content-left min-w-[57%] rounded bg-lightgray px-4 pt-4">
+              <Content title={'Selection by car brand'}>
+                <div className="flex flex-col">
+                  {[1, 2, 3, 4].map((item) => (
+                    <div key={item} className="mb-3">
+                      <p className="mb-1 text-extragray">Marka</p>
+                      <Select
+                        width={'100%'}
+                        height={'40px'}
+                        iconSize={'5'}
+                        dataSource={[
+                          { id: 1, name: '195' },
+                          { id: 2, name: '200' },
+                        ]}
+                      />
+                    </div>
+                  ))}
                 </div>
-                <div class="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
-                  <img class="w-[20px]" src="/img/sunny.svg" alt="" />
-                  <span class="ml-[10px] text-sm font-bold">Summer</span>
+              </Content>
+            </div>
+            <div className="content-right w-full overflow-hidden rounded bg-white px-4 pt-3">
+              <ContentRight title={'Seasonality'}>
+                <div className="mb-[10px] flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img
+                      className="w-[20px]"
+                      src="/img/winter-snow.svg"
+                      alt=""
+                    />
+                    <span className="ml-[10px] text-sm font-bold">Winter</span>
+                  </div>
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img className="w-[20px]" src="/img/sunny.svg" alt="" />
+                    <span className="ml-[10px] text-sm font-bold">Summer</span>
+                  </div>
+                  <div className=" flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img
+                      className="w-[20px]"
+                      src="/img/sunny-winter.svg"
+                      alt=""
+                    />
+                    <span className="ml-[10px] text-sm font-bold">
+                      All seasons
+                    </span>
+                  </div>
                 </div>
-                <div class=" flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
-                  <img class="w-[20px]" src="/img/sunny-winter.svg" alt="" />
-                  <span class="ml-[10px] text-sm font-bold">All seasons</span>
+                <div className="flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img className="w-[20px]" src="/img/winter.svg" alt="" />
+                    <span className="ml-[10px] text-sm font-bold">
+                      Not shipovniy
+                    </span>
+                  </div>
+                  <div className="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
+                    <img className="w-[20px]" src="/img/shipovniy.svg" alt="" />
+                    <span className="ml-[10px] text-sm font-bold">
+                      Shipovniy
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div class="flex h-[46px] w-full gap-[5px] rounded border border-[#F6F6F6] bg-lightgray p-[5px]">
-                <div class="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
-                  <img class="w-[20px]" src="/img/winter.svg" alt="" />
-                  <span class="ml-[10px] text-sm font-bold">Not shipovniy</span>
+                {/* marks */}
+                <div className="my-5">
+                  <div className="scrollbar -m-0.5 mb-2 grid grid-flow-col grid-rows-2 overflow-x-auto">
+                    {modelData.map((model, index) => (
+                      <div
+                        key={index}
+                        className="m-0.5 flex h-[34px] items-center justify-center rounded border border-[#E2E9F2] bg-white px-3 text-sm text-[#566879] transition-all ease-out hover:bg-red hover:text-white"
+                      >
+                        {model}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div class="is-active flex w-full items-center justify-center rounded-[3px] [&.is-active]:bg-white [&.is-active]:shadow-[0px_-1px_0px_0px_#D7E0E9_inset]">
-                  <img class="w-[20px]" src="/img/shipovniy.svg" alt="" />
-                  <span class="ml-[10px] text-sm font-bold">Shipovniy</span>
+                {/* texts */}
+                <p className="mb-4 text-extragray">
+                  Found this query:
+                  <span className="ml-2 font-bold text-black">154 offers</span>
+                </p>
+                <div className="flex">
+                  <button className="h-[50px] w-full rounded bg-red px-4 py-2 font-bold text-white">
+                    Pick up
+                  </button>
+                  <button className="ml-[10px] flex h-[50px] w-full items-center justify-center rounded bg-black px-4 py-2 font-bold text-white">
+                    <XMarkIcon className="text-gray-white mr-1 h-6 w-6" />
+                    <span>Reset</span>
+                  </button>
                 </div>
-              </div>
-            </ContentRight>
+              </ContentRight>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );
@@ -218,18 +507,18 @@ export default SelectionByCarSize;
 
 function Content({ title, children }) {
   return (
-    <>
-      {title && <h2 className="mb-4 text-xl font-bold">{title}</h2>}
+    <div>
+      {title && <h2 className="mb-3 text-xl font-bold">{title}</h2>}
       {children}
-    </>
+    </div>
   );
 }
 
 function ContentRight({ title, children }) {
   return (
-    <>
-      {title && <h2 className="mb-4 text-xl font-bold">{title}</h2>}
+    <div className="flex flex-col justify-end">
+      {title && <h2 className="mb-3 text-xl font-bold">{title}</h2>}
       {children}
-    </>
+    </div>
   );
 }
