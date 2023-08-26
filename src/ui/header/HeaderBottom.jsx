@@ -61,7 +61,7 @@ function classNames(...classes) {
 function HeaderBottom({ isMobile, isOpenMenu }) {
   return (
     <div
-      className={`absolute left-0 top-[48px] z-20 h-full w-full -translate-x-full bg-white px-2   shadow-sm transition-all md:top-[64px] md:h-max md:pt-0  lg:translate-x-0 lg:opacity-100 ${
+      className={`absolute left-0 top-[48px] z-20 h-full w-full -translate-x-full bg-white px-2 shadow-md transition-all md:top-[64px] md:h-max md:pt-0  lg:translate-x-0 lg:opacity-100 ${
         isOpenMenu ? 'translate-x-0 opacity-100' : 'opacity-5'
       }`}
     >
@@ -75,7 +75,7 @@ function HeaderBottom({ isMobile, isOpenMenu }) {
                 item.current
                   ? ' is-active text-black'
                   : ' text-extragray hover:text-black',
-                'group flex w-full cursor-pointer items-center border-b-[0.5px] border-b-[#E2E9F2] py-3 text-sm font-bold transition lg:my-2 lg:justify-center lg:border-x-[0.5px] lg:border-y-[0] lg:border-x-stone-300 lg:px-3 lg:py-1'
+                'lg:border-x-[rgba(5, 5, 5, 0.10)] group flex w-full cursor-pointer items-center border-b-[0.5px] border-b-[#E2E9F2] py-3 text-sm font-bold transition lg:my-2 lg:justify-center lg:border-y-[0] lg:border-l-[0.5px] lg:px-3 lg:py-[2px] last:lg:border-r-[0.5px]'
               )}
               aria-current={item.current ? 'page' : undefined}
             >
