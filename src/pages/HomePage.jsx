@@ -1,9 +1,9 @@
 import {
   PlusSmallIcon,
-  TrashIcon,
   HeartIcon,
   ShareIcon,
   EyeIcon,
+  CalendarDaysIcon,
 } from '@heroicons/react/24/outline';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
@@ -14,11 +14,10 @@ import 'swiper/css/scrollbar';
 import { useEffect, useRef, useState } from 'react';
 import {
   ChevronDoubleDownIcon,
-  ChevronRightIcon,
   ShoppingCartIcon,
   XMarkIcon,
 } from '@heroicons/react/20/solid';
-import { Input } from 'postcss';
+import Input from '../ui/Input';
 
 const products = [
   {
@@ -96,21 +95,24 @@ function HomePage() {
       </div>
 
       <Swiper
-        className="sales-products mt-3 grid grid-cols-4"
+        className="mt-3  "
         modules={[Navigation]}
-        spaceBetween={0}
+        spaceBetween={10}
         slidesPerView={1.3}
         breakpoints={{
           // when window width is >= 640px
           640: {
             slidesPerView: 2,
+            spaceBetween: 15,
           },
           // // when window width is >= 768px
           768: {
             slidesPerView: 3,
+            spaceBetween: 20,
           },
           1024: {
             slidesPerView: 4,
+            spaceBetween: 20,
           },
         }}
         navigation={
@@ -124,87 +126,37 @@ function HomePage() {
           <SwiperSlide key={product.id}>
             <div
               key={product.id}
-              className="group relative max-w-[304px] cursor-pointer border-[0.5px] border-slate-300 bg-white"
+              className="group relative flex h-full flex-col overflow-hidden rounded border border-[#E6E6E6] bg-white"
             >
-              <div className=" absolute left-1/2 top-[80px] hidden h-[130px] w-[140px] -translate-x-1/2  flex-col items-center justify-center rounded-lg border-4  border-double border-blue-50 bg-gray-900 bg-opacity-50 shadow-lg lg:group-hover:flex ">
-                <EyeIcon className="h-8 w-8  text-white" />
-
-                <span className="text-white">Quick view</span>
-              </div>
-              <p className="absolute left-2 top-2 flex h-[45px] w-[45px] items-center justify-center rounded bg-[#F5F8FC]">
+              <p className="h-[250px] flex-auto ">
                 <img
-                  src="/img/sunny.svg"
+                  className="h-full w-full object-cover"
+                  src="/img/news.png"
                   alt=""
-                  className="h-[25px] w-[25px] object-cover object-center"
                 />
               </p>
-              <p className="absolute left-2 top-14 flex h-[45px] w-[45px] items-center justify-center rounded bg-[#F5F8FC]">
-                <img
-                  src="/img/winter.svg"
-                  alt=""
-                  className="h-[25px] w-[25px] object-cover object-center"
-                />
-              </p>
-              <a className="absolute right-2 top-2 text-sm font-medium">
-                Reviews <span className="-ml-1 text-[#566879] ">(12)</span>
-              </a>
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white px-7 pb-6 pt-12">
-                <img
-                  src="/img/01.png"
-                  alt={product.imageAlt}
-                  className="mx-auto h-[80%] w-[80%] object-cover object-center"
-                />
-              </div>
-              <div className=" p-3">
-                <span className="inline-block whitespace-nowrap rounded-[0.15rem] bg-[#15A524] px-[0.65em] py-[0.40em] text-center align-baseline text-[0.8em] font-bold leading-none text-white">
-                  In stock
-                </span>
-                {/* <span className="inline-block whitespace-nowrap rounded-[0.15rem] bg-[#BCBCBC] px-[0.65em] py-[0.40em] text-center align-baseline text-[0.8em] font-bold leading-none text-white">
-                Not available
-              </span> */}
-                <div className="mt-2 flex justify-between">
-                  <div>
-                    <h3 className="text-[15px] font-bold text-gray-700">
-                      {/* <a href={product.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {product.name}
-                      </a> */}
-                    </h3>
-                    <p>
-                      {' '}
-                      <img
-                        src="/img/brand-tire.svg"
-                        className="my-3 h-auto w-[125px] object-cover object-center"
-                      ></img>
-                    </p>
-                    <hr />
-                  </div>
-                </div>
-                <div className="mt-3 flex items-center justify-between">
-                  <p className="text-[16px] font-bold text-gray-900">
-                    ${product.price},00
+              <div className="h-full p-5">
+                <div className="mb-2 flex">
+                  <p className="flex items-center">
+                    <CalendarDaysIcon className="h-5 w-5 text-extragray" />
+                    <span className="ml-[6px] text-sm font-medium text-extragray">
+                      03 january, 11:51
+                    </span>
                   </p>
-                  <button className="flex h-[39px]  items-center justify-center rounded-[0.15rem] bg-[#15A524] px-4 py-2 text-xs font-medium  leading-normal text-white">
-                    <PlusSmallIcon className="h-6 w-6 text-white" />
-                    <span className="ml-[2px] text-[17px]">Add</span>
-                  </button>
-
-                  {/* <div className="flex h-[40px] w-[117px] items-center justify-between rounded bg-[#F5F8FC] p-1"> */}
-                  {/* <button className=" flex h-[32px] w-[35px] items-center justify-center rounded bg-white font-semibold"> */}
-                  {/* <span>-</span> */}
-                  {/* <TrashIcon class="h-5 w-5 text-[#E31E24]" /> */}
-                  {/* </button> */}
-                  {/* <input */}
-                  {/* type="text" */}
-                  {/* className="h-[32px] w-[35px] rounded  bg-gray-100 bg-transparent px-2 pl-3 text-sm outline-none" */}
-                  {/* value={'1'} */}
-                  {/* onChange={(e) => e.target.value} */}
-                  {/* /> */}
-                  {/* <button className=" h-[32px] w-[35px] rounded bg-white font-semibold  "> */}
-                  {/* + */}
-                  {/* </button> */}
-                  {/* </div>  */}
+                  <p className="ml-3 flex items-center">
+                    <EyeIcon className="h-5 w-5 text-extragray" />
+                    <span className="ml-[6px] text-sm font-medium text-extragray">
+                      378
+                    </span>
+                  </p>
                 </div>
+                <h2 className="mb-2 font-bold sm:text-lg">
+                  Заказывайте через сайт, получайте скидку
+                </h2>
+                <p className=" truncate text-sm text-extragray">
+                  ТОО "Компания Шин Line" предлагает воспользоваться скидкой на
+                  весь ассортимент шин.{' '}
+                </p>
               </div>
             </div>
           </SwiperSlide>
@@ -253,7 +205,7 @@ const Modal = () => {
   return (
     <>
       <div className="container mx-auto py-20">
-        <button
+        {/* <button
           ref={trigger}
           onClick={() => setModalOpen(true)}
           className={`bg-primary text-red-900 rounded-full px-6 py-3 text-base font-medium`}
@@ -266,7 +218,7 @@ const Modal = () => {
           className={`bg-primary text-red-900 rounded-full px-6 py-3 text-base font-medium`}
         >
           Open Modal 2
-        </button>
+        </button> */}
 
         <div
           className={`fixed left-0 top-0 z-30 hidden h-full min-h-screen w-full items-center justify-center bg-black bg-opacity-90 px-4 py-5  ${

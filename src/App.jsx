@@ -15,6 +15,8 @@ import SelectionByCarBrand3 from './pages/SelectionByCarBrand3';
 import SelectionByCarSize from './pages/SelectionByCarSize';
 import RegistrationPage from './pages/RegistrationPage';
 import AccountPage from './pages/AccountPage';
+import NewsPage from './pages/NewsPage';
+import NewsPageDetail from './pages/NewsPageDetail';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +78,14 @@ const router = createBrowserRouter([
       {
         path: '/account',
         element: <AccountPage />,
+      },
+      {
+        path: '/news',
+        element: <NewsPage />,
+      },
+      {
+        path: '/news/detail',
+        element: <NewsPageDetail />,
       },
     ],
   },
