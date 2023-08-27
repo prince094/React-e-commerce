@@ -13,6 +13,8 @@ import SelectionByCarBrand from './pages/SelectionByCarBrand';
 import SelectionByCarBrand2 from './pages/SelectionByCarBrand2';
 import SelectionByCarBrand3 from './pages/SelectionByCarBrand3';
 import SelectionByCarSize from './pages/SelectionByCarSize';
+import RegistrationPage from './pages/RegistrationPage';
+import AccountPage from './pages/AccountPage';
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,14 @@ const router = createBrowserRouter([
       {
         path: '/catalog-main/selection-size',
         element: <SelectionByCarSize />,
+      },
+      {
+        path: '/auth',
+        element: <RegistrationPage />,
+      },
+      {
+        path: '/account',
+        element: <AccountPage />,
       },
     ],
   },
