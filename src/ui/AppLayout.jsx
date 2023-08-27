@@ -23,7 +23,7 @@ function AppLayout() {
         <Outlet />
       </main>
       <CartOverview />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
