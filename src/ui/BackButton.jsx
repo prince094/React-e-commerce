@@ -10,7 +10,7 @@ function BackButton() {
       className="text-red-600 rounded-md bg-gray-800 p-2"
       onClick={handleClick}
     >
-      Back to main
+      Back
     </button>
   );
 }
