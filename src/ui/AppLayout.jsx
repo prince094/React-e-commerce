@@ -1,8 +1,9 @@
 import { Outlet, useLocation, useNavigation } from 'react-router-dom';
 import CartOverview from '../features/cart/CartOverview';
-import Header from './header/Header';
-import Loader from './Loader';
-import Footer from './Footer';
+import Footer from '../components/footer/Footer';
+import Loader from '../ui/Loader';
+import Header from '../components/header/Header';
+import BackButton from './BackButton';
 
 function AppLayout() {
   const navigation = useNavigation();
@@ -16,8 +17,8 @@ function AppLayout() {
       }`}
     >
       {isLoading && <Loader />}
-
       <Header />
+      <BackButton />
 
       <main className="mx-auto w-full max-w-7xl px-2 lg:px-8">
         <Outlet />
