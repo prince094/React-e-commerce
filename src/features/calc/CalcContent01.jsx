@@ -7,38 +7,15 @@ import CalcSwitches from './CalcSwitches';
 import CalcMark from './CalcMark';
 import CalcAction from './CalcAction';
 
-const seasons = [
-  {
-    value: 'winter',
-    label: 'Winter',
-  },
-  {
-    value: 'summer',
-    label: 'Summer',
-  },
-  {
-    value: 'all-seasons',
-    label: 'All seasons',
-  },
-  {
-    value: 'no-studded',
-    label: 'No studded',
-  },
-  {
-    value: 'studded',
-    label: 'Studded',
-  },
-];
-
 function CalcContent01() {
   return (
     <div className="category-selection-content mb-10 flex p-4 pt-0">
-      <div className="content-left min-w-[57%] max-w-[57%] rounded  px-4 pt-4">
+      <div className="content-left min-w-[57%] max-w-[57%] rounded  pt-4">
         <div className="flex">
           <div className="w-full">
             <ul className="flex h-full flex-col">
               {catalog.map((item) => (
-                <CatalogListItem item={item} />
+                <CatalogListItem key={item.id} item={item} />
               ))}
             </ul>
           </div>
@@ -50,8 +27,8 @@ function CalcContent01() {
         <CalcSettings />
         <p className="mb-3"></p>
         <h2 className="mb-3 text-xl font-bold">Seasonality</h2>
-        <CalcSwitches slice={-2} />
-        <CalcSwitches slice={3} />
+        <CalcSwitches slice={[0, -2]} />
+        <CalcSwitches slice={[3, 5]} />
         <CalcAction />
       </div>
     </div>
@@ -79,6 +56,7 @@ function CatalogListItem({ item }) {
         }  w-[44px]  group-hover:[&>svg>g>path]:fill-[black] group-hover:[&>svg>path]:fill-[black]`}
         dangerouslySetInnerHTML={{ __html: item.svg }}
       ></span>
+
       <p
         className={`${
           item.path === '/cars' ? 'text-black' : 'text-extragray'

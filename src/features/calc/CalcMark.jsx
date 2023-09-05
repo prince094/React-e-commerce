@@ -2,8 +2,8 @@ import Select from '../../ui/Select';
 
 function CalcMark() {
   return (
-    <div className="ml-4 flex h-full max-h-[307px] min-w-[300px] flex-col bg-lightgray px-5 pb-0 pt-4">
-      {[...Array(3)].map((item) => (
+    <div className="ml-4 flex h-full  min-w-[300px] flex-col bg-lightgray px-5 pb-0 pt-4">
+      {[1, 2, 3].map((item) => (
         <div key={item} className="mb-3">
           <p className="mb-1 text-extragray">Marka</p>
           <Select
@@ -17,8 +17,12 @@ function CalcMark() {
           />
         </div>
       ))}
-      <p>
-        <img src="" alt="" />
+      <p className="mx-auto mt-2 h-[120px] w-[160px]">
+        <img
+          src="/img/catalog/seasons/season-01.svg"
+          className="h-full w-full"
+          alt=""
+        />
       </p>
     </div>
   );

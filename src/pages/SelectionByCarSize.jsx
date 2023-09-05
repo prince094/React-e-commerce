@@ -112,21 +112,3 @@ function SelectionByCarSize() {
 }
 
 export default SelectionByCarSize;
-
-function Content({ title, children }) {
-  return (
-    <div>
-      {title && <h2 className="mb-3 text-xl font-bold">{title}</h2>}
-      {children}
-    </div>
-  );
-}
-
-function ContentRight({ title, children }) {
-  return (
-    <div className="flex flex-col justify-end">
-      {title && <h2 className="mb-3 text-xl font-bold">{title}</h2>}
-      {children}
-    </div>
-  );
-}

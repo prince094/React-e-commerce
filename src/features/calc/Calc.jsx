@@ -82,10 +82,6 @@ function Calc() {
       value: 'brands',
       label: 'Brands',
     },
-    {
-      value: 'automobile',
-      label: 'Automobile',
-    },
   ];
   const [activeTab, setActiveTab] = useState('categories');
 
@@ -114,7 +110,6 @@ function Calc() {
         {activeTab === 'categories' && <CalcContent01 />}
         {activeTab === 'options' && <CalcContent02 />}
         {activeTab === 'brands' && <CalcContent03 />}
-        {activeTab === 'automobile' && <CalcContent04 />}
       </div>
     </div>
   );

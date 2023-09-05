@@ -14,8 +14,8 @@ function CalcContent03() {
         <CalcBySettings />
         <p className="mb-3"></p>
         <h2 className="mb-3 text-xl font-bold">Seasonality</h2>
-        <CalcSwitches slice={-2} />
-        <CalcSwitches slice={3} />
+        <CalcSwitches slice={[0, -2]} />
+        <CalcSwitches slice={[3, 5]} />
         <CalcAction />
       </div>
     </div>
