@@ -1,6 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Error from './ui/Error';
-import Home from './pages/HomePage';
 import Product from './pages/ProductPage';
 import AppLayout from './ui/AppLayout';
 import CartPage from './pages/CartPage';
@@ -15,6 +14,9 @@ import SelectionByCarBrand3 from './pages/SelectionByCarBrand3';
 import SelectionByCarSize from './pages/SelectionByCarSize';
 import RegistrationPage from './pages/RegistrationPage';
 import AccountPage from './pages/AccountPage';
+import NewsPage from './pages/NewsPage';
+import NewsPageDetail from './pages/NewsPageDetail';
+import HomePage from './pages/HomePage';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />,
+        element: <HomePage />,
       },
       {
         path: '/cart',
@@ -76,6 +78,14 @@ const router = createBrowserRouter([
       {
         path: '/account',
         element: <AccountPage />,
+      },
+      {
+        path: '/news',
+        element: <NewsPage />,
+      },
+      {
+        path: '/news/detail',
+        element: <NewsPageDetail />,
       },
     ],
   },
