@@ -14,7 +14,7 @@ function CalcContent02() {
           <img className="w-full" src="/img/header/frame.svg" alt="" />
         </div>
       </div>
-      <div className="content-right w-full overflow-hidden rounded bg-white px-4 pt-3">
+      <div className="content-right flex w-full flex-col justify-between overflow-hidden rounded bg-white px-4 pt-3">
         <h2 className="mb-3 text-xl font-bold">Seasonality</h2>
         <CalcSwitches slice={[0, -2]} />
         <CalcSwitches slice={[3, 5]} />

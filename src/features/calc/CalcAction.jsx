@@ -4,7 +4,7 @@ import Button from '../../ui/Button';
 function CalcAction() {
   return (
     <>
-      <p className="mb-4 text-extragray">
+      <p className="mb-2 text-extragray">
         Found this query:
         <span className="ml-2 font-bold text-black">154 offers</span>
       </p>

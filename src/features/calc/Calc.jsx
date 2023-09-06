@@ -3,7 +3,6 @@ import CalcTabRow from './CalcTabRow';
 import CalcContent01 from './CalcContent01';
 import CalcContent02 from './CalcContent02';
 import CalcContent03 from './CalcContent03';
-import CalcContent04 from './CalcContent04';
 
 const products = [
   {

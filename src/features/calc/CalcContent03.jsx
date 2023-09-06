@@ -5,11 +5,11 @@ import CalcSwitches from './CalcSwitches';
 function CalcContent03() {
   return (
     <div className="category-selection-content mb-10 flex p-4 pt-3">
-      <div className="content-left min-w-[57%] max-w-[57%] rounded bg-lightgray px-4 pt-4">
+      <div className="content-left min-w-[57%] max-w-[57%] rounded bg-lightgray p-4">
         <h2 className="mb-3 text-xl font-bold">Brands</h2>
         <CalcBrands />
       </div>
-      <div className="content-right w-full overflow-hidden rounded bg-white px-4 pt-3">
+      <div className="content-right flex w-full flex-col justify-between  overflow-hidden rounded bg-white px-4 pt-3">
         <h2 className="mb-3 text-xl font-bold">Settings</h2>
         <CalcBySettings />
         <p className="mb-3"></p>

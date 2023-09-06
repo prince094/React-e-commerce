@@ -9,20 +9,20 @@ import CalcAction from './CalcAction';
 
 function CalcContent01() {
   return (
-    <div className="category-selection-content mb-10 flex p-4 pt-0">
-      <div className="content-left min-w-[57%] max-w-[57%] rounded  pt-4">
+    <div className="category-selection-content mb-10 mt-3 flex p-4 pt-0">
+      <div className="content-left min-w-[57%] max-w-[57%] rounded">
         <div className="flex">
           <div className="w-full">
             <ul className="flex h-full flex-col">
               {catalog.map((item) => (
-                <CatalogListItem key={item.id} item={item} />
+                <CalcListItem key={item.id} item={item} />
               ))}
             </ul>
           </div>
           <CalcMark />
         </div>
       </div>
-      <div className="content-right w-full overflow-hidden rounded bg-white px-4 pt-3">
+      <div className="content-right flex w-full flex-col justify-between overflow-hidden rounded bg-white px-4 pt-3">
         <h2 className="mb-3 text-xl font-bold">Settings</h2>
         <CalcSettings />
         <p className="mb-3"></p>
@@ -37,11 +37,11 @@ function CalcContent01() {
 
 export default CalcContent01;
 
-function CatalogListItem({ item }) {
+function CalcListItem({ item }) {
   return (
     <li
       key={item.id}
-      className={`group relative flex h-[70px] items-center border border-lightgray px-[35px] transition duration-300 after:absolute after:left-0 after:top-0 after:h-full   after:bg-red after:transition after:duration-300 after:content-[''] hover:shadow-[5px_15px_30px_0px_rgba(0,0,0,0.10)] hover:after:w-[2px]
+      className={`group relative flex h-[70px] cursor-pointer items-center border border-lightgray px-[35px] transition duration-300 after:absolute after:left-0 after:top-0 after:h-full   after:bg-red after:transition after:duration-300 after:content-[''] hover:shadow-[5px_15px_30px_0px_rgba(0,0,0,0.10)] hover:after:w-[2px]
   ${
     item.path === '/cars'
       ? 'active shadow-[5px_15px_30px_0px_rgba(0,0,0,0.10)] after:w-[2px]'
