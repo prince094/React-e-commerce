@@ -29,8 +29,8 @@ export default function Select({
             <Listbox.Button
               style={{ width, height, borderWidth: border ? '1px' : '0' }}
               className={`
-              relative cursor-default overflow-hidden rounded
-               border border-[#E2E9F2]  bg-white 
+              relative cursor-default cursor-pointer overflow-hidden
+               rounded border  border-[#E2E9F2] bg-white
                 text-left text-[#191717] focus:outline-none sm:text-sm sm:leading-6
                 ${subselect ? 'pl-[14px] pr-8' : 'pl-5 pr-10 '}
                 `}
