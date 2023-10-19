@@ -1,6 +1,6 @@
 import Select from '../../ui/Select';
 
-function CalcMark() {
+function CalcMark({ category }) {
   return (
     <div className="ml-4 flex h-full  min-w-[300px] flex-col bg-lightgray px-5 pb-0 pt-4">
       {[1, 2, 3].map((item) => (
@@ -19,7 +19,7 @@ function CalcMark() {
       ))}
       <p className="mx-auto mt-2 h-[120px] w-[160px]">
         <img
-          src="/img/catalog/seasons/season-01.svg"
+          src={`/img/catalog/seasons/${category}.svg`}
           className="h-full w-full"
           alt=""
         />

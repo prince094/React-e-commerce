@@ -1,70 +1,18 @@
 import { CalendarDaysIcon, EyeIcon } from '@heroicons/react/24/outline';
 import BreadCrumb from '../ui/BreadCrumb';
-
-const products = [
-  {
-    id: 1,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '45',
-    color: 'Black',
-  },
-  {
-    id: 143,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '60',
-    color: 'Black',
-  },
-  {
-    id: 112,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '35',
-    color: 'Black',
-  },
-  {
-    id: 1765,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '45',
-    color: 'Black',
-  },
-  {
-    id: 1435,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '60',
-    color: 'Black',
-  },
-  {
-    id: 11342,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: '35',
-    color: 'Black',
-  },
-];
+import { useEffect, useState } from 'react';
 
 function NewsPage() {
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    fetch('../../src/data/news-data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        setNews(data);
+      });
+  }, []);
+
   return (
     <>
       <BreadCrumb />
@@ -74,15 +22,15 @@ function NewsPage() {
         </h2>
       </div>
       <div className="my-4 grid grid-cols-1  gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {products.map((product) => (
+        {news.map((item) => (
           <div
-            key={product.id}
+            key={item.id}
             className="group relative flex flex-col  overflow-hidden rounded border border-[#E6E6E6] bg-white"
           >
             <p className="h-[250px] flex-auto ">
               <img
                 className="h-full w-full object-cover"
-                src="/img/news.png"
+                src={item.imgUrl}
                 alt=""
               />
             </p>
@@ -101,12 +49,9 @@ function NewsPage() {
                   </span>
                 </p>
               </div>
-              <h2 className="mb-2 font-bold sm:text-lg">
-                Заказывайте через сайт, получайте скидку
-              </h2>
+              <h2 className="mb-2 font-bold sm:text-lg">{item.title}</h2>
               <p className=" truncate text-sm text-extragray">
-                ТОО "Компания Шин Line" предлагает воспользоваться скидкой на
-                весь ассортимент шин.{' '}
+                {item.description}
               </p>
             </div>
           </div>

@@ -85,6 +85,7 @@ function Calc() {
   const [activeTab, setActiveTab] = useState('categories');
 
   function handleTab(value) {
+    console.log(value);
     setActiveTab(value);
   }
 

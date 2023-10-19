@@ -5,7 +5,7 @@
     "date": "",
     "view": 3780,
     "description": "Tire Line Company LLP offers to take advantage of a discount on the entire range of tires.",
-    "src": "/public/img/news/news1.png"
+    "imgUrl": "/public/img/news/news1.png"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "date": "",
     "view": 3780,
     "description": "Installment payment in 4 equal installments",
-    "src": "/public/img/news/news2.png"
+    "imgUrl": "/public/img/news/news2.png"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "date": "",
     "view": 3780,
     "description": "Tire Line Company LLP offers to take advantage of a discount on the entire range of tires.",
-    "src": "/public/img/news/news3.png"
+    "imgUrl": "/public/img/news/news3.png"
   },
   {
     "id": 4,
@@ -29,6 +29,22 @@
     "date": "",
     "view": 3780,
     "description": "Tire Line Company LLP offers to take advantage of a discount on the entire range of tires.",
-    "src": "/public/img/news/news4.png"
+    "imgUrl": "/public/img/news/news4.png"
+  },
+  {
+    "id": 20,
+    "title": "Multicard - buy tires in installments for 3 months! Tires can be bought with an advance payment of 25%",
+    "date": "",
+    "view": 3780,
+    "description": "Installment payment in 4 equal installments",
+    "imgUrl": "/public/img/news/news2.png"
+  },
+  {
+    "id": 30,
+    "title": "Shines of truck tires, in Tashkent",
+    "date": "",
+    "view": 3780,
+    "description": "Tire Line Company LLP offers to take advantage of a discount on the entire range of tires.",
+    "imgUrl": "/public/img/news/news3.png"
   }
 ]

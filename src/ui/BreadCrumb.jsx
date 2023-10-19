@@ -1,45 +1,25 @@
-function BreadCrumb() {
+import { Link } from 'react-router-dom';
+
+function BreadCrumb({ items = ['home', 'catalog', 'detail', 'lorem ipsum'] }) {
   return (
     <nav className="mt-20 hidden w-full rounded-md text-sm lg:block">
       <ol className="list-reset flex">
-        <li>
-          <a
-            href="#"
-            className=" text-[#566879] transition duration-150 ease-in-out hover:text-gray-800"
-          >
-            Home
-          </a>
-        </li>
-        <li>
-          <span className="mx-2 text-neutral-500">/</span>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="text-[#566879] transition duration-150 ease-in-out hover:text-gray-800"
-          >
-            Catalog
-          </a>
-        </li>
-        <li>
-          <span className="mx-2 text-neutral-500 dark:text-neutral-400">/</span>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="text-[#566879] transition duration-150 ease-in-out hover:text-gray-800"
-          >
-            Car tires
-          </a>
-        </li>
-
-        <li>
-          <span className="mx-2 text-neutral-500">/</span>
-        </li>
-        <li className="text-[#566879] text-opacity-75">
-          {' '}
-          Winter car tire Toyo Observe Ice-Freezer 225/60 R17 103T
-        </li>
+        {items.map((item, index) => (
+          <li key={item}>
+            <Link
+              className={`text-[#566879] transition duration-150 ease-in-out ${
+                items.length - 1 !== index
+                  ? 'hover:text-gray-900'
+                  : 'pointer-events-none text-opacity-75'
+              }`}
+            >
+              {item}
+            </Link>
+            {items.length - 1 !== index && (
+              <span className="mx-2 text-neutral-500">/</span>
+            )}
+          </li>
+        ))}
       </ol>
     </nav>
   );
