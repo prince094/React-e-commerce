@@ -1,12 +1,14 @@
 import { CalendarDaysIcon, EyeIcon } from '@heroicons/react/24/outline';
 import BreadCrumb from '../ui/BreadCrumb';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { BreadCrumbContext } from '../context/BreadcrumbContext';
 
 function NewsPageDetail() {
   const { newId } = useParams();
 
   const [detail, setDetail] = useState({});
+  const { setBreadcrumb } = useContext(BreadCrumbContext);
 
   useEffect(() => {
     fetch(`../../src/data/news-data.json`) // todo: `/news/${newId}`
@@ -14,6 +16,11 @@ function NewsPageDetail() {
       .then((data) => {
         const current = data.find((f) => f.id === parseInt(newId));
         setDetail(current);
+        setBreadcrumb([
+          { path: '/', name: 'Home' },
+          { path: '/news', name: 'News' },
+          { path: `/news/${newId}`, name: current.title },
+        ]);
       });
   }, [newId]);
 
@@ -23,7 +30,7 @@ function NewsPageDetail() {
       {detail && (
         <div className="my-4">
           <h2 className=" text-[18px] font-bold leading-tight tracking-tight text-gray-800 sm:mb-0 sm:text-2xl  md:text-3xl ">
-            {detail.title} - id: {detail.id}
+            {detail.title}
           </h2>
           <div className="mt-6 gap-4 md:flex lg:gap-[50px]">
             <div className="basis-[70%]">

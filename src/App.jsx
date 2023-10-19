@@ -17,6 +17,7 @@ import AccountPage from './pages/AccountPage';
 import NewsPage from './pages/NewsPage';
 import NewsPageDetail from './pages/NewsPageDetail';
 import HomePage from './pages/HomePage';
+import { BreadCrumbProvider } from './context/BreadcrumbContext';
 
 const router = createBrowserRouter([
   {
@@ -92,7 +93,13 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <BreadCrumbProvider>
+        <RouterProvider router={router} />
+      </BreadCrumbProvider>
+    </>
+  );
 }
 
 export default App;
