@@ -3,6 +3,7 @@ import BreadCrumb from '../ui/BreadCrumb';
 import { useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import ContentTitle from '../ui/ContentTitle';
 
 function NewsPageDetail() {
   const { newId } = useParams();
@@ -27,35 +28,27 @@ function NewsPageDetail() {
   return (
     <>
       <BreadCrumb />
-      {detail && (
-        <div className="my-4">
-          <h2 className=" text-[18px] font-bold leading-tight tracking-tight text-gray-800 sm:mb-0 sm:text-2xl  md:text-3xl ">
-            {detail.title}
-          </h2>
-          <div className="mt-6 gap-4 md:flex lg:gap-[50px]">
-            <div className="basis-[70%]">
-              <div className="mb-4  flex md:mb-8">
-                <p className="flex items-center">
-                  <CalendarDaysIcon className="h-6 w-6 text-extragray" />
-                  <span className="ml-[6px] font-medium text-extragray">
-                    03 january, 11:51
-                  </span>
-                </p>
-                <p className="ml-3 flex items-center">
-                  <EyeIcon className="h-6 w-6 text-extragray" />
-                  <span className="ml-[6px] font-medium text-extragray">
-                    378
-                  </span>
-                </p>
-              </div>
-              <p className="mb-5 sm:text-lg">{detail.description}</p>
-            </div>
-            <div className="w-full basis-[30%]">
-              <img className="w-full" src={detail.imgUrl} alt="" />
-            </div>
+      <ContentTitle title={detail.title} />
+      <div className="mt-6 gap-4 md:flex lg:gap-[50px]">
+        <div className="basis-[70%]">
+          <div className="mb-4  flex md:mb-8">
+            <p className="flex items-center">
+              <CalendarDaysIcon className="h-6 w-6 text-extragray" />
+              <span className="ml-[6px] font-medium text-extragray">
+                03 january, 11:51
+              </span>
+            </p>
+            <p className="ml-3 flex items-center">
+              <EyeIcon className="h-6 w-6 text-extragray" />
+              <span className="ml-[6px] font-medium text-extragray">378</span>
+            </p>
           </div>
+          <p className="mb-5 sm:text-lg">{detail.description}</p>
         </div>
-      )}
+        <div className="w-full basis-[30%]">
+          <img className="w-full" src={detail.imgUrl} alt="" />
+        </div>
+      </div>
     </>
   );
 }

@@ -47,7 +47,7 @@ function CalcContent01() {
         <div className="flex">
           <div className="w-full">
             <ul className="flex h-full flex-col">
-              {catalog.map((item) => (
+              {catalog.slice(0, -1).map((item) => (
                 <CalcCategories
                   key={item.id}
                   item={item}

@@ -4,7 +4,7 @@ import Product from './pages/ProductPage';
 import AppLayout from './ui/AppLayout';
 import CartPage from './pages/CartPage';
 import CatalogPage from './pages/CatalogPage';
-import CatalogPageMain from './pages/CatalogPageMain';
+import CatalogPageDetail from './pages/CatalogPageDetail';
 import SelectionByCarMark from './pages/SelectionByCarMark';
 import SelectionByCarMark2 from './pages/SelectionByCarMark2';
 import SelectionByCarMark3 from './pages/SelectionByCarMark3';
@@ -41,8 +41,8 @@ const router = createBrowserRouter([
         element: <CatalogPage />,
       },
       {
-        path: '/catalog-main',
-        element: <CatalogPageMain />,
+        path: '/catalog/:catalogName',
+        element: <CatalogPageDetail />,
       },
       {
         path: '/catalog-main/selection-mark',
