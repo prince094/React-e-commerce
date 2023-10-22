@@ -38,9 +38,11 @@ function CatalogItems() {
   return (
     <div className="-mx-1 mt-10 flex flex-wrap sm:-mx-2">
       {catalog.map((item, index) => (
-        <div className="flex-[100%] p-1 sm:flex-[50%] lg:flex-[33.333%] lg:p-2">
+        <div
+          key={item.id}
+          className="flex-[100%] p-1 sm:flex-[50%] lg:flex-[33.333%] lg:p-2"
+        >
           <div
-            key={item.id}
             className="relative flex  flex-col items-start overflow-hidden rounded border border-[#E2E9F2] px-6 py-5 sm:px-8 sm:py-7"
             style={{
               backgroundImage: `url(${item.value === 'all' && BgImage})`,

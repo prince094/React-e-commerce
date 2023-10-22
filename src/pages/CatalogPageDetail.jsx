@@ -9,6 +9,7 @@ import Screen from '../hooks/useScreenSize';
 import CatalogFilter from '../features/catalog/CatalogFilter';
 import { useContext, useEffect } from 'react';
 import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import Product from '../features/product/Product';
 
 const modelData = [
   '155/65R13',
@@ -55,61 +56,79 @@ const products = [
     id: 1,
     name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
     href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageSrc: '1',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '45',
+    unitPrice: '45',
     color: 'Black',
+    soldOut: false,
+    seasonTypes: ['summer', 'winter'],
+    views: 12,
+    brandSrc: 'contyre', // should be like 'url//
   },
   {
     id: 143,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
+    name: 'Alpine Plus 175/70 R13 82T',
     href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageSrc: '2',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '60',
+    unitPrice: '60',
     color: 'Black',
+    soldOut: false,
+    seasonTypes: ['studded', 'winter'],
+    views: 30,
+    brandSrc: 'dayton',
   },
   {
     id: 112,
     name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
     href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageSrc: '3',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '35',
+    unitPrice: '35',
     color: 'Black',
+    soldOut: false,
+    seasonTypes: ['no-studded', 'summer'],
+    views: 12,
+    brandSrc: 'falken',
   },
   {
     id: 1765,
     name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
     href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageSrc: '1',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '45',
+    unitPrice: '45',
     color: 'Black',
+    soldOut: false,
+    seasonTypes: ['all-seasons', 'no-studded'],
+    views: 12,
+    brandSrc: 'firelli',
   },
   {
     id: 1435,
     name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
     href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageSrc: '3',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '60',
+    unitPrice: '60',
     color: 'Black',
+    soldOut: false,
+    seasonTypes: ['studded', 'winter'],
+    views: 12,
+    brandSrc: 'firemax',
   },
   {
     id: 11342,
     name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
     href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
+    imageSrc: '3',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '35',
+    unitPrice: '35',
     color: 'Black',
+    soldOut: false,
+    seasonTypes: ['no-studded'],
+    views: 12,
+    brandSrc: 'odyking',
   },
 ];
 const catalogTypes = [
@@ -303,94 +322,11 @@ function CatalogPage() {
         {/* main contents */}
         <div className="my-4 flex gap-x-3">
           <CatalogFilter />
+          {/* Product */}
           <div className="flex-[75%]">
             <div className="flex flex-wrap">
               {products.map((product) => (
-                <div
-                  key={product.id}
-                  className="group relative flex-[100%] cursor-pointer border-[0.5px] border-slate-300 bg-white sm:flex-[50%] md:flex-[33.333%]"
-                >
-                  <div className=" absolute left-1/2 top-[80px] hidden h-[130px] w-[140px] -translate-x-1/2  flex-col items-center justify-center rounded-lg border-4  border-double border-blue-50 bg-gray-900 bg-opacity-50 shadow-lg lg:group-hover:flex ">
-                    <EyeIcon className="h-8 w-8  text-white" />
-
-                    <span className="text-white">Quick view</span>
-                  </div>
-                  <p className="absolute left-2 top-2 flex h-[45px] w-[45px] items-center justify-center rounded bg-[#F5F8FC]">
-                    <img
-                      src="/img/sunny.svg"
-                      alt=""
-                      className="h-[25px] w-[25px] object-cover object-center"
-                    />
-                  </p>
-                  <p className="absolute left-2 top-14 flex h-[45px] w-[45px] items-center justify-center rounded bg-[#F5F8FC]">
-                    <img
-                      src="/img/winter.svg"
-                      alt=""
-                      className="h-[25px] w-[25px] object-cover object-center"
-                    />
-                  </p>
-                  <a className="absolute right-2 top-2 text-sm font-medium">
-                    Reviews <span className="-ml-1 text-[#566879] ">(12)</span>
-                  </a>
-                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white px-7 pb-6 pt-12">
-                    <img
-                      src="/img/01.png"
-                      alt={product.imageAlt}
-                      className="mx-auto h-[80%] w-[80%] object-cover object-center"
-                    />
-                  </div>
-                  <div className=" p-3">
-                    <span className="inline-block whitespace-nowrap rounded-[0.15rem] bg-[#15A524] px-[0.65em] py-[0.40em] text-center align-baseline text-[0.8em] font-bold leading-none text-white">
-                      In stock
-                    </span>
-                    {/* <span className="inline-block whitespace-nowrap rounded-[0.15rem] bg-[#BCBCBC] px-[0.65em] py-[0.40em] text-center align-baseline text-[0.8em] font-bold leading-none text-white">
-                Not available
-              </span> */}
-                    <div className="mt-2 flex justify-between">
-                      <div>
-                        <h3 className="text-[15px] font-bold text-gray-700">
-                          {/* <a href={product.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {product.name}
-                      </a> */}
-                        </h3>
-                        <p>
-                          {' '}
-                          <img
-                            src="/img/brand-tire.svg"
-                            className="my-3 h-auto w-[125px] object-cover object-center"
-                          ></img>
-                        </p>
-                        <hr />
-                      </div>
-                    </div>
-                    <div className="mt-3 flex items-center justify-between">
-                      <p className="text-[16px] font-bold text-gray-900">
-                        ${product.price},00
-                      </p>
-                      <button className="flex h-[39px]  items-center justify-center rounded-[0.15rem] bg-[#15A524] px-4 py-2 text-xs font-medium  leading-normal text-white">
-                        <PlusSmallIcon className="h-6 w-6 text-white" />
-                        <span className="ml-[2px] text-[17px]">Add</span>
-                      </button>
-
-                      {/* <div className="flex h-[40px] w-[117px] items-center justify-between rounded bg-[#F5F8FC] p-1"> */}
-                      {/* <button className=" flex h-[32px] w-[35px] items-center justify-center rounded bg-white font-semibold"> */}
-                      {/* <span>-</span> */}
-                      {/* <TrashIcon class="h-5 w-5 text-[#E31E24]" /> */}
-                      {/* </button> */}
-                      {/* <input */}
-                      {/* type="text" */}
-                      {/* className="h-[32px] w-[35px] rounded  bg-gray-100 bg-transparent px-2 pl-3 text-sm outline-none" */}
-                      {/* value={'1'} */}
-                      {/* onChange={(e) => e.target.value} */}
-                      {/* /> */}
-                      {/* <button className=" h-[32px] w-[35px] rounded bg-white font-semibold  "> */}
-                      {/* + */}
-                      {/* </button> */}
-                      {/* </div>  */}
-                    </div>
-                  </div>
-                </div>
+                <Product key={product.id} product={product} />
               ))}
             </div>
           </div>

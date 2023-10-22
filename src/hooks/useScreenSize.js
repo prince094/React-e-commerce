@@ -4,14 +4,15 @@ const getIsMobile = (size) => window.innerWidth < size; // 640,768,1024,1280
 
 export default function useScreenSize(screen) {
   const [isMobile, setIsMobile] = useState(getIsMobile(screen));
-  const onResize = () => {
-    setIsMobile(getIsMobile(screen));
-  };
+
   useEffect(() => {
+    const onResize = () => {
+      setIsMobile(getIsMobile(screen));
+    };
     window.addEventListener('resize', onResize);
 
     return () => window.removeEventListener('resize', onResize);
-  }, [onResize]);
+  }, []);
 
   return isMobile;
 }

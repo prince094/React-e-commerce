@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import selection from '../data/data-selection.json';
 
 function SelectionTyres() {
   return (
     <div className="mb-4 flex  flex-col gap-[6px] rounded bg-[#F5F8FC] p-1 lg:h-[70px]  lg:flex-row">
       {selection.map((item) => (
-        <Link
+        <NavLink
           key={item.id}
-          to={item.path}
-          className="relative flex min-h-[62px] flex-[33.333%] items-center justify-center overflow-hidden rounded bg-white lg:h-auto"
+          to={`/${item.path}`}
+          className="relative flex min-h-[62px] flex-[33.333%] items-center justify-center overflow-hidden rounded bg-white duration-150 hover:shadow-md lg:h-auto [&.active]:bg-[#F23F44] [&.active]:text-white"
         >
-          <p className="absolute left-0 top-0 ">
+          <p className="absolute left-0 top-0">
             <img
               src={`/img/catalog/${item.imgUrl}.svg`}
               className=" w-[90%] object-contain sm:w-full"
@@ -20,7 +20,7 @@ function SelectionTyres() {
           <p className=" text-[12px] font-semibold uppercase sm:ml-0 sm:text-sm">
             {item.title}
           </p>
-        </Link>
+        </NavLink>
       ))}
 
       {

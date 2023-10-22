@@ -2,19 +2,19 @@
   {
     "id": 1,
     "title": "Select by tire size",
-    "path": "extent",
+    "path": "assortiments",
     "imgUrl": "by-extent"
   },
   {
     "id": 2,
     "title": "Select tire manufacturer",
-    "path": "brand",
+    "path": "brands",
     "imgUrl": "by-brand"
   },
   {
     "id": 3,
-    "title": "Tire selection by car brand",
-    "path": "model",
+    "title": "Select by car trade-mark",
+    "path": "trademarks",
     "imgUrl": "by-model"
   }
 ]

@@ -45,7 +45,15 @@ const router = createBrowserRouter([
         element: <CatalogPageDetail />,
       },
       {
-        path: '/catalog-main/selection-mark',
+        path: '/assortiments',
+        element: <SelectionByCarSize />,
+      },
+      {
+        path: '/brands',
+        element: <SelectionByCarBrand />,
+      },
+      {
+        path: '/trademarks',
         element: <SelectionByCarMark />,
       },
       {
@@ -56,10 +64,7 @@ const router = createBrowserRouter([
         path: '/catalog-main/selection-mark3',
         element: <SelectionByCarMark3 />,
       },
-      {
-        path: '/catalog-main/selection-brand',
-        element: <SelectionByCarBrand />,
-      },
+
       {
         path: '/catalog-main/selection-brand2',
         element: <SelectionByCarBrand2 />,
@@ -67,10 +72,6 @@ const router = createBrowserRouter([
       {
         path: '/catalog-main/selection-brand3',
         element: <SelectionByCarBrand3 />,
-      },
-      {
-        path: '/catalog-main/selection-size',
-        element: <SelectionByCarSize />,
       },
       {
         path: '/auth',

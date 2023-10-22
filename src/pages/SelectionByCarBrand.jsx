@@ -11,6 +11,10 @@ import Screen from '../hooks/useScreenSize';
 import CatalogFilter from '../features/catalog/CatalogFilter';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import ContentTitle from '../ui/ContentTitle';
+import { useContext, useEffect } from 'react';
+import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import SelectionTyres from '../ui/SelectionTyres';
 
 const sort = [
   {
@@ -46,14 +50,26 @@ const brands = [
 ];
 
 function SelectionByCarBrand() {
+  const { setBreadcrumb } = useContext(BreadCrumbContext);
+
+  useEffect(() => {
+    fetch('../../src/data/news-data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        setBreadcrumb([
+          { path: '/', name: 'Home' },
+          { path: '/brands', name: 'Brands' },
+        ]);
+      });
+  }, []);
+
   return (
     <>
       <BreadCrumb />
-      <div className="my-4">
-        <h2 className="mb-2 text-[18px] font-bold leading-tight tracking-tight text-gray-800 sm:mb-0 sm:text-2xl  md:text-3xl ">
-          Tires for BMW 1 (E81-E88) Coupe Restyle 2008-2013
-        </h2>
-      </div>
+      <ContentTitle
+        title={'Tires for BMW 1 (E81-E88) Coupe Restyle 2008-2013'}
+      />
+      <SelectionTyres />
       <p className="mb-5 text-[#566879]">
         Our online tire store Shin Line is the official dealer in Kazakhstan of
         the represented brands. World tire manufacturers trust us: we provide
@@ -153,7 +169,10 @@ function SelectionByCarBrand() {
           </div>
           <div className="flex flex-wrap">
             {brands.map((brand) => (
-              <div className="flex h-[90px] basis-1/2  items-center justify-center border border-[#E2E9F2] p-6 transition-all hover:shadow-[0_20px_30px_0px_rgba(2,36,86,0.10)] sm:h-[130px] sm:p-10 md:basis-1/3 lg:basis-1/5">
+              <div
+                key={brand}
+                className="flex h-[90px] basis-1/2  items-center justify-center border border-[#E2E9F2] p-6 transition-all hover:shadow-[0_20px_30px_0px_rgba(2,36,86,0.10)] sm:h-[130px] sm:p-10 md:basis-1/3 lg:basis-1/5"
+              >
                 <img
                   className="h-full w-full"
                   src={`/img/catalog/brand/${brand}.svg`}
@@ -169,7 +188,10 @@ function SelectionByCarBrand() {
           </div>
           <div className="flex flex-wrap">
             {brands.map((brand) => (
-              <div className="flex h-[90px] basis-1/2  items-center justify-center border border-[#E2E9F2] p-6 transition-all hover:shadow-[0_20px_30px_0px_rgba(2,36,86,0.10)] sm:h-[130px] sm:p-10 md:basis-1/3 lg:basis-1/5">
+              <div
+                key={brand}
+                className="flex h-[90px] basis-1/2  items-center justify-center border border-[#E2E9F2] p-6 transition-all hover:shadow-[0_20px_30px_0px_rgba(2,36,86,0.10)] sm:h-[130px] sm:p-10 md:basis-1/3 lg:basis-1/5"
+              >
                 <img
                   className="w-full"
                   src={`/img/catalog/brand/${brand}.svg`}
