@@ -1,45 +1,33 @@
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { BreadCrumbContext } from '../context/BreadcrumbContext';
+
 function BreadCrumb() {
+  const { breadcrumb } = useContext(BreadCrumbContext);
+
+  if (!breadcrumb.length) {
+    return null;
+  }
   return (
     <nav className="mt-20 hidden w-full rounded-md text-sm lg:block">
       <ol className="list-reset flex">
-        <li>
-          <a
-            href="#"
-            className=" text-[#566879] transition duration-150 ease-in-out hover:text-gray-800"
-          >
-            Home
-          </a>
-        </li>
-        <li>
-          <span className="mx-2 text-neutral-500">/</span>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="text-[#566879] transition duration-150 ease-in-out hover:text-gray-800"
-          >
-            Catalog
-          </a>
-        </li>
-        <li>
-          <span className="mx-2 text-neutral-500 dark:text-neutral-400">/</span>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="text-[#566879] transition duration-150 ease-in-out hover:text-gray-800"
-          >
-            Car tires
-          </a>
-        </li>
-
-        <li>
-          <span className="mx-2 text-neutral-500">/</span>
-        </li>
-        <li className="text-[#566879] text-opacity-75">
-          {' '}
-          Winter car tire Toyo Observe Ice-Freezer 225/60 R17 103T
-        </li>
+        {breadcrumb.map((item, index) => (
+          <li key={index}>
+            <Link
+              to={item.path}
+              className={`text-[#566879] transition duration-150 ease-in-out ${
+                breadcrumb.length - 1 !== index
+                  ? 'hover:text-gray-900'
+                  : 'pointer-events-none text-opacity-75'
+              }`}
+            >
+              {item.name}
+            </Link>
+            {breadcrumb.length - 1 !== index && (
+              <span className="mx-2 text-neutral-500">/</span>
+            )}
+          </li>
+        ))}
       </ol>
     </nav>
   );
