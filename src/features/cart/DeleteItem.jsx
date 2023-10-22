@@ -1,9 +1,5 @@
-function DeleteItem() {
-  return (
-    <div>
-      
-    </div>
-  )
+function DeleteItem({ tyreId }) {
+  return <div></div>;
 }
 
-export default DeleteItem
+export default DeleteItem;

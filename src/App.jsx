@@ -4,7 +4,7 @@ import Product from './pages/ProductPage';
 import AppLayout from './ui/AppLayout';
 import CartPage from './pages/CartPage';
 import CatalogPage from './pages/CatalogPage';
-import CatalogPageMain from './pages/CatalogPageMain';
+import CatalogPageDetail from './pages/CatalogPageDetail';
 import SelectionByCarMark from './pages/SelectionByCarMark';
 import SelectionByCarMark2 from './pages/SelectionByCarMark2';
 import SelectionByCarMark3 from './pages/SelectionByCarMark3';
@@ -17,6 +17,7 @@ import AccountPage from './pages/AccountPage';
 import NewsPage from './pages/NewsPage';
 import NewsPageDetail from './pages/NewsPageDetail';
 import HomePage from './pages/HomePage';
+import { BreadCrumbProvider } from './context/BreadcrumbContext';
 
 const router = createBrowserRouter([
   {
@@ -40,11 +41,19 @@ const router = createBrowserRouter([
         element: <CatalogPage />,
       },
       {
-        path: '/catalog-main',
-        element: <CatalogPageMain />,
+        path: '/catalog/:catalogName',
+        element: <CatalogPageDetail />,
       },
       {
-        path: '/catalog-main/selection-mark',
+        path: '/assortiments',
+        element: <SelectionByCarSize />,
+      },
+      {
+        path: '/brands',
+        element: <SelectionByCarBrand />,
+      },
+      {
+        path: '/trademarks',
         element: <SelectionByCarMark />,
       },
       {
@@ -55,10 +64,7 @@ const router = createBrowserRouter([
         path: '/catalog-main/selection-mark3',
         element: <SelectionByCarMark3 />,
       },
-      {
-        path: '/catalog-main/selection-brand',
-        element: <SelectionByCarBrand />,
-      },
+
       {
         path: '/catalog-main/selection-brand2',
         element: <SelectionByCarBrand2 />,
@@ -66,10 +72,6 @@ const router = createBrowserRouter([
       {
         path: '/catalog-main/selection-brand3',
         element: <SelectionByCarBrand3 />,
-      },
-      {
-        path: '/catalog-main/selection-size',
-        element: <SelectionByCarSize />,
       },
       {
         path: '/auth',
@@ -84,7 +86,7 @@ const router = createBrowserRouter([
         element: <NewsPage />,
       },
       {
-        path: '/news/detail',
+        path: '/news/:newId',
         element: <NewsPageDetail />,
       },
     ],
@@ -92,7 +94,13 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <BreadCrumbProvider>
+        <RouterProvider router={router} />
+      </BreadCrumbProvider>
+    </>
+  );
 }
 
 export default App;

@@ -3,8 +3,13 @@ import {
   ShoppingBagIcon,
   UserIcon,
 } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getTotalCartPrice, getCart } from '../../features/cart/cartSlice';
 
 function HeaderActions() {
+  const totalPrice = useSelector(getTotalCartPrice);
+  const cart = useSelector(getCart);
   return (
     <div className="flex">
       <div className="border-l border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
@@ -18,8 +23,8 @@ function HeaderActions() {
         </a>
       </div>
       <div className="flow-root hover:bg-gray-400 hover:bg-opacity-20">
-        <a
-          href=""
+        <Link
+          to="/cart"
           className="group relative flex h-full items-center border-r border-gray-700 px-3"
         >
           <ShoppingBagIcon
@@ -27,17 +32,17 @@ function HeaderActions() {
             aria-hidden="true"
           />
           <span className="absolute left-5 top-2 ml-2 inline-block whitespace-nowrap rounded-full bg-red px-[0.50em] py-[0.35em] text-center align-baseline text-[0.60em] font-bold leading-none text-white md:top-4">
-            7
+            {cart.length}
           </span>
           <div className="hidden flex-col lg:flex">
             <span className="ml-2 text-xs font-medium text-gray-400 ">
               Price:
             </span>
             <span className="ml-2 text-xs font-extrabold text-white">
-              20 205 998 sum
+              {totalPrice} {totalPrice > 0 && '$'}
             </span>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   );
