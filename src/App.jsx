@@ -18,6 +18,7 @@ import NewsPage from './pages/NewsPage';
 import NewsPageDetail from './pages/NewsPageDetail';
 import HomePage from './pages/HomePage';
 import { BreadCrumbProvider } from './context/BreadcrumbContext';
+import OrderPage from './pages/OrderPage';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: '/trademarks',
         element: <SelectionByCarMark />,
+      },
+      {
+        path: '/order',
+        element: <OrderPage />,
       },
       {
         path: '/catalog-main/selection-mark2',

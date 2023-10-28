@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Button({ children, disabled, to, type, className, onClick }) {
   const base =
-    'flex h-[48px]  items-center justify-center rounded tracking-wide transition-colors duration-300 px-5 font-bold text-white disabled:cursor-not-allowed ' +
+    'flex sm:h-[50px] h-[45px]  items-center justify-center rounded tracking-wide transition-colors duration-300 px-5 font-bold text-white disabled:cursor-not-allowed ' +
     className;
 
   const styles = {

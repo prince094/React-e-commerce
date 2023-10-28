@@ -1,4 +1,4 @@
-function Input({ label, type, optional = false, onChange }) {
+function Textarea({ label, optional = false, onChange }) {
   return (
     <div className="mb-3">
       <label
@@ -8,14 +8,13 @@ function Input({ label, type, optional = false, onChange }) {
         {label}
         {!optional && <sup className=" text-red">*</sup>}
       </label>
-      <input
-        type={type}
-        className="h-[45px] w-full rounded border border-[#E2E9F2] bg-[#F8FAFD] px-2 pl-3 text-[16px] outline-none sm:h-[50px]"
+      <textarea
+        className="h-[110px] w-full rounded border border-[#E2E9F2] bg-[#F8FAFD] px-2 pl-3 text-[16px] outline-none"
         value={'1'}
         onChange={(e) => onChange(e.target.value)}
-      />
+      ></textarea>
     </div>
   );
 }
 
-export default Input;
+export default Textarea;
