@@ -16,7 +16,10 @@ function CartOverview() {
         >
           Continue shopping
         </button>
-        <button className="rounded  bg-[#15A524] px-6 py-2 text-white shadow-sm shadow-[#15a52371] sm:ml-3">
+        <button
+          onClick={() => navigate('../order')}
+          className="rounded  bg-[#15A524] px-6 py-2 text-white shadow-sm shadow-[#15a52371] sm:ml-3"
+        >
           Confirm order
         </button>
       </div>

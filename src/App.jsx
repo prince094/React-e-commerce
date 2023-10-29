@@ -17,6 +17,7 @@ import AccountPage from './pages/AccountPage';
 import NewsPage from './pages/NewsPage';
 import NewsPageDetail from './pages/NewsPageDetail';
 import HomePage from './pages/HomePage';
+import HomePage1 from './pages/HomePage-v1';
 import { BreadCrumbProvider } from './context/BreadcrumbContext';
 import OrderPage from './pages/OrderPage';
 
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: '/order',
         element: <OrderPage />,
+      },
+      {
+        path: '/home-v1',
+        element: <HomePage1 />,
       },
       {
         path: '/catalog-main/selection-mark2',

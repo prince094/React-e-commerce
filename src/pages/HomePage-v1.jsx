@@ -841,7 +841,7 @@ const Modal = () => {
   return (
     <>
       <div className="container mx-auto py-20">
-        {/* <button
+        <button
           ref={trigger}
           onClick={() => setModalOpen(true)}
           className={`bg-primary text-red-900 rounded-full px-6 py-3 text-base font-medium`}
@@ -854,7 +854,7 @@ const Modal = () => {
           className={`bg-primary text-red-900 rounded-full px-6 py-3 text-base font-medium`}
         >
           Open Modal 2
-        </button> */}
+        </button>
 
         <div
           className={`fixed left-0 top-0 z-30 hidden h-full min-h-screen w-full items-center justify-center bg-black bg-opacity-90 px-4 py-5  ${

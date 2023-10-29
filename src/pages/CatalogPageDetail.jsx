@@ -1,15 +1,12 @@
 import BreadCrumb from '../ui/BreadCrumb';
-import {
-  ChevronRightIcon,
-  EyeIcon,
-  PlusSmallIcon,
-} from '@heroicons/react/20/solid';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import Select from '../ui/Select';
 import Screen from '../hooks/useScreenSize';
 import CatalogFilter from '../features/catalog/CatalogFilter';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BreadCrumbContext } from '../context/BreadcrumbContext';
 import Product from '../features/product/Product';
+import ProductModal from '../features/product/ProductModal';
 
 const modelData = [
   '155/65R13',
@@ -185,15 +182,20 @@ const catalogTypes = [
 ];
 
 function CatalogPage() {
-  // const [rvalue, setRValue] = useState({ min: 0, max: 100 });
+  const [product, setProduct] = useState({});
+  const [openModal, setOpenModal] = useState(false);
 
   const { setBreadcrumb } = useContext(BreadCrumbContext);
+
+  function handleOpenModal(value) {
+    setProduct(value);
+    setOpenModal(true);
+  }
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setBreadcrumb([
           { path: '/', name: 'Home' },
           { path: '/catalog', name: 'Catalog' },
@@ -326,12 +328,21 @@ function CatalogPage() {
           <div className="flex-[75%]">
             <div className="flex flex-wrap">
               {products.map((product) => (
-                <Product key={product.id} product={product} />
+                <Product
+                  key={product.id}
+                  product={product}
+                  onClick={handleOpenModal}
+                />
               ))}
             </div>
           </div>
         </div>
       </div>
+      <ProductModal
+        product={product}
+        openModal={openModal}
+        onCloseModal={setOpenModal}
+      />
     </>
   );
 }

@@ -16,7 +16,7 @@ import {
   increaseItemQuantity,
 } from '../cart/cartSlice';
 
-function Product({ product }) {
+function Product({ product, onClick }) {
   const dispatch = useDispatch();
 
   const {
@@ -50,10 +50,13 @@ function Product({ product }) {
   return (
     <div
       key={id}
-      className="group relative flex min-h-full flex-[100%] cursor-pointer flex-col border-[0.5px] border-slate-300 bg-white p-3 sm:flex-[50%] md:flex-[33.333%]"
+      className="group relative flex min-h-full flex-[100%] flex-col border-[0.5px] border-slate-300 bg-white p-3 sm:flex-[50%] md:flex-[33.333%]"
     >
       {!soldOut && (
-        <div className=" absolute left-1/2 top-[80px] hidden h-[130px] w-[140px] -translate-x-1/2  flex-col items-center justify-center rounded-lg border-4  border-double border-blue-50 bg-gray-900 bg-opacity-50 shadow-lg lg:group-hover:flex ">
+        <div
+          onClick={() => onClick(product)}
+          className="absolute left-1/2 top-[80px] hidden h-[130px] w-[140px] -translate-x-1/2 cursor-pointer  flex-col items-center justify-center rounded-lg border-4  border-double border-blue-50 bg-gray-900 bg-opacity-50 shadow-lg lg:group-hover:flex "
+        >
           <EyeIcon className="h-8 w-8  text-white" />
           <span className="text-white">Quick view</span>
         </div>
@@ -79,8 +82,8 @@ function Product({ product }) {
       >
         {soldOut ? 'Not available' : 'In stock'}
       </span>
-      <h3 className="mt-2 flex-auto text-[15px] font-bold text-gray-700">
-        {product.name}
+      <h3 className="mt-2 flex-auto cursor-pointer text-[15px] font-bold text-gray-700">
+        {name}
       </h3>
       <p className=" my-3 h-[25px] w-[125px]">
         <img
