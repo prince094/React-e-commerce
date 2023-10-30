@@ -1,6 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Error from './ui/Error';
-import Product from './pages/ProductPage';
 import AppLayout from './ui/AppLayout';
 import CartPage from './pages/CartPage';
 import CatalogPage from './pages/CatalogPage';
@@ -20,6 +19,7 @@ import HomePage from './pages/HomePage';
 import HomePage1 from './pages/HomePage-v1';
 import { BreadCrumbProvider } from './context/BreadcrumbContext';
 import OrderPage from './pages/OrderPage';
+import ProductPage from './pages/ProductPage';
 
 const router = createBrowserRouter([
   {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/product',
-        element: <Product />,
+        element: <ProductPage />,
       },
       {
         path: '/catalog',
@@ -45,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: '/catalog/:catalogName',
         element: <CatalogPageDetail />,
+      },
+      {
+        path: '/catalog/:catalogName/:id',
+        element: <ProductPage />,
       },
       {
         path: '/assortiments',

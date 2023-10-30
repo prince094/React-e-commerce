@@ -6,7 +6,7 @@ import {
   MinusIcon,
 } from '@heroicons/react/24/outline';
 import { classNames } from '../../utils/helpers';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import UpdateItemQuantity from '../cart/UpdateItemQuantity';
 import {
@@ -18,6 +18,7 @@ import {
 
 function Product({ product, onClick }) {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const {
     id,
@@ -82,9 +83,12 @@ function Product({ product, onClick }) {
       >
         {soldOut ? 'Not available' : 'In stock'}
       </span>
-      <h3 className="mt-2 flex-auto cursor-pointer text-[15px] font-bold text-gray-700">
+      <Link
+        to={`${location.pathname}/${id}`}
+        className="mt-2 flex-auto cursor-pointer text-[15px] font-bold text-gray-700"
+      >
         {name}
-      </h3>
+      </Link>
       <p className=" my-3 h-[25px] w-[125px]">
         <img
           alt=""

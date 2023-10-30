@@ -11,11 +11,12 @@ import {
 } from '@heroicons/react/24/outline';
 import { classNames, formatCurrency } from '../../utils/helpers';
 import Button from '../../ui/Button';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function ProductModal({ product, openModal, onCloseModal }) {
   const modal = useRef(null);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const {
     id,
@@ -79,7 +80,6 @@ function ProductModal({ product, openModal, onCloseModal }) {
                   <div className="relative flex-[50%] border border-[#E2E9F2] py-8">
                     <p className="flex h-full items-center justify-center overflow-hidden ">
                       <img
-                        // src={`/img/01-big.png`}
                         src={`/img/0${imageSrc}.png`}
                         className="ml-16 w-[65%] object-cover object-center "
                         alt={imageAlt}
@@ -134,7 +134,7 @@ function ProductModal({ product, openModal, onCloseModal }) {
                           <ChevronDoubleDownIcon className="h-4 w-4 text-black" />
                         </button>
                         <Link
-                          to={`/catalog/cargo/${id}`}
+                          to={`${location.pathname}/${id}`}
                           className=" ml-3 border-b-[2px] border-dashed"
                         >
                           All characteristics
@@ -205,7 +205,7 @@ function ProductModal({ product, openModal, onCloseModal }) {
                     <UpdateItemQuantity
                       tyreId={id}
                       currentQuantity={currentQuantity}
-                      color={'white'}
+                      size={'big'}
                     />
                   )}
                 </div>

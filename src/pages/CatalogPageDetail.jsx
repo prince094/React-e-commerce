@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from 'react';
 import { BreadCrumbContext } from '../context/BreadcrumbContext';
 import Product from '../features/product/Product';
 import ProductModal from '../features/product/ProductModal';
+import products from '../data/data-products.json';
 
 const modelData = [
   '155/65R13',
@@ -48,86 +49,7 @@ const sort = [
     name: 'New test',
   },
 ];
-const products = [
-  {
-    id: 1,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '1',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '45',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['summer', 'winter'],
-    views: 12,
-    brandSrc: 'contyre', // should be like 'url//
-  },
-  {
-    id: 143,
-    name: 'Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '2',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '60',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['studded', 'winter'],
-    views: 30,
-    brandSrc: 'dayton',
-  },
-  {
-    id: 112,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '3',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '35',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['no-studded', 'summer'],
-    views: 12,
-    brandSrc: 'falken',
-  },
-  {
-    id: 1765,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '1',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '45',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['all-seasons', 'no-studded'],
-    views: 12,
-    brandSrc: 'firelli',
-  },
-  {
-    id: 1435,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '3',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '60',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['studded', 'winter'],
-    views: 12,
-    brandSrc: 'firemax',
-  },
-  {
-    id: 11342,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '3',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '35',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['no-studded'],
-    views: 12,
-    brandSrc: 'odyking',
-  },
-];
+
 const catalogTypes = [
   {
     id: 32651,

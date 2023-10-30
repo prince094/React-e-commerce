@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T",
+    "imageSrc": 1,
+    "imageAlt": "Front of men's Basic Tee in black.",
+    "unitPrice": 45,
+    "color": "Black",
+    "soldOut": false,
+    "seasonTypes": ["summer", "winter"],
+    "views": 12,
+    "brandSrc": "contyre"
+  },
+  {
+    "id": 143,
+    "name": "Alpine Plus 175/70 R13 82T",
+    "imageSrc": 2,
+    "imageAlt": "Front of men's Basic Tee in black.",
+    "unitPrice": 60,
+    "color": "Black",
+    "soldOut": false,
+    "seasonTypes": ["studded", "winter"],
+    "views": 30,
+    "brandSrc": "dayton"
+  },
+  {
+    "id": 112,
+    "name": "Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T",
+    "imageSrc": 3,
+    "imageAlt": "Front of men's Basic Tee in black.",
+    "unitPrice": 35,
+    "color": "Black",
+    "soldOut": false,
+    "seasonTypes": ["no-studded", "summer"],
+    "views": 12,
+    "brandSrc": "falken"
+  },
+  {
+    "id": 1765,
+    "name": "Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T",
+    "imageSrc": 1,
+    "imageAlt": "Front of men's Basic Tee in black.",
+    "unitPrice": 45,
+    "color": "Black",
+    "soldOut": false,
+    "seasonTypes": ["all-seasons", "no-studded"],
+    "views": 12,
+    "brandSrc": "firelli"
+  },
+  {
+    "id": 1435,
+    "name": "Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T",
+    "imageSrc": 3,
+    "imageAlt": "Front of men's Basic Tee in black.",
+    "unitPrice": 60,
+    "color": "Black",
+    "soldOut": false,
+    "seasonTypes": ["studded", "winter"],
+    "views": 12,
+    "brandSrc": "firemax"
+  },
+  {
+    "id": 11342,
+    "name": "Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T",
+    "imageSrc": 3,
+    "imageAlt": "Front of men's Basic Tee in black.",
+    "unitPrice": 35,
+    "color": "Black",
+    "soldOut": false,
+    "seasonTypes": ["no-studded"],
+    "views": 12,
+    "brandSrc": "odyking"
+  }
+]
