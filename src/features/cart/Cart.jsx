@@ -1,14 +1,15 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import Screen from '../../hooks/useScreenSize';
 import CartItem from './CartItem';
-import { getCart } from './cartSlice';
+import { clearCart, getCart } from './cartSlice';
 import EmptyCart from './EmptyCart';
 import CartOverview from './CartOverview';
 import CartItemMobile from './CartItemMobile';
 
 function Cart() {
   const cart = useSelector(getCart);
+  const dispatch = useDispatch();
 
   if (!cart.length) return <EmptyCart />;
 
@@ -22,7 +23,10 @@ function Cart() {
           <button className="px-3 py-2 text-sm text-[#566879] md:px-5 md:text-base">
             Deferred <span className="text-[#E31E24]">(5)</span>
           </button>
-          <button className="border-[rgba(0, 0, 0, 0.10)] mr-3 flex items-center rounded border px-3 py-[7px] text-sm text-black md:px-5 md:text-base">
+          <button
+            onClick={() => dispatch(clearCart())}
+            className="border-[rgba(0, 0, 0, 0.10)] mr-3 flex items-center rounded border px-3 py-[7px] text-sm text-black md:px-5 md:text-base"
+          >
             <XMarkIcon className="mr-1 h-5 w-5 text-black" />
             <span>Clear</span>
           </button>

@@ -1,3 +1,5 @@
+import Button from '../../ui/Button';
+
 function EmptyCart() {
   return (
     <div className="mt-3 flex flex-col items-center rounded border border-[#F5F8FC] bg-[#F5F8FC] px-3 pb-7 pt-6 text-center sm:pb-16 sm:pt-12">
@@ -11,12 +13,12 @@ function EmptyCart() {
         Start choosing products from our catalog
       </p>
       <div className="flex flex-col sm:flex-row">
-        <button className="mb-2 min-w-[220px] rounded bg-[#E31E24] px-6 py-2 font-medium text-white sm:mb-0">
-          To home
-        </button>
-        <button className="min-w-[220px] rounded border border-gray-200 bg-white px-6 py-2 font-medium text-[#566879] sm:ml-3">
-          Purchase history
-        </button>
+        <Button to={'/'} type={'danger'} className={'mb-2 w-[220px] sm:mb-0'}>
+          To main
+        </Button>
+        <Button to={'/catalog'} type={'info'} className={'w-[220px] sm:ml-3 '}>
+          To catalog
+        </Button>
       </div>
     </div>
   );

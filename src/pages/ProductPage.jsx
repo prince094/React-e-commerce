@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import BreadCrumb from '../ui/BreadCrumb';
 import {
   HeartIcon,
@@ -9,6 +9,15 @@ import {
 import { Swiper } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { SwiperSlide } from 'swiper/react';
+import Button from '../ui/Button';
+import UpdateItemQuantity from '../features/cart/UpdateItemQuantity';
+import { useSelector, useDispatch } from 'react-redux';
+import { addItem, getCurrentQuantityById } from '../features/cart/cartSlice';
+import ContentTitle from '../ui/ContentTitle';
+import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { useLocation, useParams } from 'react-router-dom';
+import products from '../data/data-products.json';
+import { classNames, formatCurrency } from '../utils/helpers';
 
 const slides = [
   'https://picsum.photos/1920/1080',
@@ -20,9 +29,43 @@ const slides = [
 
 function ProductPage() {
   const [open, setOpen] = useState('desc');
+  const [product, setProduct] = useState({});
+  const [image, setImage] = useState('');
+  const dispatch = useDispatch();
+  const params = useParams();
+
+  const { setBreadcrumb } = useContext(BreadCrumbContext);
 
   function handleTabOpen(tabCategory) {
     setOpen(tabCategory);
+  }
+
+  const {
+    id,
+    name,
+    imageSrc,
+    imageAlt,
+    brandSrc,
+    unitPrice,
+    color,
+    soldOut,
+    seasonTypes,
+    views,
+  } = product;
+
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
+  const isInCart = currentQuantity > 0;
+
+  function handleAddToCart() {
+    const newItem = {
+      tyreId: id,
+      name,
+      imageSrc,
+      quantity: 1,
+      unitPrice,
+      totalPrice: unitPrice * 1,
+    };
+    dispatch(addItem(newItem));
   }
 
   const products = [
@@ -63,15 +106,34 @@ function ProductPage() {
     },
   ];
 
+  useEffect(() => {
+    fetch('../../src/data/data-products.json')
+      .then((response) => response.json())
+      .then((data) => {
+        // todo: like shinline breadcrumb
+        const result = data.find((f) => f.id === Number(params.id));
+        setProduct(result);
+        setBreadcrumb([
+          { path: '/', name: 'Home' },
+          { path: '/catalog', name: 'Catalog' },
+          { path: '/industrial', name: 'Catalog' },
+        ]);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (imageSrc) {
+      setImage(imageSrc[0]);
+    }
+  }, [imageSrc]);
+
+  if (!Object.keys(product).length) return;
+
   return (
     <>
       <BreadCrumb />
-      <div className="my-4 flex flex-col justify-between lg:flex-row lg:items-end">
-        <h2 className="mb-2 text-[18px] font-bold leading-tight tracking-tight text-gray-800 sm:mb-0 sm:text-2xl md:max-w-[80%] md:text-3xl ">
-          Легковая шина зимняя Hankook Ice-Freezer 225/60 R17 103T в Казахстане
-        </h2>
-        <span className="text-[12px] text-[#566879]">Артикул: 00000017910</span>
-      </div>
+      <ContentTitle title={name} />
+      <span className="text-[12px] text-[#566879]">Артикул: 00000017910</span>
 
       <div className="mx-auto mt-6 bg-white">
         <div className="flex flex-col lg:flex-row">
@@ -84,57 +146,50 @@ function ProductPage() {
                   Car
                 </span>
               </div>
-              <div className="flex w-full items-center justify-center border-r-[1px]  border-[#E2E9F2]">
-                <img
-                  className="w-5 sm:w-[unset]"
-                  src="/img/winter.svg"
-                  alt=""
-                />
-                <span className="ml-3 text-sm sm:ml-[15px] sm:text-[16px]">
-                  Winter
-                </span>
-              </div>
-              <div className="flex w-full items-center justify-center   border-[#E2E9F2]">
-                <img
-                  className="w-5 sm:w-[unset]"
-                  src="/img/shipovniy.svg"
-                  alt=""
-                />
-                <span className="ml-3 text-sm sm:ml-[15px] sm:text-[16px] ">
-                  Shipovniy
-                </span>
-              </div>
+              {seasonTypes.map((type, index) => (
+                <div
+                  key={type}
+                  className={classNames(
+                    index === 0 ? 'border-r-[1px]' : '',
+                    'flex w-full items-center justify-center border-[#E2E9F2]'
+                  )}
+                >
+                  <img
+                    className="h-[25px] w-[25px] object-cover object-center"
+                    src={`/img/${type}.svg`}
+                    alt=""
+                  />
+                  <span className="ml-3 text-sm capitalize sm:ml-[15px] sm:text-[16px]">
+                    {type}
+                  </span>
+                </div>
+              ))}
             </div>
             <div className="relative flex-[50%] border border-[#E2E9F2] sm:h-[605px] ">
               <p className="flex h-full items-center justify-center overflow-hidden py-5">
                 <img
-                  src="/public/img/01-big.png"
                   className="ml-14 w-[95%] object-cover object-center sm:w-[70%] lg:ml-20 "
-                  alt=""
+                  src={image}
+                  alt={imageAlt}
                 />
               </p>
-              <div className="absolute left-1 top-1 sm:left-6 sm:top-6">
-                <p className="is-active is-active:border-[#15A524] mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524] sm:mb-2 sm:h-20 sm:w-20">
-                  <img
-                    src="/public/img/01.png"
-                    className="h-full w-full object-cover object-center"
-                    alt=""
-                  />
-                </p>
-                <p className=" is-active:border-[#15A524] mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524] sm:mb-2 sm:h-20 sm:w-20">
-                  <img
-                    src="/public/img/shina-min1.png"
-                    className="h-full w-full object-cover object-center"
-                    alt=""
-                  />
-                </p>
-                <p className="is-active:border-[#15A524] mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524] sm:mb-2 sm:h-20 sm:w-20">
-                  <img
-                    src="/public/img/shina-min2.png"
-                    className="h-full w-full object-cover object-center"
-                    alt=""
-                  />
-                </p>
+              <div className=" absolute left-1 top-1 sm:left-6 sm:top-6">
+                {imageSrc.map((item) => (
+                  <p
+                    key={item}
+                    className={classNames(
+                      image === item ? 'border-[#15A524]' : '',
+                      'mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524]  sm:mb-2 sm:h-20 sm:w-20'
+                    )}
+                    onClick={() => setImage(item)}
+                  >
+                    <img
+                      src={item}
+                      className="h-full w-full object-cover object-center"
+                      alt=""
+                    />
+                  </p>
+                ))}
               </div>
             </div>
 
@@ -178,10 +233,14 @@ function ProductPage() {
           <div className="flex flex-[50%] flex-col border-b border-l border-r border-[#E2E9F2] sm:border-l-0">
             <div className="flex h-[50px] border-[#E2E9F2] sm:border-t">
               <div className="flex flex-[85%] items-center justify-between px-4 sm:flex-[67%] sm:px-7 ">
-                <p className="text-sm">
-                  Reviews <span className="-ml-1 text-[#566879] ">(12)</span>
+                <p className="">
+                  Reviews <span className=" text-[#566879] ">(12)</span>
                 </p>
-                <img width="150" src="/img/brand-tire.svg" alt="" />
+                <img
+                  width="150"
+                  src={`/img/catalog/brand/${brandSrc}.svg`}
+                  alt=""
+                />
               </div>
               <div className="flex flex-[15%] cursor-pointer items-center justify-center border-l-[1px] border-[#E2E9F2]  bg-[#F8FAFD]  sm:flex-[33%]">
                 <HeartIcon className="h-6 w-6 text-gray-500" />
@@ -194,30 +253,24 @@ function ProductPage() {
             <div className="relative  border-b border-t border-[#E2E9F2] bg-[#F8FAFD] p-5 sm:p-7">
               <div className="mb-8 flex items-center justify-between">
                 <h2 className="text-[24px] font-extrabold sm:text-[28px]">
-                  $46,00
+                  {formatCurrency(unitPrice)}
                 </h2>
               </div>
-              <div className="flex">
-                <div className="flex h-[48px] w-[130px] items-center justify-between rounded bg-white p-1">
-                  <button className=" flex h-[43px] w-[36px] items-center justify-center rounded-l-[5px] bg-[#F1F3F4] font-semibold">
-                    <span>-</span>
-                  </button>
-                  <input
-                    type="text"
-                    className="h-[32px] w-[35px] rounded  bg-gray-100 bg-transparent px-2 pl-3 text-[18px] outline-none"
-                    value={'1'}
-                    onChange={(e) => e.target.value}
+              <div className="flex h-[45px]">
+                {!isInCart ? (
+                  <Button onClick={handleAddToCart} type={'success'}>
+                    <ShoppingCartIcon className="h-5 w-5 font-bold text-white" />
+                    <span className="ml-2 whitespace-nowrap text-base">
+                      Add to cart
+                    </span>
+                  </Button>
+                ) : (
+                  <UpdateItemQuantity
+                    tyreId={id}
+                    currentQuantity={currentQuantity}
+                    size={'big'}
                   />
-                  <button className=" flex h-[43px] w-[36px] items-center justify-center rounded-r-[5px] bg-[#F1F3F4] font-semibold">
-                    <span>+</span>
-                  </button>
-                </div>
-                <button className="ml-4 flex h-[48px] items-center justify-center rounded bg-[#15A524] px-5 py-2 text-xs font-medium  leading-normal text-white">
-                  <ShoppingCartIcon className="text-bold h-6 w-6 text-white" />
-                  <span className="ml-2 text-[14px] sm:ml-3 sm:text-[17px]">
-                    Add to cart
-                  </span>
-                </button>
+                )}
               </div>
             </div>
 

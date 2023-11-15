@@ -1,15 +1,13 @@
 import BreadCrumb from '../ui/BreadCrumb';
-import {
-  ChevronRightIcon,
-  EyeIcon,
-  PlusSmallIcon,
-} from '@heroicons/react/20/solid';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import Select from '../ui/Select';
 import Screen from '../hooks/useScreenSize';
 import CatalogFilter from '../features/catalog/CatalogFilter';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BreadCrumbContext } from '../context/BreadcrumbContext';
 import Product from '../features/product/Product';
+import ProductModal from '../features/product/ProductModal';
+import products from '../data/data-products.json';
 
 const modelData = [
   '155/65R13',
@@ -51,86 +49,7 @@ const sort = [
     name: 'New test',
   },
 ];
-const products = [
-  {
-    id: 1,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '1',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '45',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['summer', 'winter'],
-    views: 12,
-    brandSrc: 'contyre', // should be like 'url//
-  },
-  {
-    id: 143,
-    name: 'Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '2',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '60',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['studded', 'winter'],
-    views: 30,
-    brandSrc: 'dayton',
-  },
-  {
-    id: 112,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '3',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '35',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['no-studded', 'summer'],
-    views: 12,
-    brandSrc: 'falken',
-  },
-  {
-    id: 1765,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '1',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '45',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['all-seasons', 'no-studded'],
-    views: 12,
-    brandSrc: 'firelli',
-  },
-  {
-    id: 1435,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '3',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '60',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['studded', 'winter'],
-    views: 12,
-    brandSrc: 'firemax',
-  },
-  {
-    id: 11342,
-    name: 'Winter tires Sailun Ice Blazer Alpine Plus 175/70 R13 82T',
-    href: '#',
-    imageSrc: '3',
-    imageAlt: "Front of men's Basic Tee in black.",
-    unitPrice: '35',
-    color: 'Black',
-    soldOut: false,
-    seasonTypes: ['no-studded'],
-    views: 12,
-    brandSrc: 'odyking',
-  },
-];
+
 const catalogTypes = [
   {
     id: 32651,
@@ -185,15 +104,20 @@ const catalogTypes = [
 ];
 
 function CatalogPage() {
-  // const [rvalue, setRValue] = useState({ min: 0, max: 100 });
+  const [product, setProduct] = useState({});
+  const [openModal, setOpenModal] = useState(false);
 
   const { setBreadcrumb } = useContext(BreadCrumbContext);
+
+  function handleOpenModal(value) {
+    setProduct(value);
+    setOpenModal(true);
+  }
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setBreadcrumb([
           { path: '/', name: 'Home' },
           { path: '/catalog', name: 'Catalog' },
@@ -326,12 +250,21 @@ function CatalogPage() {
           <div className="flex-[75%]">
             <div className="flex flex-wrap">
               {products.map((product) => (
-                <Product key={product.id} product={product} />
+                <Product
+                  key={product.id}
+                  product={product}
+                  onClick={handleOpenModal}
+                />
               ))}
             </div>
           </div>
         </div>
       </div>
+      <ProductModal
+        product={product}
+        openModal={openModal}
+        onCloseModal={setOpenModal}
+      />
     </>
   );
 }
