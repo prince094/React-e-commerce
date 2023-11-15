@@ -30,6 +30,7 @@ const slides = [
 function ProductPage() {
   const [open, setOpen] = useState('desc');
   const [product, setProduct] = useState({});
+  const [image, setImage] = useState('');
   const dispatch = useDispatch();
   const params = useParams();
 
@@ -120,6 +121,12 @@ function ProductPage() {
       });
   }, []);
 
+  useEffect(() => {
+    if (imageSrc) {
+      setImage(imageSrc[0]);
+    }
+  }, [imageSrc]);
+
   if (!Object.keys(product).length) return;
 
   return (
@@ -162,32 +169,27 @@ function ProductPage() {
               <p className="flex h-full items-center justify-center overflow-hidden py-5">
                 <img
                   className="ml-14 w-[95%] object-cover object-center sm:w-[70%] lg:ml-20 "
-                  src={`/img/0${imageSrc}.png`}
+                  src={image}
                   alt={imageAlt}
                 />
               </p>
-              <div className="absolute left-1 top-1 sm:left-6 sm:top-6">
-                <p className="is-active is-active:border-[#15A524] mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524] sm:mb-2 sm:h-20 sm:w-20">
-                  <img
-                    src="/public/img/01.png"
-                    className="h-full w-full object-cover object-center"
-                    alt=""
-                  />
-                </p>
-                <p className=" is-active:border-[#15A524] mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524] sm:mb-2 sm:h-20 sm:w-20">
-                  <img
-                    src="/public/img/shina-min1.png"
-                    className="h-full w-full object-cover object-center"
-                    alt=""
-                  />
-                </p>
-                <p className="is-active:border-[#15A524] mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524] sm:mb-2 sm:h-20 sm:w-20">
-                  <img
-                    src="/public/img/shina-min2.png"
-                    className="h-full w-full object-cover object-center"
-                    alt=""
-                  />
-                </p>
+              <div className=" absolute left-1 top-1 sm:left-6 sm:top-6">
+                {imageSrc.map((item) => (
+                  <p
+                    key={item}
+                    className={classNames(
+                      image === item ? 'border-[#15A524]' : '',
+                      'mb-1 h-16 w-16 cursor-pointer border bg-white p-2 transition-all hover:border-[#15A524]  sm:mb-2 sm:h-20 sm:w-20'
+                    )}
+                    onClick={() => setImage(item)}
+                  >
+                    <img
+                      src={item}
+                      className="h-full w-full object-cover object-center"
+                      alt=""
+                    />
+                  </p>
+                ))}
               </div>
             </div>
 
