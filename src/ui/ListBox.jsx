@@ -1,24 +1,27 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronUpDownIcon,
+} from '@heroicons/react/20/solid';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Select({ options, value, type, onChange, label }) {
+export default function ListBox({ options, value, onChange }) {
   return (
-    <Listbox value={value} onChange={(e) => onChange(type, e)}>
+    <Listbox value={value} onChange={onChange}>
       {({ open }) => (
         <>
           <div className="relative w-full">
-            <Listbox.Button className=" relative h-[64px] w-full cursor-pointer overflow-hidden rounded  bg-white pl-[14px] pr-8 text-left text-[#191717] focus:outline-none sm:text-sm sm:leading-6">
-              <p className="flex flex-col truncate text-sm sm:text-base">
-                <span className="text-[13px] text-[#566879]">{label}</span>
-                <span className="truncate font-semibold">{value}</span>
+            <Listbox.Button className="relative h-[50px] w-full cursor-pointer overflow-hidden rounded border border-[#E2E9F2] bg-white pl-5 pr-10 text-left text-[#191717] focus:outline-none sm:w-[290px] sm:text-sm sm:leading-6">
+              <p className=" flex flex-col truncate text-sm sm:text-base">
+                <span className="truncate font-semibold">{value.name}</span>
               </p>
               <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                <ChevronDownIcon className="h-5 w-5 text-[#191717]" />
+                <ChevronDownIcon className={`h-6 w-6 text-[#191717]`} />
               </span>
             </Listbox.Button>
             <Transition
@@ -31,21 +34,21 @@ export default function Select({ options, value, type, onChange, label }) {
               <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white px-2 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 {options.map((item) => (
                   <Listbox.Option
-                    key={item.value}
+                    key={item.id}
                     className={({ selected, active }) =>
                       classNames(
                         active || selected
                           ? 'bg-[#F5F8FC] text-black'
                           : 'text-[#566879]',
-                        'relative cursor-pointer select-none rounded py-3 pl-[6px] pr-5 font-normal'
+                        'relative cursor-pointer select-none rounded py-3 pl-3 pr-9 font-normal'
                       )
                     }
-                    value={item.value}
+                    value={item}
                   >
                     {({ selected, active }) => (
                       <>
                         <div className="flex items-center text-sm sm:text-base">
-                          <span>{item.label}</span>
+                          <span>{item.name}</span>
                         </div>
                       </>
                     )}

@@ -67,7 +67,7 @@ function Product({ product, onClick }) {
       </Link>
       <div className="max-h-[270px] min-h-[270px] w-full overflow-hidden rounded-md bg-white px-7 pb-6 pt-12 ">
         <img
-          src={`/img/0${imageSrc}.png`}
+          src={imageSrc[0]}
           alt={imageAlt}
           className={classNames(
             soldOut ? 'opacity-70 grayscale' : '',
