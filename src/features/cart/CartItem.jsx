@@ -15,7 +15,7 @@ function CartItem({ item }) {
           <p className="w-[90px] rounded border border-[#EEE] p-2">
             <img
               className="w-full object-cover object-center"
-              src={`/img/0${imageSrc}.png`}
+              src={imageSrc[0]}
               alt={imageSrc}
             />
           </p>

@@ -69,72 +69,41 @@ function CatalogFilter() {
   }
   return (
     <div className="hidden max-w-[25%] overflow-hidden lg:block lg:flex-[25%]">
-      {/* 111 */}
-      <div
-        className={classNames(
-          isOpenAcc ? '' : 'max-h-[72px] overflow-hidden',
-          'mb-2 cursor-pointer rounded bg-[#F5F8FC] px-5 py-6'
-        )}
-      >
-        <div
-          className="flex w-full items-center justify-between"
-          onClick={handleAccardion}
-        >
-          <p className="text-lg font-medium">Settings</p>
-          <ChevronDownIcon className="h-7 w-7 text-black" />
-        </div>
+      <Accordion isOpen={isOpenAcc} label={'Setting'} onClick={handleAccardion}>
         <div className="mt-5">
           <div className="mb-[5px]">
             <Select
-              width={'100%'}
-              height={'64px'}
-              border={false}
-              subselect={true}
-              subselectText={'Width'}
-              iconSize={'5'}
-              dataSource={catalogTypes}
+              label={'Width'}
+              value={catalogTypes[0]}
+              options={catalogTypes}
+              onChange={() => {}}
             />
           </div>
           <div className="flex gap-[5px]">
             <div className="max-w-[50%]">
               <Select
-                width={'100%'}
-                height={'64px'}
-                border={false}
-                subselect={true}
-                subselectText={'Profile'}
-                iconSize={'5'}
-                dataSource={catalogTypes}
+                label={'Profile'}
+                value={catalogTypes[0]}
+                options={catalogTypes}
+                onChange={() => {}}
               />
             </div>
             <div className="max-w-[50%]">
               <Select
-                width={'100%'}
-                height={'64px'}
-                border={false}
-                subselect={true}
-                subselectText={'Diameter (R)'}
-                iconSize={'5'}
-                dataSource={catalogTypes}
+                label={'Diameter (R)'}
+                value={catalogTypes[0]}
+                options={catalogTypes}
+                onChange={() => {}}
               />
             </div>
           </div>
         </div>
-      </div>
-      {/* 222 */}
-      <div
-        className={classNames(
-          false ? '' : '',
-          'cursor-pointer rounded bg-[#F5F8FC] px-5 py-6'
-        )}
+      </Accordion>
+      <Accordion
+        isOpen={isOpenAcc}
+        label={'Seasonality'}
+        onClick={handleAccardion}
       >
-        <div
-          className="flex w-full items-center justify-between"
-          onClick={handleAccardion}
-        >
-          <p className="text-lg font-medium">Seasonality</p>
-          <ChevronDownIcon className="h-7 w-7 text-black" />
-        </div>
         <div className="mt-5">
           <div className="">
             <div className="active is-active flex items-center rounded border border-transparent bg-white px-4 py-[10px] transition-all hover:border-[#E2E9F2] active:border-[#15A524] [&.is-active]:border-[#15A524]">
@@ -244,21 +213,8 @@ function CatalogFilter() {
             </p>
           </div>
         </div>
-      </div>
-      {/* 333 */}
-      <div
-        className={classNames(
-          false ? '' : '',
-          'cursor-pointer rounded border-t border-[#E2E9F2] bg-[#F5F8FC] px-5 py-6'
-        )}
-      >
-        <div
-          className="flex w-full items-center justify-between"
-          onClick={handleAccardion}
-        >
-          <p className="text-lg font-medium">Price</p>
-          <ChevronDownIcon className="h-7 w-7 text-black" />
-        </div>
+      </Accordion>
+      <Accordion isOpen={isOpenAcc} label={'Price'} onClick={handleAccardion}>
         <div className="mt-5">
           <div className="flex h-[70px] items-center rounded bg-white py-2">
             <div className="flex">
@@ -282,11 +238,30 @@ function CatalogFilter() {
               </div>
             </div>
           </div>
-          {/* range */}
         </div>
-      </div>
+      </Accordion>
     </div>
   );
 }
 
 export default CatalogFilter;
+
+function Accordion({ children, label, isOpen, onClick }) {
+  return (
+    <div
+      className={classNames(
+        isOpen ? '' : 'max-h-[72px] overflow-hidden',
+        'mb-2 cursor-pointer rounded bg-[#F5F8FC] px-5 pb-5'
+      )}
+    >
+      <div
+        className="flex w-full items-center justify-between pb-2 pt-[22px]"
+        onClick={() => onClick()}
+      >
+        <p className="text-lg font-medium">{label}</p>
+        <ChevronDownIcon className="h-7 w-7 text-black" />
+      </div>
+      {children}
+    </div>
+  );
+}

@@ -8,6 +8,7 @@ import { BreadCrumbContext } from '../context/BreadcrumbContext';
 import Product from '../features/product/Product';
 import ProductModal from '../features/product/ProductModal';
 import products from '../data/data-products.json';
+import ListBox from '../ui/ListBox';
 
 const modelData = [
   '155/65R13',
@@ -233,9 +234,11 @@ function CatalogPage() {
             <hr className="mr-[30px] hidden h-[40px] w-[1px] bg-[#E2E9F2] lg:inline" />
             <span className="mr-4 hidden lg:inline">Sort:</span>
             <div className="flex w-full justify-between">
-              <Select
-                width={Screen(768) ? '100%' : '290px'}
-                dataSource={sort}
+              <ListBox
+                // width={Screen(768) ? '100%' : '290px'}
+                value={sort[0]}
+                options={sort}
+                onChange={() => {}}
               />
               <div className="ml-1 flex h-[50px] min-w-[50px] items-center justify-center rounded bg-[#F5F8FC] lg:hidden">
                 <img src="/img/catalog/filter-03.svg" alt="" />
