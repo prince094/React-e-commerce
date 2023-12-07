@@ -1,9 +1,28 @@
-import { useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import BreadCrumb from '../ui/BreadCrumb';
-import Input from '../ui/Input';
+import Input from "../ui/Input.tsx";
 
-function RegistrationPage() {
+type RegisterProps = {
+  onRegister: (login: string, fio: string, email: string) => void;
+}
+
+function RegistrationPage({onRegister}: RegisterProps) {
   const [input, setInput] = useState('');
+
+  const login = useRef<HTMLInputElement>(null)
+  const fio = useRef<HTMLInputElement>(null)
+  const email = useRef<HTMLInputElement>(null)
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const enteredLogin = login.current!.value;
+    const enteredFIO = login.current!.value;
+    const enteredEmail = login.current!.value;
+
+    event.currentTarget.reset();
+    onRegister(enteredLogin, enteredFIO, enteredEmail)
+  }
   return (
     <div className="py-5">
       <BreadCrumb />
@@ -13,18 +32,18 @@ function RegistrationPage() {
       <h2 className="mt-4 text-[22px] font-semibold leading-tight tracking-tight text-gray-800 sm:mb-0 sm:text-2xl md:text-3xl ">
         Password recovery
       </h2>
-
+ 
       {/* form */}
-      <form action="" className="mt-6 hidden rounded bg-[#F5F8FC] p-4 sm:p-10">
+      <form onSubmit={handleSubmit} className="mt-6  rounded bg-[#F5F8FC] p-4 sm:p-10">
         <div className=" flex  items-center">
           <div className=" mr-10 flex-shrink-0 flex-grow-0 basis-full sm:basis-1/2">
-            <Input label={'Login'} type={'text'} onChange={setInput} />
+            <Input ref={login} id={'login'} label="Login" type="text" onChange={setInput} />
           </div>
           <p></p>
         </div>
         <div className=" flex  items-center">
           <div className=" mr-10 flex-shrink-0 flex-grow-0 basis-full sm:basis-1/2">
-            <Input label={'FIO'} type={'text'} onChange={setInput} />
+            <Input ref={fio} id={'fio'} label="FIO" type="text" onChange={setInput} />
           </div>
           <p className="mt-3 hidden text-extragray sm:block">
             Fill out so we know how to contact you.
@@ -32,7 +51,7 @@ function RegistrationPage() {
         </div>
         <div className=" flex  items-center">
           <div className=" mr-10 flex-shrink-0 flex-grow-0 basis-full sm:basis-1/2">
-            <Input label={'E-mail'} type={'text'} onChange={setInput} />
+            <Input ref={email} label={'E-mail'} type={'text'} onChange={setInput} />
           </div>
           <p className="mt-3 hidden text-extragray sm:block">
             To send order status notifications. Use as login for login to your

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 function FilterBySeasonSubContent() {
@@ -25,11 +24,7 @@ function FilterBySeasonSubContent() {
     }
   }
 
-  useEffect(() => {
-    if (!searchParams.get('seasonly')) {
-      searchParams.delete('seasonly');
-    }
-  }, [searchParams]);
+  // todo make sub filters for winter season
 
   return (
     <div className="my-4 px-5">
@@ -42,6 +37,7 @@ function FilterBySeasonSubContent() {
           className="mb-3 flex cursor-pointer select-none items-center"
         >
           <input
+            disabled
             type="checkbox"
             checked={searchParams.getAll('seasonly').includes(item.value)}
             value={item.value}

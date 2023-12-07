@@ -5,11 +5,20 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { useEffect, useState } from 'react';
-import NewItem from './NewItem';
-import Button from '../../ui/Button';
+import NewItem from './NewItem.tsx';
+import Button from '../../ui/Button.tsx';
+
+type NewsState = {
+  id: number;
+  title: string;
+  date: string;
+  view: number;
+  description: string;
+  imgUrl: string;
+};
 
 function News() {
-  const [news, setNews] = useState([]);
+  const [news, setNews] = useState<NewsState[]>([]);
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')
@@ -25,7 +34,13 @@ function News() {
         <h2 className="text-[22px] font-bold tracking-tight text-gray-900 md:text-[30px]">
           News
         </h2>
-        <Button type="danger" to={'/news'}>
+        <Button
+          type="danger"
+          to={'/news'}
+          disabled={false}
+          className={''}
+          onClick={undefined}
+        >
           All news
         </Button>
       </div>
@@ -50,8 +65,8 @@ function News() {
           },
         }}
       >
-        {news.map((item) => (
-          <SwiperSlide key={item.id}>
+        {news.map((item, index) => (
+          <SwiperSlide key={index}>
             <NewItem item={item} />
           </SwiperSlide>
         ))}

@@ -1,7 +1,7 @@
 import { CalendarDaysIcon, EyeIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 
-function NewItem({ item }) {
+function NewItem({ item }: any) {
   return (
     <Link
       to={`/news/${item.id}`}
