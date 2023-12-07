@@ -1,11 +1,22 @@
+import { type PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 
-function Button({ children, disabled, to, type, className, onClick }) {
+type ButtonProps = PropsWithChildren<{
+  disabled: boolean;
+  to: string;
+  type: string;
+  className: string;
+  onClick: any;
+}>;
+
+// const Button: FC<ButtonProps> = ({children, disabled, ..}) => {}
+
+function Button({ children, disabled, to, type, className }: ButtonProps) {
   const base =
     'flex sm:h-[50px] h-[45px]  items-center justify-center rounded tracking-wide transition-colors duration-300 px-5 font-bold  disabled:cursor-not-allowed ' +
     className;
 
-  const styles = {
+  const styles: { [key: string]: any } = {
     success: base + ' bg-green text-white',
     danger: base + ' bg-red text-white',
     black: base + ' bg-black text-white',
@@ -15,19 +26,21 @@ function Button({ children, disabled, to, type, className, onClick }) {
       'inline-block text-sm rounded-full border-2 border-stone-300 font-semibold uppercase tracking-wide text-stone-400 transition-colors duration-300 hover:bg-stone-300 hover:text-stone-800 focus:bg-stone-300 focus:text-stone-800 focus:outline-none focus:ring focus:ring-stone-200 focus:ring-offset-2 disabled:cursor-not-allowed px-4 py-2.5 md:px-6 md:py-3.5',
   };
 
-  if (to)
+  if (to) {
     return (
       <Link to={to} className={styles[type]}>
         {children}
       </Link>
     );
+  }
 
-  if (onClick)
+  if (onClick) {
     return (
       <button onClick={onClick} disabled={disabled} className={styles[type]}>
         {children}
       </button>
     );
+  }
 
   return (
     <button disabled={disabled} className={styles[type]}>

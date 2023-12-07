@@ -2,11 +2,30 @@ import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Select({ options, value, type, onChange, label }) {
+type SelectOptions = {
+  value: string;
+  label: string;
+}[];
+
+interface SelectProps {
+  options: SelectOptions;
+  value: any;
+  type: string;
+  onChange: (type: string, e: Event) => void;
+  label: string;
+}
+
+export default function Select({
+  options,
+  value,
+  type,
+  onChange,
+  label,
+}: SelectProps) {
   return (
     <Listbox value={value} onChange={(e) => onChange(type, e)}>
       {({ open }) => (
@@ -43,7 +62,7 @@ export default function Select({ options, value, type, onChange, label }) {
                       }
                       value={item.value}
                     >
-                      {({ selected, active }) => (
+                      {() => (
                         <>
                           <div className="flex items-center text-sm sm:text-base">
                             <span>{item.label}</span>
