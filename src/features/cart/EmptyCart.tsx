@@ -1,4 +1,4 @@
-import Button from '../../ui/Button';
+import Button from '../../ui/Button.tsx';
 
 function EmptyCart() {
   return (
@@ -13,10 +13,10 @@ function EmptyCart() {
         Start choosing products from our catalog
       </p>
       <div className="flex flex-col sm:flex-row">
-        <Button to={'/'} type={'danger'} className={'mb-2 w-[220px] sm:mb-0'}>
+        <Button to="/" type="danger" className="mb-2 w-[220px] sm:mb-0">
           To main
         </Button>
-        <Button to={'/catalog'} type={'info'} className={'w-[220px] sm:ml-3 '}>
+        <Button to="/catalog" type="info" className="w-[220px] sm:ml-3">
           To catalog
         </Button>
       </div>

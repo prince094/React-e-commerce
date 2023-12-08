@@ -1,20 +1,16 @@
-import { ComponentPropsWithoutRef, FormEvent } from "react";
+import { ChangeEvent, ComponentPropsWithoutRef, forwardRef } from 'react';
 
-type InputProps= {
-  label: string;
+type InputProps = {
   id: string;
-  optional: boolean;
-  onChange: (e: any) => FormEvent;
-} & ComponentPropsWithoutRef<'input'>
+  label: string;
+  optional?: boolean;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+} & ComponentPropsWithoutRef<'input'>;
 
-
-function Input({
-  label,
-  id,
-  optional = false, 
-  onChange,
-  ...props
-}: InputProps) {
+const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+  { id, label, optional = true, ...props },
+  ref
+) {
   return (
     <p className="mb-3">
       <label
@@ -22,16 +18,17 @@ function Input({
         htmlFor={id}
       >
         {label}
-        {!optional && <sup className=" text-red">*</sup>}
+        {optional && <sup className="text-red">*</sup>}
       </label>
       <input
         id={id}
-        className="h-[45px] w-full rounded border border-[#E2E9F2] bg-[#F8FAFD] px-2 pl-3 text-[16px] outline-none sm:h-[50px]"
-        onChange={(e) => onChange(e.target.value)}
+        name={id}
+        ref={ref}
         {...props}
+        className="h-[45px] w-full rounded border border-[#E2E9F2] bg-[#F8FAFD] px-2 pl-3 text-[16px] outline-none sm:h-[50px]"
       />
     </p>
   );
-}
+});
 
 export default Input;

@@ -11,7 +11,7 @@ import SelectionByCarBrand from './pages/SelectionByCarBrand';
 import SelectionByCarBrand2 from './pages/SelectionByCarBrand2';
 import SelectionByCarBrand3 from './pages/SelectionByCarBrand3';
 import SelectionByCarSize from './pages/SelectionByCarSize';
-import RegistrationPage from './pages/RegistrationPage';
+import { RegistrationPage } from './pages/RegistrationPage.tsx';
 import AccountPage from './pages/AccountPage';
 import NewsPage from './pages/NewsPage';
 import NewsPageDetail from './pages/NewsPageDetail';

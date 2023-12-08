@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { BreadCrumbContext } from '../context/BreadcrumbContext.jsx';
 
 function BreadCrumb() {
   const { breadcrumb } = useContext(BreadCrumbContext);
