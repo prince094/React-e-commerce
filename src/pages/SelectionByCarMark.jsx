@@ -2,7 +2,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import BreadCrumb from '../ui/BreadCrumb';
 import ContentTitle from '../ui/ContentTitle';
 import SelectionTyres from '../ui/SelectionTyres';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import { useContext, useEffect } from 'react';
 
 function SelectionByCarMark() {

@@ -1,6 +1,6 @@
 import BreadCrumb from '../ui/BreadCrumb';
 import { useContext, useEffect, useState } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import NewItem from '../components/news/NewItem';
 import ContentTitle from '../ui/ContentTitle';
 

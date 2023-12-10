@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import BreadCrumb from '../ui/BreadCrumb';
 import ContentTitle from '../ui/ContentTitle';
 import SelectionTyres from '../ui/SelectionTyres';

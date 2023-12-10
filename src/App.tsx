@@ -17,7 +17,7 @@ import NewsPage from './pages/NewsPage';
 import NewsPageDetail from './pages/NewsPageDetail';
 import HomePage from './pages/HomePage';
 import HomePage1 from './pages/HomePage-v1';
-import { BreadCrumbProvider } from './context/BreadcrumbContext';
+import { BreadCrumbProvider } from './context/BreadcrumbContext.tsx';
 import OrderPage from './pages/OrderPage';
 import ProductPage from './pages/ProductPage';
 

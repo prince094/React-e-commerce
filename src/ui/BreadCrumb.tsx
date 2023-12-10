@@ -1,13 +1,15 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { BreadCrumbContext } from '../context/BreadcrumbContext.jsx';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 
 function BreadCrumb() {
-  const { breadcrumb } = useContext(BreadCrumbContext);
+  const { breadcrumb } = useBreadCrumbContext();
 
   if (!breadcrumb.length) {
     return null;
   }
+
+  const isLastPath = (index: number) => breadcrumb.length - 1 !== index;
+
   return (
     <nav className="mt-20 hidden w-full rounded-md text-sm lg:block">
       <ol className="list-reset flex">
@@ -16,14 +18,14 @@ function BreadCrumb() {
             <Link
               to={item.path}
               className={`text-[#566879] transition duration-150 ease-in-out ${
-                breadcrumb.length - 1 !== index
+                isLastPath(index)
                   ? 'hover:text-gray-900'
                   : 'pointer-events-none text-opacity-75'
               }`}
             >
               {item.name}
             </Link>
-            {breadcrumb.length - 1 !== index && (
+            {isLastPath(index) && (
               <span className="mx-2 text-neutral-500">/</span>
             )}
           </li>

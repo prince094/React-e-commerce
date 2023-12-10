@@ -1,9 +1,30 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getAddress } from '../../services/apiGeocoding';
 
-function getPosition() {
+type Position = {
+  latitude: number;
+  longitude: number;
+};
+
+type UserState = {
+  username: string;
+  status: 'idle' | 'loading' | 'error';
+  position: Position;
+  address: string;
+  error: string;
+};
+
+function getPosition(): Promise<Position> {
   return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      (error) => reject(error)
+    );
   });
 }
 
@@ -11,11 +32,7 @@ export const fetchAddress = createAsyncThunk(
   'user/fetchAddress',
   async function () {
     // 1) We get the user's geolocation position
-    const positionObj: any = await getPosition();
-    const position = {
-      latitude: positionObj.coords.latitude,
-      longitude: positionObj.coords.longitude,
-    };
+    const position: Position = await getPosition();
 
     // 2) Then we use a reverse geocoding API to get a description of the user's address, so we can display it the order form, so that the user can correct it if wrong
     const addressObj = await getAddress(position);
@@ -27,10 +44,10 @@ export const fetchAddress = createAsyncThunk(
   }
 );
 
-const initialState = {
+const initialState: UserState = {
   username: '',
   status: 'idle',
-  position: {},
+  position: { latitude: 0, longitude: 0 }, // You might want to provide a default value
   address: '',
   error: '',
 };
@@ -39,7 +56,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    updateName(state, action) {
+    updateName(state, action: PayloadAction<string>) {
       state.username = action.payload;
     },
   },

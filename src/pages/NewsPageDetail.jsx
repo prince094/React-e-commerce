@@ -2,7 +2,7 @@ import { CalendarDaysIcon, EyeIcon } from '@heroicons/react/24/outline';
 import BreadCrumb from '../ui/BreadCrumb';
 import { useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import ContentTitle from '../ui/ContentTitle';
 
 function NewsPageDetail() {

@@ -4,7 +4,7 @@ import Select from '../ui/Select';
 import Screen from '../hooks/useScreenSize';
 import CatalogFilter from '../features/catalog/CatalogFilter';
 import { useContext, useEffect, useState } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import Product from '../features/product/Product';
 import ProductModal from '../features/product/ProductModal';
 import products from '../data/data-products.json';

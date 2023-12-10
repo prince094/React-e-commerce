@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import BreadCrumb from '../ui/BreadCrumb';
 import ContentTitle from '../ui/ContentTitle';
 import CreateOrder from '../features/order/CreateOrder';

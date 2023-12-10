@@ -1,11 +1,11 @@
-import { useContext, useEffect } from 'react';
-import BreadCrumb from '../ui/BreadCrumb';
-import ContentTitle from '../ui/ContentTitle';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
-import Cart from '../features/cart/Cart';
+import { useEffect } from 'react';
+import BreadCrumb from '../ui/BreadCrumb.tsx';
+import ContentTitle from '../ui/ContentTitle.jsx';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
+import Cart from '../features/cart/Cart.jsx';
 
 function CartPage() {
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')

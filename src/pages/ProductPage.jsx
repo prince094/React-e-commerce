@@ -14,7 +14,7 @@ import UpdateItemQuantity from '../features/cart/UpdateItemQuantity';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem, getCurrentQuantityById } from '../features/cart/cartSlice';
 import ContentTitle from '../ui/ContentTitle';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import { useLocation, useParams } from 'react-router-dom';
 import products from '../data/data-products.json';
 import { classNames, formatCurrency } from '../utils/helpers';

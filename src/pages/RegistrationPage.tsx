@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import BreadCrumb from '../ui/BreadCrumb.jsx';
+import BreadCrumb from '../ui/BreadCrumb.js';
 import Input from '../ui/Input.tsx';
 import Button from '../ui/Button.tsx';
 
