@@ -1,14 +1,35 @@
-import BreadCrumb from '../ui/BreadCrumb';
+import BreadCrumb from '../ui/BreadCrumb.tsx';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import Select from '../ui/Select';
-import Screen from '../hooks/useScreenSize';
-import CatalogFilter from '../features/catalog/CatalogFilter';
-import { useContext, useEffect, useState } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
-import Product from '../features/product/Product';
-import ProductModal from '../features/product/ProductModal';
+import Select from '../ui/Select.tsx';
+import Screen from '../hooks/useScreenSize.js';
+import CatalogFilter from '../features/catalog/CatalogFilter.jsx';
+import { SetStateAction, useContext, useEffect, useState } from 'react';
+import {
+  BreadCrumbContext,
+  useBreadCrumbContext,
+} from '../context/BreadcrumbContext.tsx';
+import Product from '../features/product/Product.tsx';
+import ProductModal from '../features/product/ProductModal.jsx';
 import products from '../data/data-products.json';
-import ListBox from '../ui/ListBox';
+import ListBox from '../ui/ListBox.jsx';
+import { getProductList } from '../services/product/index.ts';
+
+type Product = {
+  id: number;
+  title: string;
+  brandSrc: string;
+  color: string;
+  imageAlt: string;
+  imageSrc: string;
+  seasonTypes: string[];
+  soldOut: boolean;
+  unitPrice: number;
+  views: number;
+};
+
+type RawDataProduct = {
+  data: Product[];
+};
 
 const modelData = [
   '155/65R13',
@@ -105,26 +126,38 @@ const catalogTypes = [
 ];
 
 function CatalogPage() {
+  const [fetchedProducts, setFetchedProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState({});
   const [openModal, setOpenModal] = useState(false);
+  const [error, setError] = useState<string>('');
 
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
-  function handleOpenModal(value) {
+  function handleOpenModal(value: SetStateAction<{}>) {
     setProduct(value);
     setOpenModal(true);
   }
 
   useEffect(() => {
-    fetch('../../src/data/news-data.json')
-      .then((response) => response.json())
-      .then((data) => {
+    async function fetchProducts() {
+      try {
+        const data = (await getProductList(undefined)) as RawDataProduct;
+        const product: Product[] = data.data;
+        setFetchedProducts(product);
         setBreadcrumb([
           { path: '/', name: 'Home' },
           { path: '/catalog', name: 'Catalog' },
         ]);
-      });
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message);
+        }
+      }
+    }
+    fetchProducts();
   }, []);
+
+  // console.log(fetchedProducts, 'fetchedP');
 
   return (
     <>
@@ -252,13 +285,14 @@ function CatalogPage() {
           {/* Product */}
           <div className="flex-[75%]">
             <div className="flex flex-wrap">
-              {products.map((product) => (
-                <Product
-                  key={product.id}
-                  product={product}
-                  onClick={handleOpenModal}
-                />
-              ))}
+              {fetchedProducts.length > 0 &&
+                fetchedProducts.map((product) => (
+                  <Product
+                    key={product.id}
+                    product={product}
+                    onClick={handleOpenModal}
+                  />
+                ))}
             </div>
           </div>
         </div>

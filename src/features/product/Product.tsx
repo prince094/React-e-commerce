@@ -1,50 +1,56 @@
-import {
-  EyeIcon,
-  PlusSmallIcon,
-  TrashIcon,
-  PlusIcon,
-  MinusIcon,
-} from '@heroicons/react/24/outline';
+import { EyeIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
 import { classNames } from '../../utils/helpers';
 import { Link, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import UpdateItemQuantity from '../cart/UpdateItemQuantity';
 import {
+  type CartItem,
   addItem,
-  decreaseItemQuantity,
   getCurrentQuantityById,
-  increaseItemQuantity,
-} from '../cart/cartSlice';
+} from '../cart/cartSlice.ts';
+import { useCartDispatch, useCartSelector } from '../../store/hooks.ts';
+
+type ProductProps = {
+  id: string;
+  title: string;
+  imageSrc: string;
+  imageAlt: string;
+  brandSrc: string;
+  unitPrice: number;
+  color: string;
+  soldOut: boolean;
+  seasonTypes: string[];
+  views: number;
+};
 
 function Product({ product, onClick }) {
-  const dispatch = useDispatch();
+  const dispatch = useCartDispatch();
   const location = useLocation();
 
   const {
     id,
-    name,
+    title,
     imageSrc,
     imageAlt,
     brandSrc,
     unitPrice,
-    color,
     soldOut,
     seasonTypes,
     views,
-  } = product;
+  }: ProductProps = product;
 
-  const currentQuantity = useSelector(getCurrentQuantityById(id));
+  const currentQuantity = useCartSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;
 
   function handleAddToCart() {
-    const newItem = {
-      tyreId: id,
-      name,
+    const newItem: CartItem = {
+      id,
+      title,
       imageSrc,
       quantity: 1,
       unitPrice,
       totalPrice: unitPrice * 1,
     };
+
     dispatch(addItem(newItem));
   }
 
@@ -63,7 +69,7 @@ function Product({ product, onClick }) {
         </div>
       )}
       <Link to={''} className="absolute right-2 top-2 text-sm font-medium">
-        Reviews <span className=" text-[#566879] ">({product.views})</span>
+        Reviews <span className=" text-[#566879] ">({views})</span>
       </Link>
       <div className="max-h-[270px] min-h-[270px] w-full overflow-hidden rounded-md bg-white px-7 pb-6 pt-12 ">
         <img
@@ -87,7 +93,7 @@ function Product({ product, onClick }) {
         to={`${location.pathname}/${id}`}
         className="mt-2 flex-auto cursor-pointer text-[15px] font-bold text-gray-700"
       >
-        {name}
+        {title}
       </Link>
       <p className=" my-3 h-[25px] w-[125px]">
         <img
@@ -99,7 +105,7 @@ function Product({ product, onClick }) {
       {!soldOut && (
         <>
           <div className="absolute left-2 top-2">
-            {product.seasonTypes.map((type, index) => (
+            {seasonTypes.map((type, index) => (
               <p
                 key={type}
                 className={
@@ -128,10 +134,7 @@ function Product({ product, onClick }) {
                 <span className="ml-[2px] text-[17px]">Add</span>
               </button>
             ) : (
-              <UpdateItemQuantity
-                tyreId={id}
-                currentQuantity={currentQuantity}
-              />
+              <UpdateItemQuantity id={id} currentQuantity={currentQuantity} />
             )}
           </div>
         </>

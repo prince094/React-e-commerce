@@ -37,7 +37,7 @@ function ProductModal({ product, openModal, onCloseModal }) {
 
   function handleAddToCart() {
     const newItem = {
-      tyreId: id,
+      id,
       name,
       imageSrc,
       quantity: 1,
@@ -206,7 +206,7 @@ function ProductModal({ product, openModal, onCloseModal }) {
                     </Button>
                   ) : (
                     <UpdateItemQuantity
-                      tyreId={id}
+                      id={id}
                       currentQuantity={currentQuantity}
                       size={'big'}
                     />

@@ -49,9 +49,9 @@ function Cart() {
               (item) => (
                 // todo change the position Screen hook!
                 // Screen(768) ? (
-                // <CartItemMobile item={item} key={item.tyreId} />
+                // <CartItemMobile item={item} key={item.id} />
                 // ) : (
-                <CartItem item={item} key={item.tyreId} />
+                <CartItem item={item} key={item.id} />
               )
               // )
             )}

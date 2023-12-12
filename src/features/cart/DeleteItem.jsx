@@ -1,4 +1,4 @@
-function DeleteItem({ tyreId }) {
+function DeleteItem({ id }) {
   return <div></div>;
 }
 

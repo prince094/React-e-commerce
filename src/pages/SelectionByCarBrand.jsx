@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import ContentTitle from '../ui/ContentTitle';
 import { useContext, useEffect } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import SelectionTyres from '../ui/SelectionTyres';
 
 const sort = [
@@ -50,7 +50,7 @@ const brands = [
 ];
 
 function SelectionByCarBrand() {
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')

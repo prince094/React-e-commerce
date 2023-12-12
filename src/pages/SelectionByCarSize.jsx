@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import BreadCrumb from '../ui/BreadCrumb';
 import ContentTitle from '../ui/ContentTitle';
 import SelectionTyres from '../ui/SelectionTyres';
@@ -62,7 +62,7 @@ const modelData = [
 ];
 
 function SelectionByCarSize() {
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')

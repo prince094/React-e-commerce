@@ -3,7 +3,7 @@ import { decreaseItemQuantity, increaseItemQuantity } from './cartSlice';
 import { useDispatch } from 'react-redux';
 import { classNames } from '../../utils/helpers';
 
-function UpdateItemQuantity({ tyreId, currentQuantity, size = 'small' }) {
+function UpdateItemQuantity({ id, currentQuantity, size = 'small' }) {
   const dispatch = useDispatch();
 
   return (
@@ -16,7 +16,7 @@ function UpdateItemQuantity({ tyreId, currentQuantity, size = 'small' }) {
       )}
     >
       <button
-        onClick={() => dispatch(decreaseItemQuantity(tyreId))}
+        onClick={() => dispatch(decreaseItemQuantity(id))}
         className={classNames(
           size === 'big'
             ? 'h-[43px] w-[36px] bg-[#F5F8FC]'
@@ -32,7 +32,7 @@ function UpdateItemQuantity({ tyreId, currentQuantity, size = 'small' }) {
       </button>
       <span className="text-md px-2  font-medium ">{currentQuantity}</span>
       <button
-        onClick={() => dispatch(increaseItemQuantity(tyreId))}
+        onClick={() => dispatch(increaseItemQuantity(id))}
         className={classNames(
           size === 'big'
             ? 'h-[43px] w-[36px] bg-[#F5F8FC]'

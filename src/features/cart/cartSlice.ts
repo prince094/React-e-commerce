@@ -1,12 +1,25 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../../store';
 
-const initialState = {
+export type CartItem = {
+  id: string;
+  title: string;
+  imageSrc: string;
+  quantity: number;
+  unitPrice: number;
+  totalPrice: number;
+};
+
+type CartState = {
+  cart: CartItem[];
+};
+const initialState: CartState = {
   cart: [],
-
   // cart: [
   //   {
-  //     tyreId: 12,
-  //     name: 'Mediterranean',
+  //     id: 12,
+  //     title: 'Mediterranean',
+  //     imageSrc: 'http://image.jpg',
   //     quantity: 2,
   //     unitPrice: 16,
   //     totalPrice: 32,
@@ -18,36 +31,32 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addItem(state, action) {
+    addItem(state, action: PayloadAction<CartItem>) {
       // payload = newItem
-      // @ts-ignore:next-line
       state.cart.push(action.payload);
     },
     deleteItem(state, action) {
-      // payload = tyreId
-      console.log('cc', state.cart, action.payload);
-      // @ts-ignore:next-line
-      state.cart = state.cart.filter((item) => item.tyreId !== action.payload);
+      // payload = id
+      state.cart = state.cart.filter((item) => item.id !== action.payload);
     },
-    increaseItemQuantity(state, action) {
-      // payload = tyreId
-      // @ts-ignore:next-line
-      const item = state.cart.find((item) => item.tyreId === action.payload);
-      // @ts-ignore:next-line
-      item.quantity++;
-      // @ts-ignore:next-line
-      item.totalPrice = item.quantity * item.unitPrice;
+    increaseItemQuantity(state, action: PayloadAction<string>) {
+      // payload = id
+      const item = state.cart.find((item) => item.id === action.payload);
+      if (item) {
+        item.quantity++;
+        item.totalPrice = item.quantity * item.unitPrice;
+      }
     },
     decreaseItemQuantity(state, action) {
-      // payload = tyreId
-      // @ts-ignore:next-line
-      const item = state.cart.find((item) => item.tyreId === action.payload);
-      // @ts-ignore:next-line
-      item.quantity--;
-      // @ts-ignore:next-line
-      item.totalPrice = item.quantity * item.unitPrice;
-      // @ts-ignore:next-line
-      if (item.quantity === 0) cartSlice.caseReducers.deleteItem(state, action);
+      // payload = id
+      const item = state.cart.find((item) => item.id === action.payload);
+      if (item) {
+        item.quantity--;
+        item.totalPrice = item.quantity * item.unitPrice;
+        if (item.quantity === 0) {
+          cartSlice.caseReducers.deleteItem(state, action);
+        }
+      }
     },
     clearCart(state) {
       state.cart = [];
@@ -64,18 +73,15 @@ export const {
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
-// @ts-ignore:next-line
-export const getCart = (state) => state.cart.cart;
-// @ts-ignore:next-line
-export const getTotalCartQuantity = (state) =>
-  // @ts-ignore:next-line
+
+export const getCart = (state: RootState) => state.cart.cart;
+
+export const getTotalCartQuantity = (state: RootState) =>
   state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
 // 1-cart -> slice name, 2-cart -> cart: []
-// @ts-ignore:next-line
-export const getTotalCartPrice = (state) =>
-  // @ts-ignore:next-line
+
+export const getTotalCartPrice = (state: RootState) =>
   state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
-// @ts-ignore:next-line
-export const getCurrentQuantityById = (id) => (state) =>
-  // @ts-ignore:next-line
-  state.cart.cart.find((item) => item.tyreId === id)?.quantity ?? 0;
+
+export const getCurrentQuantityById = (id: string) => (state: RootState) =>
+  state.cart.cart.find((item) => item.id === id)?.quantity ?? 0;

@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import BreadCrumb from '../ui/BreadCrumb';
 import ContentTitle from '../ui/ContentTitle';
 import CreateOrder from '../features/order/CreateOrder';
 
 function OrderPage() {
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')

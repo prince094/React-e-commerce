@@ -5,8 +5,8 @@ import UpdateItemQuantity from './UpdateItemQuantity';
 import CartAction from './CartAction';
 
 function CartItem({ item }) {
-  const { tyreId, name, imageSrc, unitPrice, totalPrice } = item;
-  const currentQuantity = useSelector(getCurrentQuantityById(tyreId));
+  const { id, name, imageSrc, unitPrice, totalPrice } = item;
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
 
   return (
     <>
@@ -27,16 +27,13 @@ function CartItem({ item }) {
         </td>
         <td>
           <div className="flex">
-            <UpdateItemQuantity
-              tyreId={tyreId}
-              currentQuantity={currentQuantity}
-            />
+            <UpdateItemQuantity id={id} currentQuantity={currentQuantity} />
           </div>
         </td>
         <td className="text-[17px] font-medium">
           {formatCurrency(totalPrice)}
         </td>
-        <CartAction tyreId={tyreId} />
+        <CartAction id={id} />
       </tr>
     </>
   );

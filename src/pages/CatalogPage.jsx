@@ -1,14 +1,14 @@
 import BreadCrumb from '../ui/BreadCrumb';
 import BgImage from '../../public/img/catalog/tire-all.png';
 import { useContext, useEffect } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import ContentTitle from '../ui/ContentTitle';
 import catalog from '../data/data-catalog.json';
 import { Link } from 'react-router-dom';
 import SelectionTyres from '../ui/SelectionTyres';
 
 function CatalogPage() {
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')

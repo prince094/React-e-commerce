@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import BreadCrumb from '../ui/BreadCrumb';
+import BreadCrumb from '../ui/BreadCrumb.tsx';
 import {
   HeartIcon,
   ShoppingCartIcon,
@@ -9,15 +9,15 @@ import {
 import { Swiper } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { SwiperSlide } from 'swiper/react';
-import Button from '../ui/Button';
-import UpdateItemQuantity from '../features/cart/UpdateItemQuantity';
+import Button from '../ui/Button.tsx';
+import UpdateItemQuantity from '../features/cart/UpdateItemQuantity.jsx';
 import { useSelector, useDispatch } from 'react-redux';
-import { addItem, getCurrentQuantityById } from '../features/cart/cartSlice';
-import ContentTitle from '../ui/ContentTitle';
-import { BreadCrumbContext } from '../context/BreadcrumbContext.tsx';
+import { addItem, getCurrentQuantityById } from '../features/cart/cartSlice.ts';
+import ContentTitle from '../ui/ContentTitle.jsx';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import { useLocation, useParams } from 'react-router-dom';
 import products from '../data/data-products.json';
-import { classNames, formatCurrency } from '../utils/helpers';
+import { classNames, formatCurrency } from '../utils/helpers.js';
 
 const slides = [
   'https://picsum.photos/1920/1080',
@@ -27,14 +27,22 @@ const slides = [
   'https://picsum.photos/1920/1084',
 ];
 
+type RawDataProduct = {
+  id: number;
+  userId: number;
+  title: string;
+  body: string;
+};
+
 function ProductPage() {
   const [open, setOpen] = useState('desc');
   const [product, setProduct] = useState({});
+  const [error, setError] = useState<string>();
   const [image, setImage] = useState('');
   const dispatch = useDispatch();
   const params = useParams();
 
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
   function handleTabOpen(tabCategory) {
     setOpen(tabCategory);
@@ -42,7 +50,7 @@ function ProductPage() {
 
   const {
     id,
-    name,
+    title,
     imageSrc,
     imageAlt,
     brandSrc,
@@ -58,8 +66,8 @@ function ProductPage() {
 
   function handleAddToCart() {
     const newItem = {
-      tyreId: id,
-      name,
+      id,
+      title,
       imageSrc,
       quantity: 1,
       unitPrice,
@@ -132,7 +140,7 @@ function ProductPage() {
   return (
     <>
       <BreadCrumb />
-      <ContentTitle title={name} />
+      <ContentTitle title={title} />
       <span className="text-[12px] text-[#566879]">Артикул: 00000017910</span>
 
       <div className="mx-auto mt-6 bg-white">
@@ -266,7 +274,7 @@ function ProductPage() {
                   </Button>
                 ) : (
                   <UpdateItemQuantity
-                    tyreId={id}
+                    id={id}
                     currentQuantity={currentQuantity}
                     size={'big'}
                   />
