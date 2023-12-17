@@ -1,9 +1,11 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Error from './ui/Error';
+import Error from './ui/Error.tsx';
 import AppLayout from './ui/AppLayout';
 import CartPage from './pages/CartPage';
 import CatalogPage from './pages/CatalogPage';
-import CatalogPageDetail from './pages/CatalogPageDetail';
+import CatalogPageDetail, {
+  loader as catalogLoader,
+} from './pages/CatalogPageDetail';
 import SelectionByCarMark from './pages/SelectionByCarMark';
 import SelectionByCarMark2 from './pages/SelectionByCarMark2';
 import SelectionByCarMark3 from './pages/SelectionByCarMark3';
@@ -45,6 +47,8 @@ const router = createBrowserRouter([
       {
         path: '/catalog/:catalogName',
         element: <CatalogPageDetail />,
+        loader: catalogLoader,
+        errorElement: <Error to="/catalog" text="Go to catalog" />,
       },
       {
         path: '/catalog/:catalogName/:id',

@@ -1,6 +1,6 @@
 import { Outlet, useLocation, useNavigation } from 'react-router-dom';
 import Footer from '../components/footer/Footer';
-import Loader from '../ui/Loader';
+import Loader from '../ui/Loader.tsx';
 import Header from '../components/header/Header';
 
 function AppLayout() {

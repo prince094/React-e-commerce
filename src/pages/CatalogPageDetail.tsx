@@ -1,20 +1,15 @@
 import BreadCrumb from '../ui/BreadCrumb.tsx';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import Select from '../ui/Select.tsx';
-import Screen from '../hooks/useScreenSize.js';
 import CatalogFilter from '../features/catalog/CatalogFilter.jsx';
-import { SetStateAction, useContext, useEffect, useState } from 'react';
-import {
-  BreadCrumbContext,
-  useBreadCrumbContext,
-} from '../context/BreadcrumbContext.tsx';
+import { SetStateAction, useEffect, useState } from 'react';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import Product from '../features/product/Product.tsx';
 import ProductModal from '../features/product/ProductModal.jsx';
-import products from '../data/data-products.json';
 import ListBox from '../ui/ListBox.jsx';
 import { getProductList } from '../services/product/index.ts';
+import { useLoaderData } from 'react-router-dom';
 
-type Product = {
+export type Product = {
   id: number;
   title: string;
   brandSrc: string;
@@ -27,7 +22,7 @@ type Product = {
   views: number;
 };
 
-type RawDataProduct = {
+export type RawDataProduct = {
   data: Product[];
 };
 
@@ -71,7 +66,6 @@ const sort = [
     name: 'New test',
   },
 ];
-
 const catalogTypes = [
   {
     id: 32651,
@@ -126,12 +120,12 @@ const catalogTypes = [
 ];
 
 function CatalogPage() {
-  const [fetchedProducts, setFetchedProducts] = useState<Product[]>([]);
   const [product, setProduct] = useState({});
   const [openModal, setOpenModal] = useState(false);
-  const [error, setError] = useState<string>('');
 
   const { setBreadcrumb } = useBreadCrumbContext();
+
+  const products: Product[] = useLoaderData() as Product[];
 
   function handleOpenModal(value: SetStateAction<{}>) {
     setProduct(value);
@@ -139,25 +133,11 @@ function CatalogPage() {
   }
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const data = (await getProductList(undefined)) as RawDataProduct;
-        const product: Product[] = data.data;
-        setFetchedProducts(product);
-        setBreadcrumb([
-          { path: '/', name: 'Home' },
-          { path: '/catalog', name: 'Catalog' },
-        ]);
-      } catch (error) {
-        if (error instanceof Error) {
-          setError(error.message);
-        }
-      }
-    }
-    fetchProducts();
+    setBreadcrumb([
+      { path: '/', name: 'Home' },
+      { path: '/catalog', name: 'Catalog' },
+    ]);
   }, []);
-
-  // console.log(fetchedProducts, 'fetchedP');
 
   return (
     <>
@@ -285,14 +265,13 @@ function CatalogPage() {
           {/* Product */}
           <div className="flex-[75%]">
             <div className="flex flex-wrap">
-              {fetchedProducts.length > 0 &&
-                fetchedProducts.map((product) => (
-                  <Product
-                    key={product.id}
-                    product={product}
-                    onClick={handleOpenModal}
-                  />
-                ))}
+              {products.map((product: any) => (
+                <Product
+                  key={product.id}
+                  product={product}
+                  onClick={handleOpenModal}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -304,6 +283,14 @@ function CatalogPage() {
       />
     </>
   );
+}
+
+export async function loader() {
+  const products = (await getProductList(
+    '/data/data-products.json',
+    undefined
+  )) as Product[];
+  return products;
 }
 
 export default CatalogPage;

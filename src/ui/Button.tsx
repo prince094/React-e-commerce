@@ -14,7 +14,7 @@ type LinkProps = PropsWithChildren<{
   to?: string;
   type: string;
   onClick?: never;
-  className: string;
+  className?: string;
   disabled?: never;
 }> &
   ComponentPropsWithoutRef<'a'>;
