@@ -27,32 +27,7 @@ apiClient.interceptors.response.use(
       throw error;
       // Rethrow the error to propagate it further
     }
-    // const errorMessage =
-    //   error.moreDetailInFuture || 'Системная ошибка, попробуйте позже';
-
-    // store.dispatch('showLoading', false).then((r) => console.log(r));
   }
 );
 
 export default apiClient;
-
-// import { type AxiosResponse } from 'axios';
-// import apiClient from './config.ts';
-
-// export async function get<T>(url: string): Promise<T> {
-//   try {
-//     const response: AxiosResponse<T> = await apiClient.get(url);
-//     return response.data;
-//   } catch (error) {
-//     throw new Error(`Failed to fetch data. ${error.message}`);
-//   }
-// }
-
-// export async function post<T>(url: string, data: any): Promise<T> {
-//   try {
-//     const response: AxiosResponse<T> = await apiClient.post(url, data);
-//     return response.data;
-//   } catch (error) {
-//     throw new Error(`Failed to post data. ${error.message}`);
-//   }
-// }
