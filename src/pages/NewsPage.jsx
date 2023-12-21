@@ -2,7 +2,7 @@ import BreadCrumb from '../ui/BreadCrumb';
 import { useContext, useEffect, useState } from 'react';
 import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import NewItem from '../components/news/NewItem';
-import ContentTitle from '../ui/ContentTitle';
+import PageTitle from '../ui/PageTitle';
 
 function NewsPage() {
   const [news, setNews] = useState([]);
@@ -24,7 +24,7 @@ function NewsPage() {
     <>
       <BreadCrumb />
 
-      <ContentTitle title={'News'} />
+      <PageTitle title={'News'} />
       <div className="my-4 grid grid-cols-1  gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {news.map((item) => (
           <NewItem key={item.id} item={item} />

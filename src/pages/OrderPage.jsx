@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { useEffect } from 'react';
 import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import BreadCrumb from '../ui/BreadCrumb';
-import ContentTitle from '../ui/ContentTitle';
+import PageTitle from '../ui/PageTitle';
 import CreateOrder from '../features/order/CreateOrder';
 
 function OrderPage() {
@@ -22,7 +22,7 @@ function OrderPage() {
   return (
     <>
       <BreadCrumb />
-      <ContentTitle title={'Placing on order'} />
+      <PageTitle title={'Placing on order'} />
       <CreateOrder />
     </>
   );

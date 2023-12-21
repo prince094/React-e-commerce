@@ -8,7 +8,7 @@ import {
 import BreadCrumb from '../ui/BreadCrumb';
 import Select from '../ui/Select';
 import Screen from '../hooks/useScreenSize';
-import CatalogFilter from '../features/catalog/CatalogFilter';
+import CatalogFilterFeatures from '../features/catalog/CatalogFilterFeatures';
 
 const sort = [
   {
@@ -134,7 +134,7 @@ function SelectionByCarMark2() {
 
       {/* main contents */}
       <div className="my-4 mt-2 flex gap-x-3">
-        <CatalogFilter />
+        <CatalogFilterFeatures />
         <div className="flex-[75%]">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12].map((model) => (
             <div

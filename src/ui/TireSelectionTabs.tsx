@@ -1,10 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 import selection from '../data/data-selection.json';
 
-function SelectionTyres() {
+function TireSelectionTabs() {
   return (
     <div className="mb-4 flex  flex-col gap-[6px] rounded bg-[#F5F8FC] p-1 lg:h-[70px]  lg:flex-row">
-      {selection.map((item) => (
+      {selection.map((item: any) => (
         <NavLink
           key={item.id}
           to={`/${item.path}`}
@@ -42,4 +42,4 @@ function SelectionTyres() {
   );
 }
 
-export default SelectionTyres;
+export default TireSelectionTabs;

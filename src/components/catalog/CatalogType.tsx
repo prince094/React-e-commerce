@@ -1,43 +1,10 @@
-import BreadCrumb from '../ui/BreadCrumb';
-import BgImage from '../../public/img/catalog/tire-all.png';
-import { useContext, useEffect } from 'react';
-import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
-import ContentTitle from '../ui/ContentTitle';
-import catalog from '../data/data-catalog.json';
 import { Link } from 'react-router-dom';
-import SelectionTyres from '../ui/SelectionTyres';
+import BgImage from '/img/catalog/tire-all.png';
 
-function CatalogPage() {
-  const { setBreadcrumb } = useBreadCrumbContext();
-
-  useEffect(() => {
-    fetch('../../src/data/news-data.json')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setBreadcrumb([
-          { path: '/', name: 'Home' },
-          { path: '/catalog', name: 'Catalog' },
-        ]);
-      });
-  }, []);
-
-  return (
-    <>
-      <BreadCrumb />
-      <ContentTitle title={'Catalog shine'} />
-      <SelectionTyres />
-      <CatalogItems />
-    </>
-  );
-}
-
-export default CatalogPage;
-
-function CatalogItems() {
+function CatalogType({ catalog }: any) {
   return (
     <div className="-mx-1 mt-10 flex flex-wrap sm:-mx-2">
-      {catalog.map((item, index) => (
+      {catalog.map((item: any, index: number) => (
         <div
           key={item.id}
           className="flex-[100%] p-1 sm:flex-[50%] lg:flex-[33.333%] lg:p-2"
@@ -85,3 +52,5 @@ function CatalogItems() {
     </div>
   );
 }
+
+export default CatalogType;

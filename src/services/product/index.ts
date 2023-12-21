@@ -1,6 +1,6 @@
 import { type AxiosResponse } from 'axios';
 import apiClient from '../axios';
-import { Product } from '../../pages/CatalogPageDetail';
+import { Product } from '../../pages/CatalogProductPage';
 
 export async function getProductList(
   url: string,

@@ -8,7 +8,7 @@ import {
 import BreadCrumb from '../ui/BreadCrumb';
 import Select from '../ui/Select';
 import Screen from '../hooks/useScreenSize';
-import CatalogFilter from '../features/catalog/CatalogFilter';
+// import CatalogFilterFeatures from '../features/catalog/CatalogFilterFeatures.tsx';
 
 const sort = [
   {

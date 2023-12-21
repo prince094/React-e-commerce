@@ -1,7 +1,7 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import BreadCrumb from '../ui/BreadCrumb';
-import ContentTitle from '../ui/ContentTitle';
-import SelectionTyres from '../ui/SelectionTyres';
+import PageTitle from '../ui/PageTitle';
+import TireSelectionTabs from '../ui/TireSelectionTabs';
 import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import { useContext, useEffect } from 'react';
 
@@ -21,8 +21,8 @@ function SelectionByCarMark() {
   return (
     <>
       <BreadCrumb />
-      <ContentTitle title={'Catalog shine'} />
-      <SelectionTyres />
+      <PageTitle title={'Catalog shine'} />
+      <TireSelectionTabs />
       <p className="mb-4 text-[#566879]">
         To carry out the correct selection of tires by car brand, you need to
         know the year of manufacture and model of your car. To select tires by

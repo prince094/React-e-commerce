@@ -13,7 +13,7 @@ import Button from '../ui/Button.tsx';
 import UpdateItemQuantity from '../features/cart/UpdateItemQuantity.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem, getCurrentQuantityById } from '../features/cart/cartSlice.ts';
-import ContentTitle from '../ui/ContentTitle.jsx';
+import PageTitle from '../ui/PageTitle.jsx';
 import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import { useLocation, useParams } from 'react-router-dom';
 import products from '../data/data-products.json';
@@ -140,7 +140,7 @@ function ProductPage() {
   return (
     <>
       <BreadCrumb />
-      <ContentTitle title={title} />
+      <PageTitle title={title} />
       <span className="text-[12px] text-[#566879]">Артикул: 00000017910</span>
 
       <div className="mx-auto mt-6 bg-white">

@@ -8,14 +8,14 @@ import BreadCrumb from '../ui/BreadCrumb';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Input from '../ui/Input';
-import ContentTitle from '../ui/ContentTitle';
+import PageTitle from '../ui/PageTitle';
 
 function AccountPage() {
   const [input, setInput] = useState('');
   return (
     <div className="py-5">
       <BreadCrumb />
-      <ContentTitle title={' Personal cabinet'} />
+      <PageTitle title={' Personal cabinet'} />
       <div className="my-5 flex flex-col items-start md:flex-row">
         <div className="mb-5 w-full md:mb-0 md:basis-[35%]">
           <div className=" -mr-[1px] border border-[#E2E9F2]">

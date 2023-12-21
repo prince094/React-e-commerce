@@ -2,7 +2,7 @@ import FilterBySetting from '../../components/catalog/FilterBySetting';
 import FilterBySeason from '../../components/catalog/FilterBySeason';
 import FilterByPrice from '../../components/catalog/FilterByPrice';
 
-function CatalogFilter() {
+function CatalogFilterFeatures() {
   return (
     <div className="hidden max-w-[25%] overflow-hidden lg:block lg:flex-[25%]">
       <FilterBySetting />
@@ -12,4 +12,4 @@ function CatalogFilter() {
   );
 }
 
-export default CatalogFilter;
+export default CatalogFilterFeatures;

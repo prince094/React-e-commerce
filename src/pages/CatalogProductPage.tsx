@@ -1,13 +1,15 @@
 import BreadCrumb from '../ui/BreadCrumb.tsx';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import CatalogFilter from '../features/catalog/CatalogFilter.jsx';
+import CatalogFilterFeatures from '../features/catalog/CatalogFilterFeatures.jsx';
 import { SetStateAction, useEffect, useState } from 'react';
 import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import Product from '../features/product/Product.tsx';
 import ProductModal from '../features/product/ProductModal.jsx';
-import ListBox from '../ui/ListBox.jsx';
 import { getProductList } from '../services/product/index.ts';
 import { useLoaderData } from 'react-router-dom';
+import CatalogFilterSection from '../features/catalog/CatalogFilterSection.tsx';
+import CatalogFilterModel from '../features/catalog/CatalogFilterModel.tsx';
+import CatalogFilterSeasonal from '../features/catalog/CatalogFilterSeasonal.tsx';
 
 export type Product = {
   id: number;
@@ -173,96 +175,11 @@ function CatalogPage() {
           </div>
         </div>
 
-        {/* podbor shini */}
-        <div className=" mb-3 flex flex-row flex-wrap justify-between gap-1 sm:gap-2">
-          {catalogTypes.map((item) => {
-            return (
-              <div
-                key={item.icon}
-                style={{
-                  backgroundImage: `linear-gradient(to right, ${item.colors.from} , ${item.colors.to})`,
-                }}
-                className=" flex h-16 flex-auto items-center rounded px-4 sm:h-[88px] sm:rounded-md sm:px-6"
-              >
-                <p className="w-8 sm:w-11">
-                  <img
-                    className="w-full"
-                    src={`/img/catalog/${item.icon}.svg`}
-                    alt=""
-                  />
-                </p>
-                <div className="ml-3 w-[90px] text-sm text-white sm:ml-6 sm:w-[120px] sm:text-base">
-                  {item.name}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        {/* models */}
-        <div className="my-4  w-full items-center justify-between rounded bg-[#F5F8FC] p-[10px] lg:flex">
-          <div className="-m-0.5 mb-2 flex flex-[85%] flex-wrap lg:mb-0">
-            {modelData.map((model, index) => (
-              <div
-                key={index}
-                className="m-0.5 flex h-9 flex-[11%] items-center justify-center rounded bg-white px-3 text-sm text-[#566879] md:h-[40px] md:text-base"
-              >
-                {model}
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-[15%] items-center justify-center px-3 text-sm font-bold md:text-base">
-            <p className="font-semibold">Show all</p>
-            <ChevronRightIcon className="ml-1 h-[22px] w-[22px]" />
-          </div>
-        </div>
-        {/* type of filter */}
-        <div className="flex flex-row justify-between bg-white">
-          <div className="hidden lg:flex">
-            <div className="flex items-center">
-              <div className="flex h-[54px] w-[54px] items-center justify-center bg-[#F5F8FC]">
-                <img
-                  className="w-[30px]"
-                  src="/img/catalog/filter-01.svg"
-                  alt=""
-                />
-              </div>
-              <span className="ml-3 text-lg font-medium">Brand Selection</span>
-              <ChevronRightIcon className="w-[24px]" />
-            </div>
-            <div className="ml-8 flex items-center">
-              <div className="flex h-[54px] w-[54px] items-center justify-center bg-[#F5F8FC]">
-                <img
-                  className="w-[30px]"
-                  src="/img/catalog/filter-02.svg"
-                  alt=""
-                />
-              </div>
-              <span className="ml-3 text-lg font-medium">
-                Selection by car model
-              </span>
-              <ChevronRightIcon className="w-[24px]" />
-            </div>
-          </div>
-          <div className="flex w-full items-center lg:w-auto">
-            <hr className="mr-[30px] hidden h-[40px] w-[1px] bg-[#E2E9F2] lg:inline" />
-            <span className="mr-4 hidden lg:inline">Sort:</span>
-            <div className="flex w-full justify-between">
-              <ListBox
-                // width={Screen(768) ? '100%' : '290px'}
-                value={sort[0]}
-                options={sort}
-                onChange={() => {}}
-              />
-              <div className="ml-1 flex h-[50px] min-w-[50px] items-center justify-center rounded bg-[#F5F8FC] lg:hidden">
-                <img src="/img/catalog/filter-03.svg" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* main contents */}
+        <CatalogFilterSeasonal catalog={catalogTypes} />
+        <CatalogFilterModel model={modelData} />
+        <CatalogFilterSection sort={sort} />
         <div className="my-4 flex gap-x-3">
-          <CatalogFilter />
-          {/* Product */}
+          <CatalogFilterFeatures />
           <div className="flex-[75%]">
             <div className="flex flex-wrap">
               {products.map((product: any) => (
