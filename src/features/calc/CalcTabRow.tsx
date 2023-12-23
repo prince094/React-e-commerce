@@ -1,4 +1,4 @@
-function CalcTabRow({ item, activeTab, onClick }) {
+function CalcTabRow({ item, activeTab, onClick }: any) {
   return (
     <div
       onClick={() => onClick(item.value)}

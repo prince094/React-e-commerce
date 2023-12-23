@@ -1,5 +1,5 @@
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import ListBox from '../../ui/ListBox';
+import ListBox from '../../ui/ListBox.tsx';
 
 function CatalogFilterSection({ sort }: any) {
   return (
@@ -26,12 +26,7 @@ function CatalogFilterSection({ sort }: any) {
         <hr className="mr-[30px] hidden h-[40px] w-[1px] bg-[#E2E9F2] lg:inline" />
         <span className="mr-4 hidden lg:inline">Sort:</span>
         <div className="flex w-full justify-between">
-          <ListBox
-            // width={Screen(768) ? '100%' : '290px'}
-            value={sort[0]}
-            options={sort}
-            onChange={() => {}}
-          />
+          <ListBox value={sort[0]} options={sort} onChange={() => {}} />
           <div className="ml-1 flex h-[50px] min-w-[50px] items-center justify-center rounded bg-[#F5F8FC] lg:hidden">
             <img src="/img/catalog/filter-03.svg" alt="" />
           </div>

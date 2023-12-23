@@ -2,7 +2,7 @@ import CalcAction from './CalcAction';
 import CalcBySettings from './CalcSettings';
 import CalcSwitches from './CalcSwitches';
 
-function CalcContent03() {
+function CalcTabBrands() {
   return (
     <div className="category-selection-content mb-10 flex p-4 pt-3">
       <div className="content-left min-w-[57%] max-w-[57%] rounded bg-lightgray p-4">
@@ -22,7 +22,7 @@ function CalcContent03() {
   );
 }
 
-export default CalcContent03;
+export default CalcTabBrands;
 
 function CalcBrands() {
   return (

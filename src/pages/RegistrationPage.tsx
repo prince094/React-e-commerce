@@ -16,7 +16,8 @@ type RegisterProps = {
   onRegister: (login: string, fio: string, email: string) => void;
 };
 
-export function RegistrationPage({ onRegister }: RegisterProps) {
+// { onRegister }: RegisterProps
+export default function RegistrationPage() {
   const [input, setInput] = useState('');
 
   const login = useRef<HTMLInputElement>(null);
@@ -35,7 +36,7 @@ export function RegistrationPage({ onRegister }: RegisterProps) {
     const enteredEmail = login.current!.value;
 
     event.currentTarget.reset();
-    onRegister(enteredLogin, enteredFIO, enteredEmail);
+    // onRegister(enteredLogin, enteredFIO, enteredEmail);
   }
 
   return (

@@ -4,7 +4,7 @@ import CalcModel from './CalcModel';
 import CalcSettings from './CalcSettings';
 import CalcSwitches from './CalcSwitches';
 
-function CalcContent02() {
+function CalcTabOptions() {
   return (
     <div className="category-selection-content mb-10 flex p-4 pt-3">
       <div className="content-left min-w-[57%] max-w-[57%] rounded bg-lightgray px-4 pt-4">
@@ -25,4 +25,4 @@ function CalcContent02() {
   );
 }
 
-export default CalcContent02;
+export default CalcTabOptions;

@@ -9,7 +9,7 @@ import CalcAction from './CalcAction';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
-function CalcContent01() {
+function CalcTabCategories() {
   const [addSeason, setAddSeason] = useState([]);
   const [category, setCategory] = useState('cars');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -81,7 +81,7 @@ function CalcContent01() {
   );
 }
 
-export default CalcContent01;
+export default CalcTabCategories;
 
 function CalcCategories({ item, category, onClick }) {
   return (
