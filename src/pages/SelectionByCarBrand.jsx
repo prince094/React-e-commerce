@@ -8,13 +8,13 @@ import {
 import BreadCrumb from '../ui/BreadCrumb';
 import Select from '../ui/Select';
 import Screen from '../hooks/useScreenSize';
-import CatalogFilter from '../features/catalog/CatalogFilter';
+import CatalogFilterFeatures from '../features/catalog/CatalogFilterFeatures';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import ContentTitle from '../ui/ContentTitle';
+import PageTitle from '../ui/PageTitle';
 import { useContext, useEffect } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
-import SelectionTyres from '../ui/SelectionTyres';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
+import TireSelectionTabs from '../ui/TireSelectionTabs';
 
 const sort = [
   {
@@ -50,7 +50,7 @@ const brands = [
 ];
 
 function SelectionByCarBrand() {
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')
@@ -66,10 +66,8 @@ function SelectionByCarBrand() {
   return (
     <>
       <BreadCrumb />
-      <ContentTitle
-        title={'Tires for BMW 1 (E81-E88) Coupe Restyle 2008-2013'}
-      />
-      <SelectionTyres />
+      <PageTitle title={'Tires for BMW 1 (E81-E88) Coupe Restyle 2008-2013'} />
+      <TireSelectionTabs />
       <p className="mb-5 text-[#566879]">
         Our online tire store Shin Line is the official dealer in Kazakhstan of
         the represented brands. World tire manufacturers trust us: we provide

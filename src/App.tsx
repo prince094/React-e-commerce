@@ -1,9 +1,11 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Error from './ui/Error';
+import Error from './ui/Error.tsx';
 import AppLayout from './ui/AppLayout';
-import CartPage from './pages/CartPage';
-import CatalogPage from './pages/CatalogPage';
-import CatalogPageDetail from './pages/CatalogPageDetail';
+import CartPage from './features/cart/pages/CartPage.tsx';
+import CatalogPage from './features/catalog/pages/CatalogPage.tsx';
+import CatalogProductPage, {
+  loader as catalogLoader,
+} from './features/catalog/pages/CatalogProductPage.tsx';
 import SelectionByCarMark from './pages/SelectionByCarMark';
 import SelectionByCarMark2 from './pages/SelectionByCarMark2';
 import SelectionByCarMark3 from './pages/SelectionByCarMark3';
@@ -11,15 +13,15 @@ import SelectionByCarBrand from './pages/SelectionByCarBrand';
 import SelectionByCarBrand2 from './pages/SelectionByCarBrand2';
 import SelectionByCarBrand3 from './pages/SelectionByCarBrand3';
 import SelectionByCarSize from './pages/SelectionByCarSize';
-import RegistrationPage from './pages/RegistrationPage';
+import RegistrationPage from './pages/RegistrationPage.tsx';
 import AccountPage from './pages/AccountPage';
-import NewsPage from './pages/NewsPage';
+import NewsPage from './features/news/pages/NewsPage.jsx';
 import NewsPageDetail from './pages/NewsPageDetail';
-import HomePage from './pages/HomePage';
+import HomePage from './features/home/pages/HomePage.tsx';
 import HomePage1 from './pages/HomePage-v1';
-import { BreadCrumbProvider } from './context/BreadcrumbContext';
-import OrderPage from './pages/OrderPage';
-import ProductPage from './pages/ProductPage';
+import { BreadCrumbProvider } from './context/BreadcrumbContext.tsx';
+import OrderPage from './features/order/pages/OrderPage.jsx';
+import ProductPage from './features/product/pages/ProductPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +46,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/catalog/:catalogName',
-        element: <CatalogPageDetail />,
+        element: <CatalogProductPage />,
+        loader: catalogLoader,
+        errorElement: <Error to="/catalog" text="Go to catalog" />,
       },
       {
         path: '/catalog/:catalogName/:id',

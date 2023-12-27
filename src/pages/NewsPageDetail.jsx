@@ -2,14 +2,14 @@ import { CalendarDaysIcon, EyeIcon } from '@heroicons/react/24/outline';
 import BreadCrumb from '../ui/BreadCrumb';
 import { useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
-import ContentTitle from '../ui/ContentTitle';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
+import PageTitle from '../ui/PageTitle';
 
 function NewsPageDetail() {
   const { newId } = useParams();
 
   const [detail, setDetail] = useState({});
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
   useEffect(() => {
     fetch(`../../src/data/news-data.json`) // todo: `/news/${newId}`
@@ -28,7 +28,7 @@ function NewsPageDetail() {
   return (
     <>
       <BreadCrumb />
-      <ContentTitle title={detail.title} />
+      <PageTitle title={detail.title} />
       <div className="mt-6 gap-4 md:flex lg:gap-[50px]">
         <div className="basis-[70%]">
           <div className="mb-4  flex md:mb-8">

@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react';
-import { BreadCrumbContext } from '../context/BreadcrumbContext';
+import { useBreadCrumbContext } from '../context/BreadcrumbContext.tsx';
 import BreadCrumb from '../ui/BreadCrumb';
-import ContentTitle from '../ui/ContentTitle';
-import SelectionTyres from '../ui/SelectionTyres';
+import PageTitle from '../ui/PageTitle';
+import TireSelectionTabs from '../ui/TireSelectionTabs';
 
 const catalog = [
   {
@@ -62,7 +62,7 @@ const modelData = [
 ];
 
 function SelectionByCarSize() {
-  const { setBreadcrumb } = useContext(BreadCrumbContext);
+  const { setBreadcrumb } = useBreadCrumbContext();
 
   useEffect(() => {
     fetch('../../src/data/news-data.json')
@@ -77,8 +77,8 @@ function SelectionByCarSize() {
   return (
     <>
       <BreadCrumb />
-      <ContentTitle title={'Tire selection by tire size'} />
-      <SelectionTyres />
+      <PageTitle title={'Tire selection by tire size'} />
+      <TireSelectionTabs />
     </>
   );
 }

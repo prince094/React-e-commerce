@@ -48,8 +48,12 @@ export default function Select({
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white px-2 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {options.length > 0 &&
-                  options.map((item) => (
+                {options?.length === 0 ? (
+                  <div className="relative cursor-pointer select-none rounded py-3 pl-[6px] pr-5 text-center font-normal">
+                    No options available
+                  </div>
+                ) : (
+                  options?.map((item) => (
                     <Listbox.Option
                       key={item.value}
                       className={({ selected, active }) =>
@@ -70,7 +74,8 @@ export default function Select({
                         </>
                       )}
                     </Listbox.Option>
-                  ))}
+                  ))
+                )}
               </Listbox.Options>
             </Transition>
           </div>
