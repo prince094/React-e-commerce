@@ -5,7 +5,10 @@ import {
 } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getTotalCartPrice, getCart } from '../../features/cart/cartSlice';
+import {
+  getCart,
+  getTotalCartPrice,
+} from '../../features/cart/state/cartSlice.ts';
 
 function HeaderActions() {
   const totalPrice = useSelector(getTotalCartPrice);

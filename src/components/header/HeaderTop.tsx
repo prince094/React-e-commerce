@@ -2,7 +2,13 @@ import { Link } from 'react-router-dom';
 import HeaderTopItems from './HeaderTopItems';
 import HeaderActions from './HeaderActions';
 
-function HeaderTop({ isMobile, isOpenMenu, setIsOpenMenu }) {
+type HeaderTopProps = {
+  isMobile: boolean;
+  isOpenMenu: boolean;
+  setIsOpenMenu: (value: boolean) => void;
+};
+
+function HeaderTop({ isMobile, isOpenMenu, setIsOpenMenu }: HeaderTopProps) {
   return (
     <div className="bg-gray-800">
       <div className="mx-auto max-w-7xl  lg:px-8">
@@ -10,7 +16,7 @@ function HeaderTop({ isMobile, isOpenMenu, setIsOpenMenu }) {
           <div className="flex h-full flex-1 justify-between">
             <div className="flex items-center">
               <p
-                onClick={() => setIsOpenMenu((value) => !value)}
+                onClick={(value) => setIsOpenMenu(!value)}
                 className="mr-2 flex h-full w-[47px] items-center border-r border-gray-700 px-3 lg:hidden"
               >
                 <img

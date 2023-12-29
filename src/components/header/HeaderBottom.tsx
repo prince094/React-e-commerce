@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import HeaderTopItems from './HeaderTopItems';
+import HeaderTopItems from './HeaderTopItems.tsx';
 import { classNames } from '../../utils/helpers';
 
 const catalog = [
@@ -54,7 +54,13 @@ const catalog = [
   },
 ];
 
-function HeaderBottom({ isMobile, isOpenMenu }) {
+function HeaderBottom({
+  isMobile,
+  isOpenMenu,
+}: {
+  isMobile: boolean;
+  isOpenMenu: boolean;
+}) {
   return (
     <div
       className={`absolute left-0 top-[48px] z-20 h-full w-full -translate-x-full bg-white px-2 shadow-md transition-all md:top-[64px] md:h-max md:pt-0  lg:translate-x-0 lg:opacity-100 ${

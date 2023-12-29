@@ -30,7 +30,7 @@ function FilterBySeason() {
     { value: 'all-seasons', label: 'All seasons' },
   ];
   return (
-    <AccordionItem label={'Seasonality'}>
+    <AccordionItem label="Seasonality">
       <div className="mt-5">
         <>
           {seasons.map((season) => (
