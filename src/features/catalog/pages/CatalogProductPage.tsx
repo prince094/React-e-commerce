@@ -1,5 +1,4 @@
 import BreadCrumb from '../../../ui/BreadCrumb.tsx';
-import CatalogFilterFeatures from '../components/CatalogFilterFeatures.jsx';
 import { SetStateAction, useEffect, useState } from 'react';
 import { useBreadCrumbContext } from '../../../context/BreadcrumbContext.tsx';
 import Product from '../../product/components/Product.tsx';
@@ -11,6 +10,7 @@ import CatalogFilterModel from '../components/CatalogFilterModel.tsx';
 import CatalogFilterSeasonal from '../components/CatalogFilterSeasonal.tsx';
 import CatalogHead from '../components/CatalogHead.tsx';
 import { Product as ProductData } from '../../../models';
+import CatalogFilterFeatures from '../components/CatalogFilterFeatures.tsx';
 
 const modelData = [
   '155/65R13',
@@ -148,11 +148,11 @@ function CatalogPage() {
           </div>
         </div>
       </div>
-      <ProductModal
+      {/* <ProductModal
         product={product}
         openModal={openModal}
         onCloseModal={setOpenModal}
-      />
+      /> */}
     </>
   );
 }

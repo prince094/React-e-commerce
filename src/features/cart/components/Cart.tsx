@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import Screen from '../../../hooks/useScreenSize';
-import CartItem from './CartItem';
-import { clearCart, getCart } from '../state/cartSlice';
-import EmptyCart from './EmptyCart';
-import CartOverview from './CartOverview';
-import CartItemMobile from './CartItemMobile';
+import Screen from '../../../hooks/useScreenSize.ts';
+import CartItem from './CartItem.tsx';
+import { clearCart, getCart } from '../state/cartSlice.ts';
+import EmptyCart from './EmptyCart.tsx';
+import CartOverview from './CartOverview.tsx';
+import CartItemMobile from './CartItemMobile.tsx';
+import { CartItem as CartItemModel } from '../../../models';
 
 function Cart() {
   const cart = useSelector(getCart);
@@ -46,7 +47,7 @@ function Cart() {
 
           <tbody className="">
             {cart.map(
-              (item) => (
+              (item: CartItemModel) => (
                 // todo change the position Screen hook!
                 // Screen(768) ? (
                 // <CartItemMobile item={item} key={item.id} />

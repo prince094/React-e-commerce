@@ -1,6 +1,6 @@
-import FilterBySetting from '../../../components/catalog/FilterBySetting';
-import FilterBySeason from '../../../components/catalog/FilterBySeason';
-import FilterByPrice from '../../../components/catalog/FilterByPrice';
+import FilterBySetting from './FilterBySetting.tsx';
+import FilterBySeason from './FilterBySeason.tsx';
+import FilterByPrice from './FilterByPrice.tsx';
 
 function CatalogFilterFeatures() {
   return (

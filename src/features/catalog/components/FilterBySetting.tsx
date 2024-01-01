@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
-import Select from '../../../ui/Select';
-import AccordionItem from './AccordionItem';
+import Select from '../../../ui/Select.tsx';
+import AccordionItem from './AccordionItem.tsx';
 
 function FilterBySetting() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -9,9 +9,10 @@ function FilterBySetting() {
   const profile = searchParams.get('profile') || 'all';
   const landingDiametr = searchParams.get('landing-diametr') || 'all';
 
-  function handleChange(type, value) {
+  function handleChange(type: string, value: string) {
     searchParams.set(type, value);
     setSearchParams(searchParams);
+    console.log('data:', type, value);
   }
 
   return (

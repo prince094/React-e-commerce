@@ -1,8 +1,8 @@
-import { HeartIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { deleteItem } from '../state/cartSlice';
 import { useDispatch } from 'react-redux';
+import { HeartIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { deleteItem } from '../state/cartSlice.ts';
 
-function CartAction({ id }) {
+function CartAction({ id }: { id: string }) {
   const dispatch = useDispatch();
 
   return (

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import HeaderTopItems from './HeaderTopItems.tsx';
 import { classNames } from '../../utils/helpers';
+import HeaderTopItems from './HeaderTopItems.tsx';
 
 const catalog = [
   {

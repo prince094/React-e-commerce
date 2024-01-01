@@ -1,9 +1,22 @@
-import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { decreaseItemQuantity, increaseItemQuantity } from '../state/cartSlice';
 import { useDispatch } from 'react-redux';
-import { classNames } from '../../../utils/helpers';
+import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import {
+  decreaseItemQuantity,
+  increaseItemQuantity,
+} from '../state/cartSlice.ts';
+import { classNames } from '../../../utils/helpers.ts';
 
-function UpdateItemQuantity({ id, currentQuantity, size = 'small' }) {
+type UpdateItemQuantityProps = {
+  id: string;
+  currentQuantity: number;
+  size?: string;
+};
+
+function UpdateItemQuantity({
+  id,
+  currentQuantity,
+  size = 'small',
+}: UpdateItemQuantityProps) {
   const dispatch = useDispatch();
 
   return (

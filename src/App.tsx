@@ -6,13 +6,13 @@ import CatalogPage from './features/catalog/pages/CatalogPage.tsx';
 import CatalogProductPage, {
   loader as catalogLoader,
 } from './features/catalog/pages/CatalogProductPage.tsx';
-import SelectionByCarMark from './pages/SelectionByCarMark';
-import SelectionByCarMark2 from './pages/SelectionByCarMark2';
-import SelectionByCarMark3 from './pages/SelectionByCarMark3';
-import SelectionByCarBrand from './pages/SelectionByCarBrand';
-import SelectionByCarBrand2 from './pages/SelectionByCarBrand2';
-import SelectionByCarBrand3 from './pages/SelectionByCarBrand3';
-import SelectionByCarSize from './pages/SelectionByCarSize';
+// import SelectionByCarMark from './pages/SelectionByCarMark';
+// import SelectionByCarMark2 from './pages/SelectionByCarMark2';
+// import SelectionByCarMark3 from './pages/SelectionByCarMark3';
+// import SelectionByCarBrand from './pages/SelectionByCarBrand';
+// import SelectionByCarBrand2 from './pages/SelectionByCarBrand2';
+// import SelectionByCarBrand3 from './pages/SelectionByCarBrand3';
+// import SelectionByCarSize from './pages/SelectionByCarSize';
 import RegistrationPage from './pages/RegistrationPage.tsx';
 import AccountPage from './pages/AccountPage';
 import NewsPage from './features/news/pages/NewsPage.jsx';
@@ -56,15 +56,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/assortiments',
-        element: <SelectionByCarSize />,
+        // element: <SelectionByCarSize />,
       },
       {
         path: '/brands',
-        element: <SelectionByCarBrand />,
+        // element: <SelectionByCarBrand />,
       },
       {
         path: '/trademarks',
-        element: <SelectionByCarMark />,
+        // element: <SelectionByCarMark />,
       },
       {
         path: '/order',
@@ -76,20 +76,20 @@ const router = createBrowserRouter([
       },
       {
         path: '/catalog-main/selection-mark2',
-        element: <SelectionByCarMark2 />,
+        // element: <SelectionByCarMark2 />,
       },
       {
         path: '/catalog-main/selection-mark3',
-        element: <SelectionByCarMark3 />,
+        // element: <SelectionByCarMark3 />,
       },
 
       {
         path: '/catalog-main/selection-brand2',
-        element: <SelectionByCarBrand2 />,
+        // element: <SelectionByCarBrand2 />,
       },
       {
         path: '/catalog-main/selection-brand3',
-        element: <SelectionByCarBrand3 />,
+        // element: <SelectionByCarBrand3 />,
       },
       {
         path: '/auth',
