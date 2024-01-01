@@ -12,7 +12,6 @@ function FilterBySetting() {
   function handleChange(type: string, value: string) {
     searchParams.set(type, value);
     setSearchParams(searchParams);
-    console.log('data:', type, value);
   }
 
   return (
@@ -20,7 +19,6 @@ function FilterBySetting() {
       <div className="mt-5">
         <div className="mb-[5px]">
           <Select
-            id={'ds'}
             label={'Width'}
             type="width"
             value={width}

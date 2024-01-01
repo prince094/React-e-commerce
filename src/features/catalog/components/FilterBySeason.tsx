@@ -3,11 +3,7 @@ import { useEffect } from 'react';
 import FilterBySeasonSubContent from './FilterBySeasonSubContent';
 import AccordionItem from './AccordionItem';
 import SeasonItem from './SeasonItem';
-
-export type SeasonProps = {
-  value: string;
-  label: string;
-};
+import { SelectProps } from '../../../models';
 
 function FilterBySeason() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -29,7 +25,7 @@ function FilterBySeason() {
     }
   }, [searchParams]);
 
-  const seasons: SeasonProps[] = [
+  const seasons: SelectProps[] = [
     { value: 'winter', label: 'Winter' },
     { value: 'summer', label: 'Summer' },
     { value: 'all-seasons', label: 'All seasons' },
@@ -44,7 +40,7 @@ function FilterBySeason() {
               key={season.value}
               season={season}
               params={params}
-              onClick={handleChange}
+              onChange={handleChange}
             >
               <FilterBySeasonSubContent />
             </SeasonItem>

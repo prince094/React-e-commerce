@@ -1,8 +1,8 @@
-import AccordionItem from './AccordionItem';
+import AccordionItem from './AccordionItem.tsx';
 
 function FilterByPrice() {
   return (
-    <AccordionItem label={'Price'}>
+    <AccordionItem label="Price">
       <div className="mt-5">
         <div className="flex h-[70px] items-center rounded bg-white py-2">
           <div className="flex">

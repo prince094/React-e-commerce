@@ -2,7 +2,7 @@ import BreadCrumb from '../../../ui/BreadCrumb.tsx';
 import { SetStateAction, useEffect, useState } from 'react';
 import { useBreadCrumbContext } from '../../../context/BreadcrumbContext.tsx';
 import Product from '../../product/components/Product.tsx';
-import ProductModal from '../../product/components/ProductModal.jsx';
+import ProductModal from '../../product/components/ProductModal.tsx';
 import { getProductList } from '../../../services/product/index.ts';
 import { useLoaderData } from 'react-router-dom';
 import CatalogFilterSection from '../components/CatalogFilterSection.tsx';
@@ -11,6 +11,7 @@ import CatalogFilterSeasonal from '../components/CatalogFilterSeasonal.tsx';
 import CatalogHead from '../components/CatalogHead.tsx';
 import { Product as ProductData } from '../../../models';
 import CatalogFilterFeatures from '../components/CatalogFilterFeatures.tsx';
+import sorts from '../../../data/data-sort.json';
 
 const modelData = [
   '155/65R13',
@@ -30,28 +31,7 @@ const modelData = [
   '215/65R16',
   '215/60R16',
 ];
-const sort = [
-  {
-    id: 1,
-    name: 'Popular first',
-  },
-  {
-    id: 143,
-    name: 'Cheaper first',
-  },
-  {
-    id: 132,
-    name: 'More expensive first',
-  },
-  {
-    id: 1433,
-    name: 'New',
-  },
-  {
-    id: 41433,
-    name: 'New test',
-  },
-];
+
 const catalogTypes = [
   {
     id: 32651,
@@ -132,7 +112,7 @@ function CatalogPage() {
         <CatalogHead />
         <CatalogFilterSeasonal catalog={catalogTypes} />
         <CatalogFilterModel model={modelData} />
-        <CatalogFilterSection sort={sort} />
+        <CatalogFilterSection sorts={sorts} />
         <div className="my-4 flex gap-x-3">
           <CatalogFilterFeatures />
           <div className="flex-[75%]">

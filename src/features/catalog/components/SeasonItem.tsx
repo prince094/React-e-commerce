@@ -1,15 +1,15 @@
-import { ChangeEvent, MouseEventHandler } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 import { classNames } from '../../../utils/helpers.ts';
-import { SeasonProps } from './FilterBySeason.tsx';
+import { SelectProps } from '../../../models/SelectModel.ts';
 
 type SeasonItemProps = {
-  season: SeasonProps;
+  season: SelectProps;
   params: string;
-  children: string;
-  onClick: (value: string) => void;
+  children: ReactNode;
+  onChange: (value: string) => void;
 };
 
-function SeasonItem({ season, params, children, onClick }: SeasonItemProps) {
+function SeasonItem({ season, params, children, onChange }: SeasonItemProps) {
   return (
     <>
       <label
@@ -19,13 +19,13 @@ function SeasonItem({ season, params, children, onClick }: SeasonItemProps) {
         )}
       >
         <input
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            if (params === e.target.value) {
-              onClick('');
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            onChange(e.target.value)
+          }
+          onClick={(e) => {
+            if (params === e.currentTarget.value) {
+              onChange('');
             }
-          }}
-          onClick={(e: MouseEvent<HTMLInputElement>) => {
-            onClick(e.target.value);
           }}
           type="radio"
           name="season"
@@ -41,7 +41,7 @@ function SeasonItem({ season, params, children, onClick }: SeasonItemProps) {
           <span className="ml-3 text-sm text-[#566879]">(112)</span>
         </p>
       </label>
-      {season.value === 'winter' && children}
+      {season.value === 'winter' ? children : null}
     </>
   );
 }
