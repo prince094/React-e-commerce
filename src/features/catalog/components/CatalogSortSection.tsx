@@ -4,25 +4,28 @@ import ListBox from '../../../ui/ListBox.tsx';
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import { useEffect, useState } from 'react';
 
-type CatalogFilterSectionProps = {
+type CatalogSortSectionProps = {
   sorts: SelectProps[];
 };
 
-function CatalogFilterSection({ sorts }: CatalogFilterSectionProps) {
+function CatalogSortSection({ sorts }: CatalogSortSectionProps) {
   const [selectedSort, setSelectedSort] = useState<SelectProps>(sorts[0]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const sortParam = searchParams.get('sort') || 'popular-first';
     const initialSort = sorts.find((s) => s.value === sortParam) || sorts[0];
-    setSelectedSort(initialSort);
+
+    if (!sorts.some((s) => s.value === sortParam)) {
+      searchParams.set('sort', initialSort.value);
+      setSearchParams(searchParams);
+    } else setSelectedSort(initialSort);
   }, [searchParams, sorts]);
 
   function handleSortChange(sort: SelectProps) {
-    if (sort.value !== selectedSort?.value) {
+    if (sort.value !== selectedSort.value) {
       searchParams.set('sort', sort.value);
       setSearchParams(searchParams);
-      console.log('data:', searchParams);
     }
   }
 
@@ -64,4 +67,4 @@ function CatalogFilterSection({ sorts }: CatalogFilterSectionProps) {
   );
 }
 
-export default CatalogFilterSection;
+export default CatalogSortSection;

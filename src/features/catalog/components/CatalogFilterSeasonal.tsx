@@ -1,7 +1,23 @@
-function CatalogFilterSeasonal({ catalog }: any) {
+type SeasonalProps = {
+  id: number;
+  colors: {
+    from: string;
+    to: string;
+  };
+  path: string;
+  name: string;
+  value: string;
+  icon: string;
+};
+
+type CatalogFilterSeasonalProps = {
+  seasons: SeasonalProps[];
+};
+
+function CatalogFilterSeasonal({ seasons }: CatalogFilterSeasonalProps) {
   return (
     <div className=" mb-3 flex flex-row flex-wrap justify-between gap-1 sm:gap-2">
-      {catalog.map((item: any) => {
+      {seasons.map((item: any) => {
         return (
           <div
             key={item.icon}

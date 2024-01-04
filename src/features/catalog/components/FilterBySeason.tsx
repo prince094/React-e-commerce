@@ -15,15 +15,15 @@ function FilterBySeason() {
     setSearchParams(searchParams);
   }
 
-  useEffect(() => {
-    if (!searchParams.get('seasonly')) {
-      setSearchParams(() => {
-        const newParams = new URLSearchParams('seasonly');
-        newParams.delete('seasonly');
-        return newParams;
-      });
-    }
-  }, [searchParams]);
+  // useEffect(() => {
+  //   if (!searchParams.get('seasonly')) {
+  //     setSearchParams(() => {
+  //       const newParams = new URLSearchParams('seasonly');
+  //       newParams.delete('seasonly');
+  //       return newParams;
+  //     });
+  //   }
+  // }, [searchParams]);
 
   const seasons: SelectProps[] = [
     { value: 'winter', label: 'Winter' },

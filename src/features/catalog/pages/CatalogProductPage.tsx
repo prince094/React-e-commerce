@@ -5,83 +5,45 @@ import Product from '../../product/components/Product.tsx';
 import ProductModal from '../../product/components/ProductModal.tsx';
 import { getProductList } from '../../../services/product/index.ts';
 import { useLoaderData } from 'react-router-dom';
-import CatalogFilterSection from '../components/CatalogFilterSection.tsx';
-import CatalogFilterModel from '../components/CatalogFilterModel.tsx';
+import CatalogSortSection from '../components/CatalogSortSection.tsx';
+import CatalogFilterParameter from '../components/CatalogFilterParameter.tsx';
 import CatalogFilterSeasonal from '../components/CatalogFilterSeasonal.tsx';
-import CatalogHead from '../components/CatalogHead.tsx';
+import CatalogHead from '../components/CatalogHeadSection.tsx';
 import { Product as ProductData } from '../../../models';
 import CatalogFilterFeatures from '../components/CatalogFilterFeatures.tsx';
 import sorts from '../../../data/data-sort.json';
+import seasons from '../../../data/data-seasons.json';
 
-const modelData = [
-  '155/65R13',
-  '155/70R13',
-  '155/65R14',
-  '185/65R14',
-  '205/65R14',
-  '155/65R13',
-  '155/70R13',
-  '155/65R14',
-  '205/65R16',
-  '215/65R16',
-  '215/60R16',
-  '275/60R16',
-  '205/65R16',
-  '205/65R16',
-  '215/65R16',
-  '215/60R16',
-];
-
-const catalogTypes = [
+const data = [
   {
-    id: 32651,
-    colors: {
-      from: '#FF5C00',
-      to: '#FCC537',
-    },
-    path: '/',
-    name: 'Summer tires',
-    icon: 'sunny',
+    id: 1,
+    height: '155',
+    width: '65',
+    diameter: '14',
   },
   {
-    id: 35421,
-    colors: {
-      from: '#0E3D39',
-      to: '#28CA55',
-    },
-    path: '/',
-    name: 'All season tires',
-    icon: 'winter-summer',
+    id: 2,
+    height: '155',
+    width: '',
+    diameter: '14',
   },
   {
-    id: 3221,
-    colors: {
-      from: '#3481B8',
-      to: '#4D99D0',
-    },
-    path: '/',
-    name: 'Winter tires',
-    icon: 'winter',
+    id: 4,
+    height: '9.5L',
+    width: '',
+    diameter: '15-3L',
   },
   {
-    id: 3241,
-    colors: {
-      from: '#EE3636',
-      to: '#F18A3F',
-    },
-    path: '/',
-    name: 'Studded',
-    icon: 'winter-tires',
+    id: 6,
+    height: '',
+    width: '',
+    diameter: '22.5',
   },
   {
-    id: 321,
-    colors: {
-      from: '#6D0293',
-      to: '#7F43FF',
-    },
-    path: '/',
-    name: 'Not studded',
-    icon: 'no-winter',
+    id: 6,
+    height: '',
+    width: '65',
+    diameter: '13',
   },
 ];
 
@@ -110,9 +72,9 @@ function CatalogPage() {
       <BreadCrumb />
       <div className="py-5">
         <CatalogHead />
-        <CatalogFilterSeasonal catalog={catalogTypes} />
-        <CatalogFilterModel model={modelData} />
-        <CatalogFilterSection sorts={sorts} />
+        <CatalogFilterSeasonal seasons={seasons} />
+        <CatalogFilterParameter parameters={data} />
+        <CatalogSortSection sorts={sorts} />
         <div className="my-4 flex gap-x-3">
           <CatalogFilterFeatures />
           <div className="flex-[75%]">
