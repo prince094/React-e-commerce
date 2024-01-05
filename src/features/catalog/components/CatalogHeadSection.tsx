@@ -1,7 +1,7 @@
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import { Link } from 'react-router-dom';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 
-function CatalogFilterHead() {
+function CatalogHeadSection() {
   return (
     <div className="mb-4 flex flex-col justify-between lg:flex-row lg:items-center">
       <div>
@@ -38,4 +38,4 @@ function CatalogFilterHead() {
   );
 }
 
-export default CatalogFilterHead;
+export default CatalogHeadSection;

@@ -15,7 +15,7 @@ interface SelectProps {
   options: SelectOptions;
   value: any;
   type: string;
-  onChange: (type: string, e: Event) => void;
+  onChange: (type: string, value: string) => void;
   label: string;
 }
 

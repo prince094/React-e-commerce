@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import BreadCrumb from '../../../ui/BreadCrumb.tsx';
 import PageTitle from '../../../ui/PageTitle.js';
 import { useBreadCrumbContext } from '../../../context/BreadcrumbContext.tsx';
-import Cart from '../components/Cart.jsx';
+import Cart from '../components/Cart.tsx';
 
 function CartPage() {
   const { setBreadcrumb } = useBreadCrumbContext();

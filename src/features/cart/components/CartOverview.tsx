@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { getTotalCartPrice } from '../state/cartSlice';
-import { formatCurrency } from '../../../utils/helpers';
+import { getTotalCartPrice } from '../state/cartSlice.ts';
+import { formatCurrency } from '../../../utils/helpers.ts';
 import { useNavigate } from 'react-router-dom';
 
 function CartOverview() {

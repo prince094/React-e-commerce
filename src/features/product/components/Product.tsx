@@ -1,28 +1,17 @@
-import { EyeIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
-import { classNames } from '../../../utils/helpers.js';
 import { Link, useLocation } from 'react-router-dom';
-import UpdateItemQuantity from '../../cart/components/UpdateItemQuantity.jsx';
-import {
-  type CartItem,
-  addItem,
-  getCurrentQuantityById,
-} from '../../cart/state/cartSlice.ts';
+import { EyeIcon, PlusSmallIcon } from '@heroicons/react/24/outline';
+import { addItem, getCurrentQuantityById } from '../../cart/state/cartSlice.ts';
 import { useCartDispatch, useCartSelector } from '../../../store/hooks.ts';
+import { CartItem, Product as ProductModel } from '../../../models/index.ts';
+import { classNames } from '../../../utils/helpers.ts';
+import UpdateItemQuantity from '../../cart/components/UpdateItemQuantity.tsx';
 
 type ProductProps = {
-  id: string;
-  title: string;
-  imageSrc: string;
-  imageAlt: string;
-  brandSrc: string;
-  unitPrice: number;
-  color: string;
-  soldOut: boolean;
-  seasonTypes: string[];
-  views: number;
+  product: ProductModel;
+  onClick: (product: ProductModel) => void;
 };
 
-function Product({ product, onClick }) {
+function Product({ product, onClick }: ProductProps) {
   const dispatch = useCartDispatch();
   const location = useLocation();
 
@@ -36,7 +25,7 @@ function Product({ product, onClick }) {
     soldOut,
     seasonTypes,
     views,
-  }: ProductProps = product;
+  } = product;
 
   const currentQuantity = useCartSelector(getCurrentQuantityById(id));
   const isInCart = currentQuantity > 0;

@@ -1,23 +1,23 @@
-import { useState, useEffect, useContext } from 'react';
-import BreadCrumb from '../../../ui/BreadCrumb.tsx';
+import { useState, useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Swiper } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import { SwiperSlide } from 'swiper/react';
 import {
   HeartIcon,
   ShoppingCartIcon,
   ChevronDoubleDownIcon,
   ChevronRightIcon,
 } from '@heroicons/react/24/outline';
-import { Swiper } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import { SwiperSlide } from 'swiper/react';
-import Button from '../../../ui/Button.tsx';
-import UpdateItemQuantity from '../../cart/components/UpdateItemQuantity.jsx';
-import { useSelector, useDispatch } from 'react-redux';
-import { addItem, getCurrentQuantityById } from '../../cart/state/cartSlice.ts';
-import PageTitle from '../../../ui/PageTitle.js';
-import { useBreadCrumbContext } from '../../../context/BreadcrumbContext.tsx';
-import { useLocation, useParams } from 'react-router-dom';
 import products from '../../../data/data-products.json';
-import { classNames, formatCurrency } from '../../../utils/helpers.js';
+import { useBreadCrumbContext } from '../../../context/BreadcrumbContext.tsx';
+import { addItem, getCurrentQuantityById } from '../../cart/state/cartSlice.ts';
+import BreadCrumb from '../../../ui/BreadCrumb.tsx';
+import PageTitle from '../../../ui/PageTitle.tsx';
+import { classNames, formatCurrency } from '../../../utils/helpers.ts';
+import Button from '../../../ui/Button.tsx';
+import UpdateItemQuantity from '../../cart/components/UpdateItemQuantity.tsx';
 
 const slides = [
   'https://picsum.photos/1920/1080',

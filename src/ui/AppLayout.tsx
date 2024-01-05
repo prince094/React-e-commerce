@@ -1,7 +1,7 @@
 import { Outlet, useLocation, useNavigation } from 'react-router-dom';
-import Footer from '../components/footer/Footer';
-import Loader from '../ui/Loader.tsx';
-import Header from '../components/header/Header';
+import Footer from '../components/footer/Footer.tsx';
+import Loader from './Loader.tsx';
+import Header from '../components/header/Header.tsx';
 
 function AppLayout() {
   const navigation = useNavigation();

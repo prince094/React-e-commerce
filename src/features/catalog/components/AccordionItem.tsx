@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { classNames } from '../../../utils/helpers';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-function AccordionItem({ children, label }) {
+type AccordionItemProps = {
+  children: ReactNode;
+  label: string;
+};
+
+function AccordionItem({ children, label }: AccordionItemProps) {
   const [isOpen, setIsOpen] = useState(true);
 
   function handleToggle() {
@@ -12,7 +17,7 @@ function AccordionItem({ children, label }) {
   return (
     <div
       className={classNames(
-        !isOpen && 'max-h-[72px] overflow-hidden',
+        !isOpen ? 'max-h-[72px] overflow-hidden' : '',
         'mb-2 cursor-pointer rounded bg-[#F5F8FC] px-5 pb-5'
       )}
     >

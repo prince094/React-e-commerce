@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import Screen from '../../hooks/useScreenSize.ts';
 import HeaderTop from './HeaderTop';
 import HeaderBottom from './HeaderBottom';
-import Screen from '../../hooks/useScreenSize';
 function Header() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 

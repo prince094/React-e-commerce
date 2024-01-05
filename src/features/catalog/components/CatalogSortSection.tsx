@@ -1,7 +1,34 @@
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import { useSearchParams } from 'react-router-dom';
+import { SelectProps } from '../../../models/SelectModel.ts';
 import ListBox from '../../../ui/ListBox.tsx';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import { useEffect, useState } from 'react';
 
-function CatalogFilterSection({ sort }: any) {
+type CatalogSortSectionProps = {
+  sorts: SelectProps[];
+};
+
+function CatalogSortSection({ sorts }: CatalogSortSectionProps) {
+  const [selectedSort, setSelectedSort] = useState<SelectProps>(sorts[0]);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const sortParam = searchParams.get('sort') || 'popular-first';
+    const initialSort = sorts.find((s) => s.value === sortParam) || sorts[0];
+
+    if (!sorts.some((s) => s.value === sortParam)) {
+      searchParams.set('sort', initialSort.value);
+      setSearchParams(searchParams);
+    } else setSelectedSort(initialSort);
+  }, [searchParams, sorts]);
+
+  function handleSortChange(sort: SelectProps) {
+    if (sort.value !== selectedSort.value) {
+      searchParams.set('sort', sort.value);
+      setSearchParams(searchParams);
+    }
+  }
+
   return (
     <div className="flex flex-row justify-between bg-white">
       <div className="hidden lg:flex">
@@ -26,7 +53,11 @@ function CatalogFilterSection({ sort }: any) {
         <hr className="mr-[30px] hidden h-[40px] w-[1px] bg-[#E2E9F2] lg:inline" />
         <span className="mr-4 hidden lg:inline">Sort:</span>
         <div className="flex w-full justify-between">
-          <ListBox value={sort[0]} options={sort} onChange={() => {}} />
+          <ListBox
+            selected={selectedSort}
+            options={sorts}
+            onChange={(e) => handleSortChange(e)}
+          />
           <div className="ml-1 flex h-[50px] min-w-[50px] items-center justify-center rounded bg-[#F5F8FC] lg:hidden">
             <img src="/img/catalog/filter-03.svg" alt="" />
           </div>
@@ -36,4 +67,4 @@ function CatalogFilterSection({ sort }: any) {
   );
 }
 
-export default CatalogFilterSection;
+export default CatalogSortSection;

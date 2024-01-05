@@ -1,11 +1,16 @@
 import { useSelector } from 'react-redux';
-import { formatCurrency } from '../../../utils/helpers';
-import { getCurrentQuantityById } from '../state/cartSlice';
-import UpdateItemQuantity from './UpdateItemQuantity';
-import CartAction from './CartAction';
+import { formatCurrency } from '../../../utils/helpers.ts';
+import { getCurrentQuantityById } from '../state/cartSlice.ts';
+import UpdateItemQuantity from './UpdateItemQuantity.tsx';
+import CartAction from './CartAction.tsx';
+import { CartItem as CartItemModel } from '../../../models';
 
-function CartItem({ item }) {
-  const { id, name, imageSrc, unitPrice, totalPrice } = item;
+type CartItemProps = {
+  item: CartItemModel;
+};
+
+function CartItem({ item }: CartItemProps) {
+  const { id, title, imageSrc, unitPrice, totalPrice } = item;
   const currentQuantity = useSelector(getCurrentQuantityById(id));
 
   return (
@@ -19,7 +24,7 @@ function CartItem({ item }) {
               alt={imageSrc}
             />
           </p>
-          <p className="ml-4 max-w-[211px] text-[15px] font-medium">{name}</p>
+          <p className="ml-4 max-w-[211px] text-[15px] font-medium">{title}</p>
         </td>
         <td>
           <p className="text-[13px] text-[#566879]">Tashkent</p>
