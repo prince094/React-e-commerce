@@ -33,5 +33,4 @@ We will do it together if you want. The main idea is that we take (steal :)) int
 5. Every day you can pull out all changes from develop branch.
    For this: git pull origin develop
 
-6. If you have additional suggestions and discussions, write them in the telegram group.
-7. I created a telegram group and if you have any problem with git or with the project, you can post it in the telegram group. https://t.me/+RaPiKQa9LjMxYTFi
+6. If you have additional suggestions and discussions, write them in the telegram: @jakhongir_vm
