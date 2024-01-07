@@ -5,10 +5,18 @@ import HeaderActions from './HeaderActions';
 type HeaderTopProps = {
   isMobile: boolean;
   isOpenMenu: boolean;
-  setIsOpenMenu: (value: boolean) => void;
+  isOpenModal: boolean;
+  openMenu: (value: boolean) => void;
+  openModal: (value: boolean) => void;
 };
 
-function HeaderTop({ isMobile, isOpenMenu, setIsOpenMenu }: HeaderTopProps) {
+function HeaderTop({
+  isMobile,
+  isOpenMenu,
+  isOpenModal,
+  openMenu,
+  openModal,
+}: HeaderTopProps) {
   return (
     <div className="bg-gray-800">
       <div className="mx-auto max-w-7xl  lg:px-8">
@@ -16,7 +24,7 @@ function HeaderTop({ isMobile, isOpenMenu, setIsOpenMenu }: HeaderTopProps) {
           <div className="flex h-full flex-1 justify-between">
             <div className="flex items-center">
               <p
-                onClick={(value) => setIsOpenMenu(!value)}
+                onClick={(value) => openMenu(!value)}
                 className="mr-2 flex h-full w-[47px] items-center border-r border-gray-700 px-3 lg:hidden"
               >
                 <img
@@ -39,7 +47,7 @@ function HeaderTop({ isMobile, isOpenMenu, setIsOpenMenu }: HeaderTopProps) {
 
             <div className="flex space-x-4">
               {isMobile ? null : <HeaderTopItems />}
-              <HeaderActions />
+              <HeaderActions isOpenModal={isOpenModal} openModal={openModal} />
             </div>
           </div>
         </div>

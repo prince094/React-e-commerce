@@ -13,14 +13,14 @@ import CatalogProductPage, {
 // import SelectionByCarBrand2 from './pages/SelectionByCarBrand2';
 // import SelectionByCarBrand3 from './pages/SelectionByCarBrand3';
 // import SelectionByCarSize from './pages/SelectionByCarSize';
-import RegistrationPage from './pages/RegistrationPage.tsx';
-import AccountPage from './pages/AccountPage';
-import NewsPage from './features/news/pages/NewsPage.jsx';
+import RegistrationPage from './features/authentication/pages/RegistrationPage.tsx';
+import AccountPage from './features/authentication/pages/AccountPage.tsx';
+import NewsPage from './features/news/pages/NewsPage.tsx';
 import NewsPageDetail from './pages/NewsPageDetail';
 import HomePage from './features/home/pages/HomePage.tsx';
 import HomePage1 from './pages/HomePage-v1';
 import { BreadCrumbProvider } from './context/BreadcrumbContext.tsx';
-import OrderPage from './features/order/pages/OrderPage.jsx';
+import OrderPage from './features/order/pages/OrderPage.tsx';
 import ProductPage from './features/product/pages/ProductPage.tsx';
 
 const router = createBrowserRouter([
