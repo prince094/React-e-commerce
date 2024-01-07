@@ -10,12 +10,15 @@ import {
   getTotalCartPrice,
 } from '../../features/cart/state/cartSlice.ts';
 
-function HeaderActions() {
+function HeaderActions({ isOpenModal, openModal }: any) {
   const totalPrice = useSelector(getTotalCartPrice);
   const cart = useSelector(getCart);
   return (
     <div className="flex">
-      <div className="border-l border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20">
+      <div
+        onClick={() => openModal(true)}
+        className="border-l border-r border-gray-700 hover:bg-gray-400 hover:bg-opacity-20"
+      >
         <a href="#" className="flex h-full items-center px-3  text-white">
           <UserIcon className="h-6 w-6 text-white md:h-7 md:w-7  " />
         </a>

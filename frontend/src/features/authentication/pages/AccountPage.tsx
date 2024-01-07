@@ -4,23 +4,37 @@ import {
   ShoppingBagIcon,
   UserIcon,
 } from '@heroicons/react/24/outline';
-import BreadCrumb from '../ui/BreadCrumb';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import Input from '../ui/Input';
-import PageTitle from '../ui/PageTitle';
+import { useEffect, useState } from 'react';
+import Input from '../../../ui/Input';
+import PageTitle from '../../../ui/PageTitle';
+import BreadCrumb from '../../../ui/BreadCrumb.tsx';
+import { useBreadCrumbContext } from '../../../context/BreadcrumbContext';
 
 function AccountPage() {
   const [input, setInput] = useState('');
+
+  const { setBreadcrumb } = useBreadCrumbContext();
+
+  useEffect(() => {
+    fetch('../../src/data/news-data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        setBreadcrumb([
+          { path: '/', name: 'Home' },
+          { path: '/account', name: 'Account' },
+        ]);
+      });
+  }, []);
   return (
-    <div className="py-5">
+    <>
       <BreadCrumb />
-      <PageTitle title={' Personal cabinet'} />
+      <PageTitle title="Personal cabinet" />
       <div className="my-5 flex flex-col items-start md:flex-row">
         <div className="mb-5 w-full md:mb-0 md:basis-[35%]">
           <div className=" -mr-[1px] border border-[#E2E9F2]">
             <div className="flex items-center border-b border-[#E2E9F2] p-4 sm:p-6">
-              <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-[2px] border-[#FBCC96] bg-[#FFDFBA] sm:h-[100px] sm:w-[100px]">
+              <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-[2px] border-[#FBCC96] bg-[#FFDFBA] sm:min-h-[100px] sm:min-w-[100px]">
                 {'' ? (
                   <img
                     className="h-full w-full object-cover"
@@ -78,7 +92,7 @@ function AccountPage() {
       <button className="mx-auto h-[50px] w-full rounded bg-green  text-white transition hover:shadow-[0px_4px_10px_0px_rgba(21,165,36,0.50)] sm:w-1/3">
         Save
       </button>
-    </div>
+    </>
   );
 }
 

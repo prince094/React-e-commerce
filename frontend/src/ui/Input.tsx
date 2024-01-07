@@ -1,7 +1,7 @@
 import { ChangeEvent, ComponentPropsWithoutRef, forwardRef } from 'react';
 
 type InputProps = {
-  id: string;
+  id?: string;
   label: string;
   optional?: boolean;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
